@@ -314,269 +314,269 @@
 		<font>
 			<name>fontArial15</name>
 			<filename>arial.ttf</filename>
-			<size>35</size>
+			<size>42</size>
 		</font>
 		<font>
 			<name>font10</name>
 			<filename>arial.ttf</filename>
-			<size>18</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font11_compact</name>
 			<filename>arial.ttf</filename>
-			<size>20</size>
+			<size>36</size>
 			<linespacing>.8</linespacing>
 		</font>
 		<font>
 			<name>font12</name>
 			<filename>arial.ttf</filename>
-			<size>23</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font13</name>
 			<filename>arial.ttf</filename>
-			<size>26</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font13_bold</name>
 			<filename>arial.ttf</filename>
 			<style>bold</style>
-			<size>26</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font14_textbox</name>
 			<filename>arial.ttf</filename>
-			<size>30</size>
+			<size>36</size>
 			<linespacing>1.27</linespacing>
 		</font>
 		<font>
 			<name>font14_textbox2</name>
 			<filename>arial.ttf</filename>
-			<size>30</size>
+			<size>36</size>
 			<linespacing>1.1</linespacing>
 		</font>
 		<font>
 			<name>font15_textbox</name>
 			<filename>arial.ttf</filename>
-			<size>32</size>
+			<size>38</size>
 			<linespacing>1.38</linespacing>
 		</font>
 		<font>
 			<name>font15_textbox2</name>
 			<filename>arial.ttf</filename>
-			<size>32</size>
+			<size>38</size>
 			<linespacing>1.26</linespacing>
 		</font>
 		<font>
 			<name>font14</name>
 			<filename>arial.ttf</filename>
-			<size>30</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font15</name>
 			<filename>arial.ttf</filename>
-			<size>32</size>
+			<size>38</size>
 		</font>
 		<font>
 			<name>font15_bold</name>
 			<filename>arial.ttf</filename>
 			<style>bold</style>
-			<size>32</size>
+			<size>38</size>
 		</font>
 		<font>
 			<name>font16</name>
 			<filename>arial.ttf</filename>
-			<size>35</size>
+			<size>42</size>
 		</font>
 		<font>
 			<name>font16_bold</name>
 			<filename>arial.ttf</filename>
 			<style>bold</style>
-			<size>35</size>
+			<size>42</size>
 		</font>
 		<font>
 			<name>font16_textbox</name>
 			<filename>arial.ttf</filename>
-			<size>35</size>
+			<size>42</size>
 			<linespacing>1.4</linespacing>
 		</font>
 		<font>
 			<name>font16bold_textbox</name>
 			<filename>arial.ttf</filename>
 			<style>bold</style>
-			<size>35</size>
+			<size>42</size>
 			<linespacing>1.5</linespacing>
 		</font>
 		<font>
 			<name>font30</name>
 			<filename>arial.ttf</filename>
-			<size>42</size>
+			<size>50</size>
 		</font>
 		<font>
 			<name>font48</name>
 			<filename>arial.ttf</filename>
-			<size>45</size>
+			<size>54</size>
 		</font>
 		<font>
 			<name>font48_bold</name>
 			<filename>arial.ttf</filename>
 			<style>bold</style>
-			<size>45</size>
+			<size>54</size>
 		</font>
 		<font>
 			<name>font52_bold</name>
 			<filename>arial.ttf</filename>
 			<style>bold</style>
-			<size>49</size>
+			<size>59</size>
 		</font>
 		<!-- LiveTV Fonts -->
 		<font>
 			<name>font65</name>
 			<filename>arial.ttf</filename>
-			<size>62</size>
+			<size>74</size>
 		</font>
 		<font>
 			<name>font58</name>
 			<filename>arial.ttf</filename>
-			<size>55</size>
+			<size>66</size>
 		</font>
 		<font>
 			<name>font24_bold</name>
 			<filename>arial.ttf</filename>
-			<size>21</size>
+			<size>36</size>
 			<style>bold</style>
 		</font>
 		<font>
 			<name>font28_bold</name>
 			<filename>arial.ttf</filename>
-			<size>25</size>
+			<size>36</size>
 			<style>bold</style>
 		</font>
 		<font>
 			<name>font52_bold</name>
 			<filename>arial.ttf</filename>
 			<style>bold</style>
-			<size>45</size>
+			<size>54</size>
 		</font>
 		<font>
 			<name>font11</name>
 			<filename>arial.ttf</filename>
-			<size>21</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font13b</name>
 			<filename>arial.ttf</filename>
-			<size>29</size>
+			<size>36</size>
 		</font>
 		<!-- Title Fonts -->
 		<font>
 			<name>font12_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>23</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font13_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>23</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font14_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>30</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font15_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>32</size>
+			<size>38</size>
 		</font>
 		<font>
 			<name>font16_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>35</size>
+			<size>42</size>
 		</font>
 		<font>
 			<name>font16_title_bold</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase bold</style>
-			<size>35</size>
+			<size>42</size>
 		</font>
 		<font>
 			<name>font24_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>33</size>
+			<size>40</size>
 		</font>
 		<font>
 			<name>font30_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>42</size>
+			<size>50</size>
 		</font>
 		<font>
 			<name>font30_title_bold</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase bold</style>
-			<size>42</size>
+			<size>50</size>
 		</font>
 		<font>
 			<name>font48_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>45</size>
+			<size>54</size>
 		</font>
 		<font>
 			<name>font35_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>49</size>
+			<size>59</size>
 		</font>
 		<font>
 			<name>font45caps_title</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>65</size>
+			<size>78</size>
 		</font>
 		<font>
 			<name>font_musicviz</name>
 			<filename>arial.ttf</filename>
 			<linespacing>0</linespacing>
 			<style>uppercase</style>
-			<size>65</size>
+			<size>78</size>
 		</font>
 		<font>
 			<name>font_version</name>
 			<filename>LeagueGothic-Regular.ttf</filename>
 			<linespacing>0</linespacing>
-			<size>60</size>
+			<size>72</size>
 		</font>
 		<font>
 			<name>font_MainMenu</name>
 			<filename>arial.ttf</filename>
 			<linespacing>0</linespacing>
 			<style>uppercase</style>
-			<size>70</size>
+			<size>84</size>
 		</font>
 		<font>
 			<name>font_VerticalMainMenu</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>55</size>
+			<size>66</size>
 		</font>
 		<font>
 			<name>BigAssFont</name>
 			<filename>arial.ttf</filename>
-			<size>550</size>
+			<size>660</size>
 		</font>
 		<font>
 			<name>WeatherTemp</name>
 			<filename>arial.ttf</filename>
 			<style>uppercase</style>
-			<size>117</size>
+			<size>140</size>
 		</font>
 		<!-- Icons -->
 		<include>CommonIconFonts</include>
@@ -584,13 +584,13 @@
 		<font>
 			<name>fontCDartist</name>
 			<filename>PermanentMarker.ttf</filename>
-			<size>45</size>
+			<size>54</size>
 			<linespacing>.8</linespacing>
 		</font>
 		<font>
 			<name>fontCDalbum</name>
 			<filename>PermanentMarker.ttf</filename>
-			<size>36</size>
+			<size>43</size>
 			<linespacing>.8</linespacing>
 		</font>
 	</fontset>
@@ -869,22 +869,22 @@
 		<font>
 			<name>fontArial15</name>
 			<filename>Arial.ttf</filename>
-			<size>35</size>
+			<size>38</size>
 		</font>
 		<font>
 			<name>font10</name>
 			<filename>Raleway-Medium.ttf</filename>
-			<size>21</size>
+			<size>23</size>
 		</font>
 		<font>
 			<name>font12</name>
 			<filename>Raleway-Medium.ttf</filename>
-			<size>26</size>
+			<size>28</size>
 		</font>
 		<font>
 			<name>font13</name>
 			<filename>Raleway-Medium.ttf</filename>
-			<size>30</size>
+			<size>33</size>
 		</font>
 		<font>
 			<name>font14_textbox</name>
@@ -895,24 +895,24 @@
 		<font>
 			<name>font14_textbox2</name>
 			<filename>Raleway-Medium.ttf</filename>
-			<size>33</size>
+			<size>36</size>
 			<linespacing>1.1</linespacing>
 		</font>
 		<font>
 			<name>font15_textbox</name>
 			<filename>Raleway-Medium.ttf</filename>
-			<size>35</size>
+			<size>38</size>
 			<linespacing>1.2</linespacing>
 		</font>
 		<font>
 			<name>font14</name>
 			<filename>Raleway-Medium.ttf</filename>
-			<size>33</size>
+			<size>36</size>
 		</font>
 		<font>
 			<name>font15</name>
 			<filename>Raleway-Medium.ttf</filename>
-			<size>35</size>
+			<size>38</size>
 		</font>
 		<font>
 			<name>font15_bold</name>
