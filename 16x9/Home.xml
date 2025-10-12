@@ -3,14 +3,18 @@
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<onload condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Control.SetHidden(9010)</onload>
 	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;levels=2&amp;group=mainmenu|buttonmenu)</onload>
-	<onload condition="System.AddonIsEnabled(script.skinvariables)">RunScript(script.skinvariables,action=buildviews)</onload>
+	<onload condition="Skin.HasSetting(skinvariables.viewtypes)">RunScript(script.skinvariables,action=buildviews)</onload>
 	<onload condition="!Skin.HasSetting(AskedDefaultBackground)">SetProperty(AskDefaultBackground,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(AskedDefaultBackground) + !Control.IsVisible(9999)">Skin.TimerStart(askdefaultbackground)</onload>
-	<onload condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEmpty(Window(Home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro)) + !String.IsEmpty(Window(Home).Property(Playing.StartupIntro))">AlarmClock(Clear_PlayingIntroProp,ClearProperty(Playing.StartupIntro,Home),00:10,silent)</onload>
+	<!-- <onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload> -->
 	<onunload condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Control.SetHidden(9010)</onunload>
 	<menucontrol>9051</menucontrol>
 	<controls>
+		<control type="group">
+			<include condition="Skin.HasSetting(PreLoadWidgets)">skinshortcuts-template-WidgetPreLoad</include>
+			<include condition="Skin.HasSetting(PreLoadWidgets)">skinshortcuts-template-WidgetPreLoad.2</include>
+		</control>
 		<control type="button" id="64">
 			<include>HiddenObject</include>
 			<onback>SetFocus(9000)</onback>
@@ -112,26 +116,8 @@
 			<label>$INFO[Container.ListItem.Art(albumartist.fanart19)]</label>
 			<label>$INFO[Container.ListItem.Art(albumartist.fanart20)]</label>
 		</control>
-		<control type="fadelabel" id="4411">
-			<top>-100</top>
-			<width>2560</width>
-			<height>0</height>
-			<scroll>false</scroll>
-			<scrollout>false</scrollout>
-			<randomize>true</randomize>
-			<resetonlabelchange>true</resetonlabelchange>
-			<include>FadeLabelTime</include>
-			<!-- All Movies -->
-			<label>$INFO[Container(9035).ListItem.Art(fanart)]</label>
-			<!-- All TV Shows -->
-			<label>$INFO[Container(9036).ListItem.Art(fanart)]</label>
-			<!-- All Album Artists -->
-			<label>$INFO[Container(9037).ListItem.Art(fanart)]</label>
-			<!-- All Music Videos -->
-			<label>$INFO[Container(9038).ListItem.Art(fanart)]</label>
-		</control>
 		<!-- <include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include> -->
-		<include>HomeFanartLists</include>
+		<include>skinshortcuts-template-HomeRandomFanartLists</include>
 		<control type="button" id="9051">
 			<include>HiddenObject</include>
 			<onfocus condition="Player.HasMedia">ActivateWindow(playercontrols)</onfocus>
@@ -145,16 +131,18 @@
 				<include>VisibleFadeAnimation</include>
 				<include condition="!Skin.HasSetting(Disable.Videoinfo)">NowPlayingVideoWidget</include>
 				<include condition="!Skin.HasSetting(Disable.Musicinfo)">NowPlayingMusicWidget</include>
-				<include>Widget1</include>
-				<include>Widget2</include>
+				<control type="grouplist" id="55000">
+					<include>Widget1</include>
+					<include>Widget2</include>
+				</control>
 				<include>LiveTVWidget</include>
 				<!-- Horizontal Menu -->
 				<!-- RSS Feeds -->
 				<include condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">HorizontalMenuSystemBars</include>
 				<include condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical)">HorizontalMenu</include>
 				<!-- Vertical Menu -->
-				<include condition="!String.IsEqual(Skin.String(HorizontalRSSPosition),high) + system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed</include>
-				<include condition="String.IsEqual(Skin.String(HorizontalRSSPosition),high) + system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed2</include>
+				<include condition="!String.IsEqual(Skin.String(HorizontalRSSPosition),high) + System.Getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed</include>
+				<include condition="String.IsEqual(Skin.String(HorizontalRSSPosition),high) + System.Getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed2</include>
 				<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">VerticalMenu</include>
 				<!-- RSS Feed -->
 				<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeedVerticalMenu</include>
@@ -213,5 +201,8 @@
 				</control>
 			</control>
 		</control>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog</param>
+		</include>
 	</controls>
 </window>

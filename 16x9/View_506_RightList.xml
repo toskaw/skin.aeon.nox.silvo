@@ -16,7 +16,7 @@
 			</control>
 			<control type="group">
 				<left>5</left>
-				<top>380</top>
+				<top>376</top>
 				<visible>[!Skin.HasSetting(Enable.Rightlist.HidePoster.Movies) + Container.Content(movies)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.Sets) + Container.Content(sets)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)]</visible>
 				<control type="group">
 					<top>-170</top>
@@ -39,22 +39,14 @@
 						<visible>ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))</visible>
 					</control>
 				</control>
-				<control type="multiimage">
-					<left>40</left>
-					<top>40</top>
-					<width>370</width>
-					<height>555</height>
-					<aspectratio aligny="bottom">stretch</aspectratio>
-					<imagepath background="true">$VAR[FocusedPosterThumbVar]</imagepath>
-					<fadetime>IconCrossfadeTime</fadetime>
-				</control>
 				<control type="image">
 					<left>20</left>
 					<top>20</top>
 					<width>410</width>
 					<height>595</height>
 					<aspectratio aligny="bottom">stretch</aspectratio>
-					<texture>colors/black10.png</texture>
+					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true">$VAR[FocusedPosterThumbVar]</texture>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>
 				</control>
@@ -96,36 +88,26 @@
 						<textcolor>goldenrod</textcolor>
 						<visible>!String.IsEmpty(ListItem.Top250)</visible>
 					</control>
-					<control type="group">
-						<visible>Container.Content(movies) + !ListItem.IsCollection</visible>
-						<control type="grouplist">
-							<height>110</height>
-							<control type="label">
-								<width>570</width>
-								<height>55</height>
-								<label />
-								<include>DefaultButtonsValues</include>
-								<visible>String.IsEmpty(ListItem.Director) | String.IsEmpty(ListItem.Writer)</visible>
-							</control>
-							<control type="label">
-								<width>570</width>
-								<height>55</height>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]:[/COLOR] $INFO[ListItem.Director]</label>
-								<include>DefaultButtonsValues</include>
-								<visible>!String.IsEmpty(ListItem.Director)</visible>
-							</control>
-							<control type="label">
-								<width>570</width>
-								<height>55</height>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20417]:[/COLOR] $INFO[ListItem.Writer]</label>
-								<include>DefaultButtonsValues</include>
-								<visible>!String.IsEmpty(ListItem.Writer)</visible>
-							</control>
+					<control type="grouplist">
+						<visible>[Container.Content(movies) + !ListItem.IsCollection]</visible>
+						<height>180</height>
+						<control type="label">
+							<width>570</width>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]:[/COLOR] $INFO[ListItem.Director]</label>
+							<include>DefaultButtonsValues</include>
+							<visible>!String.IsEmpty(ListItem.Director)</visible>
 						</control>
 						<control type="label">
-							<top>110</top>
 							<width>570</width>
-							<height>55</height>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20417]:[/COLOR] $INFO[ListItem.Writer]</label>
+							<include>DefaultButtonsValues</include>
+							<visible>!String.IsEmpty(ListItem.Writer)</visible>
+						</control>
+						<control type="label">
+							<width>570</width>
+							<height>60</height>
 							<include>DefaultButtonsValues</include>
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR] $INFO[ListItem.Genre]</label>
 							<visible>!String.IsEmpty(ListItem.Genre)</visible>
@@ -133,60 +115,44 @@
 					</control>
 					<control type="grouplist">
 						<visible>ListItem.IsCollection</visible>
-						<animation effect="slide" end="0,110" condition="!System.AddonIsEnabled(script.skin.info.service)">Conditional</animation>
-						<animation effect="fade" time="250" condition="System.AddonIsEnabled(script.skin.info.service)">Visible</animation>
-						<control type="label">
+						<height>180</height>
+						<!-- <control type="label">
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[342]:[/COLOR] $INFO[Container(4500).NumItems]</label>
 							<width>570</width>
 							<height>55</height>
 							<include>DefaultButtonsValues</include>
 							<visible>!String.IsEqual(Container(4500).NumItems,0) + Skin.HasSetting(Disable.RightList.Mediaflags)</visible>
-						</control>
+						</control> -->
 						<control type="label">
 							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20348]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</label>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20348]:[/COLOR] $INFO[Container(4501).ListItem.Property(director.collection)]</label>
 							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))</visible>
+							<visible>!String.IsEmpty(Container(4501).ListItem.Property(director.collection))</visible>
 						</control>
 						<control type="label">
 							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20418]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Set.Movies.Writer)]</label>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20418]:[/COLOR] $INFO[Container(4501).ListItem.Property(writer.collection)]</label>
 							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Writer)) + !Skin.HasSetting(Disable.RightList.Mediaflags)</visible>
+							<visible>!String.IsEmpty(Container(4501).ListItem.Property(writer.collection))</visible>
 						</control>
 						<control type="label">
 							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR] $VAR[MovieSetGenreVar]</label>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR] $VAR[VideoGenreVar]</label>
 							<include>DefaultButtonsValues</include>
 						</control>
 					</control>
 					<control type="group">
 						<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
 						<control type="label">
-							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR] $INFO[Container(9143).ListItem.Property(Status)]</label>
-							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Status)) + !Skin.HasSetting(Disable.NextAired)</visible>
-						</control>
-						<control type="label">
-							<top>55</top>
+							<top>110</top>
 							<width>570</width>
 							<height>55</height>
 							<label>$VAR[TMDbHelperNextAiredLabelVar]</label>
 							<include>DefaultButtonsValues</include>
 							<visible>!Skin.HasSetting(Disable.NextAired)</visible>
-						</control>
-						<control type="label">
-							<top>110</top>
-							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR] $INFO[ListItem.Genre]</label>
-							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(ListItem.Genre)</visible>
 						</control>
 					</control>
 					<control type="group">
@@ -273,12 +239,6 @@
 					<showonepage>false</showonepage>
 				</control>
 			</control>
-			<control type="group">
-				<include content="InfoPopup">
-					<param name="StudioLabelID">506</param>
-				</include>
-				<visible>Skin.HasSetting(inforightlist) + Skin.HasSetting(Enable.RightListInfoPopup) + Control.HasFocus(506) + !ListItem.IsParentFolder</visible>
-			</control>
 		</control>
 	</include>
 	<!-- Music RightList -->
@@ -308,6 +268,7 @@
 						<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$VAR[ArtworkDiscVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 						<include>SlideLeftSpinningDiscAnimation</include>
+						<animation effect="rotate" end="-360" center="auto" time="6400" loop="true" reversible="false" condition="Player.Playing + String.IsEqual(MusicPlayer.Album,ListItem.Album)">Conditional</animation>
 						<visible>Skin.HasSetting(Enable.RightlistCDArt)</visible>
 						<visible>!String.IsEmpty(ListItem.Art(album.discart)) | !String.IsEmpty(ListItem.Art(discart))</visible>
 					</control>
@@ -441,32 +402,8 @@
 						<param name="width">810</param>
 					</include>
 				</itemlayout>
-				<focusedlayout height="90" width="806" condition="!Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(artists) | Container.Content(files)]">
-					<control type="image">
-						<include>RightListFocusedHighLightContent</include>
-						<include>VisibleFadeAnimation</include>
-					</control>
+				<focusedlayout height="90" width="806" condition="[Container.Content(genres) | Container.Content(artists) | Container.Content(albums) | Container.Content(files)]">
 					<include content="RightListItemLayout">
-						<param name="width">810</param>
-					</include>
-				</focusedlayout>
-				<focusedlayout height="90" width="806" condition="Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(artists) | Container.Content(files)]">
-					<include content="RightListItemLayout">
-						<param name="width">810</param>
-						<param name="labelColor">$VAR[ThemeLabelColor]</param>
-					</include>
-				</focusedlayout>
-				<focusedlayout height="90" width="806" condition="!Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(albums) | Container.Content(songs)]">
-					<control type="image">
-						<include>RightListFocusedHighLightContent</include>
-						<include>VisibleFadeAnimation</include>
-					</control>
-					<include content="RightListFocusedLayout">
-						<param name="width">810</param>
-					</include>
-				</focusedlayout>
-				<focusedlayout height="90" width="806" condition="Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(albums) | Container.Content(songs)]">
-					<include content="RightListFocusedLayout">
 						<param name="width">810</param>
 						<param name="labelColor">$VAR[ThemeLabelColor]</param>
 					</include>
@@ -488,13 +425,6 @@
 				<showonepage>false</showonepage>
 			</control>
 		</control>
-	</include>
-	<include name="RightListFocusedHighLightContent">
-		<left>30</left>
-		<width>880</width>
-		<height>90</height>
-		<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
-		<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
 	</include>
 	<include name="fixedlistrightlist">
 		<control type="fixedlist" id="506">
@@ -522,7 +452,7 @@
 		<ondown>506</ondown>
 		<pagecontrol>50660</pagecontrol>
 		<viewtype label="$LOCALIZE[31239]">list</viewtype>
-		<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_506]</visible>
+		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_506]</visible>
 		<scrolltime tween="quadratic" easing="out">200</scrolltime>
 		<itemlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]">
 			<include content="RightListItemLayout">
@@ -547,18 +477,16 @@
 				<param name="width">770</param>
 			</include>
 		</itemlayout>
-		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="1000">
 			<control type="image">
-				<include>RightListFocusedHighLightContent</include>
 				<include>VisibleFadeAnimation</include>
 			</control>
 			<include content="RightListFocusedLayout">
 				<param name="width">700</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
 			<control type="image">
-				<include>RightListFocusedHighLightContent</include>
 				<include>VisibleFadeAnimation</include>
 			</control>
 			<control type="group">
@@ -568,25 +496,21 @@
 				</include>
 			</control>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="1000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
-				<param name="labelColor">$VAR[ThemeLabelColor]</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
-				<param name="labelColor">$VAR[ThemeLabelColor]</param>
 			</include>
 		</focusedlayout>
 	</include>
-	<!-- PARAM Includes -->
 	<include name="RightListFocusedLayout">
 		<param name="visibleSubLabelNoYear" default="[Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
-		<param name="overlay_visible">!Window.IsActive(music)</param>
 		<param name="width" />
-		<param name="labelColor" default="white" />
+		<param name="labelColor" default="$VAR[ThemeLabelColor]" />
 		<definition>
 			<control type="label">
 				<top>5</top>
@@ -639,43 +563,28 @@
 				</control>
 			</control>
 			<control type="label">
-				<left>735</left>
+				<left>730</left>
 				<top>25</top>
 				<width>100</width>
 				<height>40</height>
 				<font>font16</font>
 				<align>right</align>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$INFO[ListItem.Year]</label>
+				<label>[LIGHT]$INFO[ListItem.Year][/LIGHT]</label>
 				<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
 				<animation effect="slide" end="7" condition="String.IsEqual(Skin.Font,$LOCALIZE[31483])">Conditional</animation>
 				<visible>$PARAM[visibleSubLabelNoYear]</visible>
 				<visible>!Container.Content(episodes)</visible>
 			</control>
-			<control type="group">
-				<left>832</left>
-				<top>13</top>
-				<visible>$PARAM[overlay_visible]</visible>
-				<control type="image">
-					<width>64</width>
-					<height>64</height>
-					<aspectratio>keep</aspectratio>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
-					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
-				</control>
-				<control type="label">
-					<width>64</width>
-					<height>64</height>
-					<font>font12_title</font>
-					<align>center</align>
-					<label>$VAR[RightListItemOverlayShowsVar]</label>
-				</control>
-			</control>
+			<include content="ListStatusIndicators">
+				<param name="left">830</param>
+				<param name="top">13</param>
+				<param name="visible">!Window.IsActive(music)</param>
+			</include>
 		</definition>
 	</include>
 	<include name="RightListItemLayout">
 		<param name="visibleSubLabelNoYear" default="[Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
-		<param name="overlay_visible">!Window.IsActive(music)</param>
 		<param name="width" />
 		<param name="labelColor" default="white" />
 		<definition>
@@ -691,7 +600,7 @@
 				<label>$VAR[RightListItemLabelVar]</label>
 			</control>
 			<control type="label">
-				<left>735</left>
+				<left>730</left>
 				<top>25</top>
 				<width>100</width>
 				<height>40</height>
@@ -699,31 +608,16 @@
 				<align>right</align>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$INFO[ListItem.Year]</label>
+				<label>[LIGHT]$INFO[ListItem.Year][/LIGHT]</label>
 				<animation effect="slide" end="7" condition="String.IsEqual(Skin.Font,$LOCALIZE[31483])">Conditional</animation>
 				<visible>!Container.Content(episodes)</visible>
 				<visible>$PARAM[visibleSubLabelNoYear]</visible>
 			</control>
-			<control type="group">
-				<left>832</left>
-				<top>13</top>
-				<visible>$PARAM[overlay_visible]</visible>
-				<control type="image">
-					<width>64</width>
-					<height>64</height>
-					<aspectratio>keep</aspectratio>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
-					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
-				</control>
-				<control type="label">
-					<width>64</width>
-					<height>64</height>
-					<font>font12_title</font>
-					<align>center</align>
-					<textcolor>grey</textcolor>
-					<label>$VAR[RightListItemOverlayShowsVar]</label>
-				</control>
-			</control>
+			<include content="ListStatusIndicators">
+				<param name="left">830</param>
+				<param name="top">13</param>
+				<param name="visible">!Window.IsActive(music)</param>
+			</include>
 		</definition>
 	</include>
 </includes>

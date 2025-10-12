@@ -61,7 +61,7 @@
 				<height>100</height>
 				<textcolor>white</textcolor>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$LOCALIZE[19031]: $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</label>
+				<label>$LOCALIZE[19031]: $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</label>
 				<visible>[!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired)</visible>
 			</control>
 			<control type="label">
@@ -71,8 +71,8 @@
 				<height>100</height>
 				<textcolor>white</textcolor>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$INFO[Container(9143).ListItem.Property(Status)]</label>
-				<visible>[String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !String.IsEmpty(Container(9143).ListItem.Property(Status)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired) + !Container.Content(movies)</visible>
+				<label>$INFO[Container(9143).ListItem.Status]</label>
+				<visible>[String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !String.IsEmpty(Container(9143).ListItem.Status) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired) + !Container.Content(movies)</visible>
 			</control>
 			<control type="label">
 				<left>398</left>
@@ -104,7 +104,7 @@
 				<preloaditems>2</preloaditems>
 				<focusposition>1</focusposition>
 				<orientation>horizontal</orientation>
-				<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(tvshows) | Window.IsActive(pictures) | Container.Content(artists) | Container.Content(sets)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_504]</visible>
+				<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(tvshows) | Window.IsActive(pictures) | Container.Content(artists) | Container.Content(sets)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_504]</visible>
 				<itemlayout width="1125" height="663">
 					<control type="group">
 						<left>45</left>
@@ -118,18 +118,21 @@
 							<visible>!Window.IsActive(pictures)</visible>
 							<width>1125</width>
 							<height>633</height>
-							<texture fallback="special://skin/extras/backgrounds/fallback_movies.jpg" background="true">$INFO[ListItem.Art(fanart)]</texture>
 							<aspectratio align="center" aligny="center">scale</aspectratio>
-							<colordiffuse>BAffffff</colordiffuse>
+							<texture fallback="special://skin/extras/backgrounds/fallback_movies.jpg" background="true" colordiffuse="BFFFFFFF">$INFO[ListItem.Art(fanart)]</texture>
 						</control>
 						<control type="image">
 							<visible>Window.IsActive(pictures)</visible>
 							<width>1125</width>
 							<height>633</height>
-							<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
 							<aspectratio align="center" aligny="center">keep</aspectratio>
-							<colordiffuse>BAffffff</colordiffuse>
+							<texture background="true" colordiffuse="BFFFFFFF">$INFO[ListItem.Art(thumb)]</texture>
 						</control>
+						<include content="PosterStatusOverlay">
+							<param name="left">1065</param>
+							<param name="size">60</param>
+							<param name="visible">!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+						</include>
 					</control>
 				</itemlayout>
 				<focusedlayout width="1125" height="633">
@@ -145,30 +148,31 @@
 							<visible>ListItem.IsFolder</visible>
 							<width>1125</width>
 							<height>633</height>
-							<texture>colors/black75.png</texture>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<texture border="8">colors/black75.png</texture>
 							<bordersize>8</bordersize>
+							<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						</control>
 						<control type="image">
 							<visible>!Window.IsActive(pictures)</visible>
 							<width>1125</width>
 							<height>633</height>
-							<texture fallback="special://skin/extras/backgrounds/fallback_movies.jpg" background="true">$INFO[ListItem.Art(fanart)]</texture>
 							<aspectratio align="center" aligny="center">scale</aspectratio>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<texture border="8" fallback="special://skin/extras/backgrounds/fallback_movies.jpg" background="true">$INFO[ListItem.Art(fanart)]</texture>
+							<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							<bordersize>8</bordersize>
 						</control>
 						<control type="group">
 							<visible>![Window.IsActive(pictures) | Container.Content(artists)]</visible>
-							<control type="image">
-								<left>1039</left>
-								<top>8</top>
-								<width>80</width>
-								<height>80</height>
-								<texture>$VAR[OverlayVar]</texture>
-								<aspectratio align="center" aligny="top">keep</aspectratio>
-								<visible>[!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
-							</control>
+							<include content="PosterStatusOverlay">
+								<param name="left">1057</param>
+								<param name="top">8</param>
+								<param name="size">60</param>
+								<param name="visible">!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+							</include>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+								<param name="left">8</param>
+								<param name="top">8</param>
+							</include>
 							<control type="image">
 								<top>420</top>
 								<width>1125</width>
@@ -181,10 +185,10 @@
 							<visible>Window.IsActive(pictures)</visible>
 							<width>1125</width>
 							<height>633</height>
-							<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
 							<aspectratio align="center" aligny="center">keep</aspectratio>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<texture border="8" background="true">$INFO[ListItem.Art(thumb)]</texture>
 							<bordersize>8</bordersize>
+							<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						</control>
 					</control>
 				</focusedlayout>

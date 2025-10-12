@@ -5,17 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KODI Skins\n"
-"Report-Msgid-Bugs-To: http://trac.kodi.tv/\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-04-18 17:13+0000\n"
-"Last-Translator: Konon-cat <konon@spark-mail.ru>\n"
+"PO-Revision-Date: 2025-09-03 13:29+0000\n"
+"Last-Translator: Alexey <signfinder@gmail.com>\n"
 "Language-Team: Russian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-aeon-nox-silvo/ru_ru/>\n"
 "Language: ru_ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4.3\n"
+"X-Generator: Weblate 5.13\n"
 
 msgctxt "#31000"
 msgid "Directed by"
@@ -29,6 +29,10 @@ msgctxt "#31002"
 msgid "Blurred album thumb"
 msgstr "Размытый эскиз альбома"
 
+msgctxt "#31003"
+msgid "Enable viewtype defaults"
+msgstr ""
+
 msgctxt "#31004"
 msgid "Working"
 msgstr "Подождите"
@@ -41,6 +45,18 @@ msgctxt "#31006"
 msgid "View Options"
 msgstr "Настройки просмотра"
 
+msgctxt "#31007"
+msgid "Cast listing provider"
+msgstr ""
+
+msgctxt "#31008"
+msgid "Loading extended info"
+msgstr ""
+
+msgctxt "#31009"
+msgid "Glow Bar for TopBar"
+msgstr ""
+
 msgctxt "#31010"
 msgid "Next episode"
 msgstr "Следующая серия"
@@ -52,6 +68,10 @@ msgstr "Последняя серия"
 msgctxt "#31012"
 msgid "Airs"
 msgstr "Премьеры"
+
+msgctxt "#31013"
+msgid "Glow Bar for Floor"
+msgstr ""
 
 msgctxt "#31014"
 msgid "Extras"
@@ -81,6 +101,10 @@ msgctxt "#31020"
 msgid "Extra-fanart"
 msgstr "Доп. фанарт"
 
+msgctxt "#31021"
+msgid "Customise mediaflags"
+msgstr ""
+
 msgctxt "#31022"
 msgid "Set multi-image background"
 msgstr "Несколько фоновых картинок"
@@ -89,6 +113,10 @@ msgctxt "#31023"
 msgid "Set single image background"
 msgstr "Одна фоновая картинка"
 
+msgctxt "#31024"
+msgid "Source type"
+msgstr ""
+
 msgctxt "#31025"
 msgid "Items"
 msgstr "Объекты"
@@ -96,6 +124,14 @@ msgstr "Объекты"
 msgctxt "#31026"
 msgid "Misc Options"
 msgstr "Другие параметры"
+
+msgctxt "#31027"
+msgid "Dim background behind lyrics"
+msgstr ""
+
+msgctxt "#31028"
+msgid "Configure the shutdown menu. To prevent blocking access to Kodi settings, i.e. changing to a different skin, the settings button cannot be altered."
+msgstr ""
 
 msgctxt "#31029"
 msgid "Recent movies"
@@ -109,9 +145,33 @@ msgctxt "#31031"
 msgid "Random movies"
 msgstr "Случайные фильмы"
 
+msgctxt "#31032"
+msgid "Customise the mediaflags for the following views:[CR]List, Tripanel, Posters, Shift, BannerWall, Icons, RightList, MyFlix, & BigFan."
+msgstr ""
+
 msgctxt "#31033"
 msgid "Random episodes"
 msgstr "Случайные серии"
+
+msgctxt "#31034"
+msgid "Enable to \"lock\" specific views using the Skin Variables script. Disable this if you prefer Kodi to handle the view modes."
+msgstr ""
+
+msgctxt "#31035"
+msgid "Set independent viewtype rules for both the library and plugins."
+msgstr ""
+
+msgctxt "#31036"
+msgid "Choose widget background panel image."
+msgstr ""
+
+msgctxt "#31037"
+msgid "Choose a movie genre path for custom icons or choose a resource pack."
+msgstr ""
+
+msgctxt "#31038"
+msgid "More in"
+msgstr ""
 
 msgctxt "#31039"
 msgid "Actions"
@@ -133,6 +193,14 @@ msgctxt "#31043"
 msgid "Platform"
 msgstr "Платформа"
 
+msgctxt "#31044"
+msgid "Preload widgets"
+msgstr ""
+
+msgctxt "#31045"
+msgid "Bigger"
+msgstr ""
+
 msgctxt "#31046"
 msgid "SEEKING"
 msgstr "ПОИСК"
@@ -140,6 +208,10 @@ msgstr "ПОИСК"
 msgctxt "#31047"
 msgid "Set item icon"
 msgstr "Выбрать значок объекта"
+
+msgctxt "#31048"
+msgid "Biggest"
+msgstr ""
 
 msgctxt "#31049"
 msgid "Select infoline"
@@ -185,6 +257,14 @@ msgctxt "#31059"
 msgid "Artist Slideshow"
 msgstr "Слайдшоу актёра"
 
+msgctxt "#31060"
+msgid "Pointer size"
+msgstr ""
+
+msgctxt "#31061"
+msgid "Show chapter names in seekbar"
+msgstr ""
+
 msgctxt "#31062"
 msgid "Random movie fanart"
 msgstr "Случайный фанарт фильмов"
@@ -205,6 +285,10 @@ msgctxt "#31066"
 msgid "Random fanart"
 msgstr "Случайный фанарт"
 
+msgctxt "#31067"
+msgid "Movies starring"
+msgstr ""
+
 msgctxt "#31068"
 msgid "CD Wall"
 msgstr "Стена CD"
@@ -215,6 +299,22 @@ msgstr "Сменить расположение"
 
 msgctxt "#31070"
 msgid "Enable Preshow Experience integration"
+msgstr ""
+
+msgctxt "#31071"
+msgid "TV Shows starring"
+msgstr ""
+
+msgctxt "#31072"
+msgid "Episodes starring"
+msgstr ""
+
+msgctxt "#31073"
+msgid "Movies directed by"
+msgstr ""
+
+msgctxt "#31074"
+msgid "Movies written by"
 msgstr ""
 
 msgctxt "#31075"
@@ -346,8 +446,8 @@ msgid "Similar"
 msgstr "Похожий"
 
 msgctxt "#31112"
-msgid "Movies directed by"
-msgstr "Фильмы режиссера"
+msgid "More from director"
+msgstr ""
 
 msgctxt "#31115"
 msgid "Alternate sublabel"
@@ -362,8 +462,8 @@ msgid "Enable autocomplete"
 msgstr "Включить автозаполнение"
 
 msgctxt "#31122"
-msgid "Enables the autocomplete feature of the virtual keyboard"
-msgstr "Включает функцию автозаполнения виртуальной клавиатуры"
+msgid "Enables the autocomplete feature of the virtual keyboard."
+msgstr ""
 
 msgctxt "#31124"
 msgid "Show Background \"Now Playing\" Video"
@@ -506,8 +606,8 @@ msgid "Enable live background for movie sets"
 msgstr "Включить живой фон для наборов фильмов"
 
 msgctxt "#31165"
-msgid "Enable to display live background for movie sets when browsing your movie library"
-msgstr "Включить отображение живого фона для наборов фильмов при просмотре медиатеки"
+msgid "Enable to display live background for movie sets when browsing your movie library."
+msgstr ""
 
 msgctxt "#31168"
 msgid "Enable to make the submenu permanently visible. Default is hidden until pressing down."
@@ -582,20 +682,20 @@ msgid "Display runtime in hours and minutes"
 msgstr "Показывать время работы в часах и минутах"
 
 msgctxt "#31198"
-msgid "This setting controls the appearance of cases when using Live Backgrounds"
-msgstr "Эта настройка управляет появлением случаев при использовании живых обоев"
+msgid "This setting controls the appearance of cases when using Live Backgrounds."
+msgstr ""
 
 msgctxt "#31199"
-msgid "Used to select the default/fallback image skin wide"
-msgstr "Используется для выбора ширины изображения по умолчанию"
+msgid "Used to select the default/fallback image skin wide."
+msgstr ""
 
 msgctxt "#31200"
 msgid "The Image Resource Select Add-on is used to choose a Kodi resource image pack similiar to weather artwork and icons."
 msgstr "Дополнение Image Resource Select для выбора набора изображений для ресурсов подобно изображениям и иконкам для приложения \"погода\"."
 
 msgctxt "#31201"
-msgid "Changes the runtime labels throughout the skin from minutes to hours/minutes"
-msgstr "Изменяет метки времени всей обложке с минут на часы/минуты"
+msgid "Changes the runtime labels throughout the skin from minutes to hours/minutes."
+msgstr ""
 
 msgctxt "#31205"
 msgid "Lyrics Source"
@@ -902,8 +1002,8 @@ msgid "Panel"
 msgstr "Панель"
 
 msgctxt "#31316"
-msgid "A skin reload is [B]REQUIRED[/B] to disable the media menu and certain buttons that were loaded during startup.[CR]Press CANCEL to abort the requested changes."
-msgstr "Для отключения мультимедийного меню и некоторых кнопок, которые были загружены во время запуска [B]ТРЕБУЕТСЯ[/B] перезагрузка скина.[CR]Нажмите ОТМЕНА, чтобы отменить запрошенные изменения."
+msgid "A skin reload is [B]REQUIRED[/B] to change this setting.[CR]A skin reload does NOT reset any settings.[CR][CR]Press CANCEL to abort the requested changes."
+msgstr ""
 
 msgctxt "#31318"
 msgid "[B]CONFIGURE LibreELEC SETTINGS[/B][CR]Setup system option  •  Manage network[CR]Configure services  •  About LibreELEC"
@@ -916,10 +1016,6 @@ msgstr "Последний вход"
 msgctxt "#31322"
 msgid "This will disable the screensaver during music playback by hiding the visualization. This may cause unwanted [B]IMAGE RETENTION[/B] if not used carefully. Do you accept the risks and want to enable this setting?"
 msgstr "Будет отключена заставка во время воспроизведения музыки, посредством отключения визуализации. Это может привести к нежелательному [B]СОХРАНЕНИЮ ИЗОБРАЖЕНИЯ[/B], при неосторожном применении. Принимаете ли вы риски и хотите включить эту настройку?"
-
-msgctxt "#31323"
-msgid "If you cannot locate the directory containing your background images, please add that location as a source in Kodi's File Manager. For more information visit http://kodi.wiki/view/File_manager"
-msgstr "Если вам не удается найти каталог, содержащий ваши фоновые изображения, пожалуйста, добавьте это место в качестве источника в файловом менеджере Kodi. Для получения дополнительной информации посетите http://kodi.wiki/view/File_manager"
 
 msgctxt "#31324"
 msgid "Aired"
@@ -944,10 +1040,6 @@ msgstr "Недавно добавленные"
 msgctxt "#31329"
 msgid "Taking a Screenshot"
 msgstr "Снимок экрана"
-
-msgctxt "#31330"
-msgid "This script is not available in the default Kodi repositiory. The Aeon Nox SiLVO repo is needed to use the click to install feature, without it this script must be installed manually."
-msgstr "Этот скрипт недоступен в репозитории Kodi по умолчанию. Необходимо использовать репозиторий Aeon Nox SiLVO, нажмите для установки. Иначе этот скрипт должен быть установлен вручную."
 
 msgctxt "#31331"
 msgid "Installed"
@@ -1002,8 +1094,8 @@ msgid "Display background name"
 msgstr "Отображать имя на фоне"
 
 msgctxt "#31344"
-msgid "Display title of movie/tvshow/artist on home screen if the background has a fanart slideshow as background."
-msgstr "Отображать название фильма/сериала/исполнителя на главном экране, если в качестве фона используется слайд-шоу."
+msgid "Display title of movie/tvshow/artist on home screen if the menu item has a fanart slideshow selected as background."
+msgstr ""
 
 msgctxt "#31345"
 msgid "Main Menu Customiser"
@@ -1090,8 +1182,8 @@ msgid "Views and widget plot preference"
 msgstr "Предпочтения и вид виджетов аннотаций"
 
 msgctxt "#31372"
-msgid "Choose if library views and widgets should display plot outline or full plot. Falls back to full plot if no outline is available. This does not effect certain areas with limited space for the plot that have this enabled by default"
-msgstr "Выбрать, если в шаблонах и виджетах медиатеки должны отображаться аннотация или полное описание сюжета. Если аннотация отсутствует, отображается полное описание сюжета. Не распространяется на определенные области с ограниченным пространством для описания сюжета, которые включены по умолчанию"
+msgid "Choose if library views and widgets should display plot outline or full plot. Falls back to full plot if no outline is available. This does not effect certain areas with limited space for the plot that have this enabled by default."
+msgstr ""
 
 msgctxt "#31373"
 msgid "Customise the colours displayed throughout the skin."
@@ -1146,8 +1238,8 @@ msgid "Use this to control the opacity of the widgets. [CR]100% has no transpare
 msgstr "Используйте это, чтобы контролировать непрозрачность виджетов.[CR] 100% - полностью не прозрачно."
 
 msgctxt "#31386"
-msgid "This will set a global background overriding any per-widget settings."
-msgstr "Устанавливает глобальный фон, переопределяющий соответствующие настройки всех виджетов."
+msgid "Enable to set a global widget background overriding any per-widget settings."
+msgstr ""
 
 msgctxt "#31387"
 msgid "When enabled LIST style widgets will autoscroll. This does not effect PANEL style Widgets."
@@ -1167,7 +1259,7 @@ msgstr "Arial"
 
 msgctxt "#31393"
 msgid "Ends at"
-msgstr "Окончание в"
+msgstr "Закончится в"
 
 msgctxt "#31395"
 msgid "Use coloured genres"
@@ -1297,13 +1389,9 @@ msgctxt "#31431"
 msgid "Resource image addon for displaying the default white recording label icons throughout the skin."
 msgstr "Дополнение Resource image для отображения стандартных белых значков записывающих компаний во всей обложке."
 
-msgctxt "#31432"
-msgid "Embuary Info displays extended cast, crew, and video info metadata."
-msgstr "Embuary Info показывает расширенный список ролей, участников, и метаданные видео."
-
 msgctxt "#31433"
-msgid "Skin Info Service is used to display movie set information throughout the skin."
-msgstr "Skin Info Service используется для отображения информации о наборе фильмов во всей обложке."
+msgid "Skin Variables is a helper script used for many functions."
+msgstr ""
 
 msgctxt "#31434"
 msgid "Alt fanart"
@@ -1358,8 +1446,8 @@ msgid "Hide Main Menu elements when pressing back"
 msgstr "Скрыть элементы главного меню при нажатии BACK"
 
 msgctxt "#31447"
-msgid "Show a popup displaying answers to some FREQUENTLY ASKED QUESTIONS posted by users in the skins thread on the Kodi forums."
-msgstr "Показывать всплывающее окно, отображающее ответы на некоторые ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ, присылаемые пользователями в теме скинов на форумах Kodi."
+msgid "Show a popup displaying answers to some FREQUENTLY ASKED QUESTIONS posted on the Kodi forums."
+msgstr ""
 
 msgctxt "#31448"
 msgid "[B]CONFIGURE ADD-ONS[/B][CR]Manage your installed Add-ons[CR]Browse for and install Add-ons  •  Check for Add-on updates"
@@ -1610,8 +1698,8 @@ msgid "Enable language flags for subtitles, audio language or both to the mediaf
 msgstr "Включает показ флагов языка для субтитров, языка аудио или обоих в секции флагов медиа. В некоторых шаблонах не поддерживается"
 
 msgctxt "#31516"
-msgid "Disable this to show a simplified display of lyrics instead of the default \"Karaoke\" style"
-msgstr "Отключите эту опцию для демонстрации текстов песен в обычном виде вместо включенного по умолчанию стиля \"Караоке\""
+msgid "Disable this to show a simplified display of lyrics instead of the default \"Karaoke\" style."
+msgstr ""
 
 msgctxt "#31517"
 msgid "Music (Artists)"
@@ -1687,7 +1775,7 @@ msgstr "Лучшие фото"
 
 msgctxt "#31535"
 msgid "Unwatched TV Shows"
-msgstr "Не просмотренные сериалы"
+msgstr "Непросмотренные сериалы"
 
 msgctxt "#31536"
 msgid "Recent recordings"
@@ -1744,10 +1832,6 @@ msgstr "Случайный фанарт к сериалам от Kodi"
 msgctxt "#31550"
 msgid "Kodi random music fanart"
 msgstr "Случайный фанарт для музыки от Kodi"
-
-msgctxt "#31551"
-msgid "Embuary Helper provides the Alphabet Jump Letter Bar, scraped ratings from Rotten Tomatoes and MetaCritic in fullscreen info. It also adds similar and more from director when you Enable Extended Info integration in the settings for Video & Music information."
-msgstr ""
 
 msgctxt "#31552"
 msgid "Set the displayed name of the menu item."
@@ -1894,16 +1978,16 @@ msgid "Hide System Bars"
 msgstr "Скрыть системные панели"
 
 msgctxt "#31589"
-msgid "Enable to hide the multi-search option in the library views and directly search using the built-in Kodi search"
-msgstr "Включите, чтобы скрыть опцию множественного поиска в представлениях медиатеки и выполнять прямой поиск с помощью встроенного поиска Kodi"
+msgid "Enable to hide the multi-search option in the library views and directly search using the built-in Kodi search."
+msgstr ""
 
 msgctxt "#31590"
-msgid "Hide the system bar containing the time, date, library statistcs, etc. Will also hide the RSS feed if enabled in Kodi settings"
-msgstr "Скрыть системную панель, содержащую время, дату, статистику медиатеки и т. д. Также будет скрыт RSS-канал, если он включен в настройках Kodi"
+msgid "Hide the system bar containing the time, date, library statistcs, etc. Will also hide the RSS feed if enabled in Kodi settings."
+msgstr ""
 
 msgctxt "#31591"
-msgid "Choose a music genre path for custom icons or choose a resource pack"
-msgstr "Выберите путь к музыкальному жанру для пользовательских значков или выберите пакет ресурсов"
+msgid "Choose a music genre path for custom icons or choose a resource pack."
+msgstr ""
 
 msgctxt "#31593"
 msgid "[B]CONFIGURE SKIN SETTINGS[/B][CR]Customise the main menu  •  Choose skin colours[CR]Set up widgets  •  Enable optional features"
@@ -2039,7 +2123,7 @@ msgstr "Информация о виджетах панели"
 
 msgctxt "#31706"
 msgid "Art"
-msgstr "Картинки"
+msgstr "Иллюстрации"
 
 msgctxt "#31707"
 msgid "Case"
@@ -2186,7 +2270,7 @@ msgid "10 Day Forecast"
 msgstr "Прогноз на 10 дней"
 
 msgctxt "#31905"
-msgid "Change the position of the system bar to the top or bottom of the screen"
+msgid "Change the position of the system bar to the top or bottom of the screen."
 msgstr ""
 
 msgctxt "#31908"
@@ -2254,7 +2338,7 @@ msgid "Aeon Nox main menu layout"
 msgstr "Шаблон главного меню Aeon Nox"
 
 msgctxt "#31929"
-msgid "This setting defines the main menu layout. Icons and 5, 3, or 1 labels per page for the horizontal menu. There is also a vertical menu option."
+msgid "This setting defines the main menu layout. For the horizontal menu, you can choose between icons and displaying 5, 3, or 1 visible items at a time. Additionally, there’s a vertical menu option."
 msgstr ""
 
 msgctxt "#31931"
@@ -2290,8 +2374,8 @@ msgid "Choose which overlays to show on thumbs in icon based views. Note that th
 msgstr "Выберите, какие флажки отображать на эскизах в шаблонах на основе значков. Обратите внимание, что флаг «Продолжить» имеет превосходство над любым статусом просмотра. После активации флажка вы также должны включить его в настройках каждого шаблона. "
 
 msgctxt "#31945"
-msgid "This toggles the layout of the List view. Default is a 7 item layout with extended info, \"Slim List\" is a 14 item, more basic layout"
-msgstr "Это переключает макет представления списка. По умолчанию это 7-элементный макет с расширенной информацией, «Простой список» - это 14 элементов, более базовый макет"
+msgid "This toggles the layout of the List view. Default is a 7 item layout with extended info, \"Slim List\" is a 14 item, more basic layout."
+msgstr ""
 
 msgctxt "#31957"
 msgid "Apps"
@@ -2350,7 +2434,7 @@ msgid "Change the way the home menu scrolls in Aeon Nox. Default will scroll in 
 msgstr "Изменить способ прокрутки главного меню в Aeon Nox. В режиме \"По умолчанию\" меню будет прокручиваться в цикле. В режиме «Фиксировано» имеет начало и конец."
 
 msgctxt "#31984"
-msgid "When activated the default mediaflags and icons are changed to coloured versions"
+msgid "When activated the default mediaflags and icons are changed to coloured versions."
 msgstr ""
 
 msgctxt "#31986"
@@ -2358,8 +2442,8 @@ msgid "Select case style used in all views. Default or clear cases."
 msgstr "Выберите стиль кейса, используемый во всех представлениях. По умолчанию или прозрачный кейс."
 
 msgctxt "#31988"
-msgid "Enable setting to animate backgrounds for views and the homescreen"
-msgstr "Включить опцию для анимации фонов для шаблонов и главного экрана"
+msgid "Enable setting to animate backgrounds for views and the homescreen."
+msgstr ""
 
 msgctxt "#31989"
 msgid "Animate backgrounds"
@@ -2372,6 +2456,90 @@ msgstr ""
 msgctxt "#31994"
 msgid "Vertical Menu"
 msgstr "Вертикальное меню"
+
+#~ msgctxt "#31316"
+#~ msgid "A skin reload is [B]REQUIRED[/B] to disable the media menu and certain buttons that were loaded during startup.[CR]Press CANCEL to abort the requested changes."
+#~ msgstr "Для отключения мультимедийного меню и некоторых кнопок, которые были загружены во время запуска [B]ТРЕБУЕТСЯ[/B] перезагрузка скина.[CR]Нажмите ОТМЕНА, чтобы отменить запрошенные изменения."
+
+#~ msgctxt "#31323"
+#~ msgid "If you cannot locate the directory containing your background images, please add that location as a source in Kodi's File Manager. For more information visit http://kodi.wiki/view/File_manager"
+#~ msgstr "Если вам не удается найти каталог, содержащий ваши фоновые изображения, пожалуйста, добавьте это место в качестве источника в файловом менеджере Kodi. Для получения дополнительной информации посетите http://kodi.wiki/view/File_manager"
+
+#~ msgctxt "#31330"
+#~ msgid "This script is not available in the default Kodi repositiory. The Aeon Nox SiLVO repo is needed to use the click to install feature, without it this script must be installed manually."
+#~ msgstr "Этот скрипт недоступен в репозитории Kodi по умолчанию. Необходимо использовать репозиторий Aeon Nox SiLVO, нажмите для установки. Иначе этот скрипт должен быть установлен вручную."
+
+#~ msgctxt "#31344"
+#~ msgid "Display title of movie/tvshow/artist on home screen if the background has a fanart slideshow as background."
+#~ msgstr "Отображать название фильма/сериала/исполнителя на главном экране, если в качестве фона используется слайд-шоу."
+
+#~ msgctxt "#31433"
+#~ msgid "Skin Info Service is used to display movie set information throughout the skin."
+#~ msgstr "Skin Info Service используется для отображения информации о наборе фильмов во всей обложке."
+
+#~ msgctxt "#31447"
+#~ msgid "Show a popup displaying answers to some FREQUENTLY ASKED QUESTIONS posted by users in the skins thread on the Kodi forums."
+#~ msgstr "Показывать всплывающее окно, отображающее ответы на некоторые ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ, присылаемые пользователями в теме скинов на форумах Kodi."
+
+#~ msgctxt "#31122"
+#~ msgid "Enables the autocomplete feature of the virtual keyboard"
+#~ msgstr "Включает функцию автозаполнения виртуальной клавиатуры"
+
+#~ msgctxt "#31165"
+#~ msgid "Enable to display live background for movie sets when browsing your movie library"
+#~ msgstr "Включить отображение живого фона для наборов фильмов при просмотре медиатеки"
+
+#~ msgctxt "#31198"
+#~ msgid "This setting controls the appearance of cases when using Live Backgrounds"
+#~ msgstr "Эта настройка управляет появлением случаев при использовании живых обоев"
+
+#~ msgctxt "#31199"
+#~ msgid "Used to select the default/fallback image skin wide"
+#~ msgstr "Используется для выбора ширины изображения по умолчанию"
+
+#~ msgctxt "#31201"
+#~ msgid "Changes the runtime labels throughout the skin from minutes to hours/minutes"
+#~ msgstr "Изменяет метки времени всей обложке с минут на часы/минуты"
+
+#~ msgctxt "#31372"
+#~ msgid "Choose if library views and widgets should display plot outline or full plot. Falls back to full plot if no outline is available. This does not effect certain areas with limited space for the plot that have this enabled by default"
+#~ msgstr "Выбрать, если в шаблонах и виджетах медиатеки должны отображаться аннотация или полное описание сюжета. Если аннотация отсутствует, отображается полное описание сюжета. Не распространяется на определенные области с ограниченным пространством для описания сюжета, которые включены по умолчанию"
+
+#~ msgctxt "#31386"
+#~ msgid "This will set a global background overriding any per-widget settings."
+#~ msgstr "Устанавливает глобальный фон, переопределяющий соответствующие настройки всех виджетов."
+
+#~ msgctxt "#31516"
+#~ msgid "Disable this to show a simplified display of lyrics instead of the default \"Karaoke\" style"
+#~ msgstr "Отключите эту опцию для демонстрации текстов песен в обычном виде вместо включенного по умолчанию стиля \"Караоке\""
+
+#~ msgctxt "#31589"
+#~ msgid "Enable to hide the multi-search option in the library views and directly search using the built-in Kodi search"
+#~ msgstr "Включите, чтобы скрыть опцию множественного поиска в представлениях медиатеки и выполнять прямой поиск с помощью встроенного поиска Kodi"
+
+#~ msgctxt "#31590"
+#~ msgid "Hide the system bar containing the time, date, library statistcs, etc. Will also hide the RSS feed if enabled in Kodi settings"
+#~ msgstr "Скрыть системную панель, содержащую время, дату, статистику медиатеки и т. д. Также будет скрыт RSS-канал, если он включен в настройках Kodi"
+
+#~ msgctxt "#31591"
+#~ msgid "Choose a music genre path for custom icons or choose a resource pack"
+#~ msgstr "Выберите путь к музыкальному жанру для пользовательских значков или выберите пакет ресурсов"
+
+#~ msgctxt "#31945"
+#~ msgid "This toggles the layout of the List view. Default is a 7 item layout with extended info, \"Slim List\" is a 14 item, more basic layout"
+#~ msgstr "Это переключает макет представления списка. По умолчанию это 7-элементный макет с расширенной информацией, «Простой список» - это 14 элементов, более базовый макет"
+
+#~ msgctxt "#31988"
+#~ msgid "Enable setting to animate backgrounds for views and the homescreen"
+#~ msgstr "Включить опцию для анимации фонов для шаблонов и главного экрана"
+
+#~ msgctxt "#31112"
+#~ msgid "Movies directed by"
+#~ msgstr "Фильмы режиссера"
+
+#~ msgctxt "#31432"
+#~ msgid "Embuary Info displays extended cast, crew, and video info metadata."
+#~ msgstr "Embuary Info показывает расширенный список ролей, участников, и метаданные видео."
 
 #~ msgctxt "#31070"
 #~ msgid "Enable PreshowExperience integration"

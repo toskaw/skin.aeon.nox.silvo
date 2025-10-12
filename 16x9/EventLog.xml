@@ -18,15 +18,13 @@
 				<control type="group">
 					<left>100</left>
 					<top>-40</top>
-					<control type="image">
-						<top>179</top>
-						<left>-1</left>
-						<width>1722</width>
-						<height>842</height>
-						<texture>colors/black90.png</texture>
-						<bordersize>1</bordersize>
-						<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-					</control>
+					<include content="BackPanel">
+						<param name="left">-4</param>
+						<param name="top">175</param>
+						<param name="width">1730</param>
+						<param name="height">850</param>
+						<param name="texture">colors/black90.png</param>
+					</include>
 					<control type="list" id="50">
 						<top>180</top>
 						<width>1720</width>
@@ -91,7 +89,7 @@
 							<control type="image">
 								<width>1720</width>
 								<height>120</height>
-								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 								<visible>Control.HasFocus(50)</visible>
 								<include>VisibleFadeAnimation</include>
 							</control>
@@ -176,7 +174,7 @@
 				<onback>ClearProperty(MediaMenu,Home)</onback>
 				<onback>50</onback>
 				<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
-				<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1128) | Window.IsVisible(1130) | Window.IsVisible(1131) | Window.IsVisible(1132)" reversible="true">Conditional</animation>
+				<!-- <animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104)" reversible="true">Conditional</animation> -->
 				<control type="button" id="200">
 					<label>33063</label>
 					<textwidth>352</textwidth>
@@ -215,5 +213,6 @@
 			</control>
 			<include>MediaMenuPlayerControls</include>
 		</control>
+		<include>DebugWindow</include>
 	</controls>
 </window>

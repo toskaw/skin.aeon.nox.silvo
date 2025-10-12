@@ -2,33 +2,26 @@
 <window id="1126" type="dialog">
 	<onload condition="String.IsEmpty(Window(Home).Property(Notify))">SetFocus(901002)</onload>
 	<onload condition="!String.IsEmpty(Window(Home).Property(Notify))">SetFocus(901003)</onload>
-	<onunload>ClearProperty(SetSiLVOSkinColors,Home)</onunload>
-	<onunload>ClearProperty(SetBlueSkinColors,Home)</onunload>
-	<onunload>ClearProperty(SetOrangeSkinColors,Home)</onunload>
-	<onunload>ClearProperty(SetRedSkinColors,Home)</onunload>
-	<onunload>ClearProperty(ResetSkinColors,Home)</onunload>
 	<onunload>ClearProperty(ResetSkinSettings,Home)</onunload>
 	<onunload>ClearProperty(NotWarnedOnHidingViz,Home)</onunload>
 	<onunload>ClearProperty(Notify,Home)</onunload>
-	<onunload>ClearProperty(NotifyFileManager,Home)</onunload>
-	<onunload>ClearProperty(NotifyNoRepo,Home)</onunload>
 	<onunload>ClearProperty(NotWarnedOnMuzicVizInfo,Home)</onunload>
 	<onunload>ClearProperty(OfferReloadAfterConfirm,Home)</onunload>
 	<onunload>ClearProperty(AskDefaultBackground,Home)</onunload>
+	<onunload>ClearProperty(CustomConfirm,Home)</onunload>
 	<controls>
 		<include>DimBackground</include>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
 			<left>510</left>
 			<top>290</top>
-			<control type="image">
-				<width>910</width>
-				<height>500</height>
-				<texture>colors/black.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-			</control>
-			<control type="label" id="1">
+			<include content="BackPanel">
+				<param name="left">-4</param>
+				<param name="top">-4</param>
+				<param name="width">918</param>
+				<param name="height">508</param>
+			</include>
+			<control type="label">
 				<left>2</left>
 				<top>2</top>
 				<width>898</width>
@@ -37,7 +30,7 @@
 				<font>font16_title_bold</font>
 				<align>center</align>
 				<textcolor>grey2</textcolor>
-				<label>$LOCALIZE[14117]</label>
+				<label>$VAR[CustomConfirmHeaderLabelVar]</label>
 			</control>
 			<control type="textbox" id="400">
 				<left>45</left>
@@ -68,19 +61,22 @@
 					<onup>noop</onup>
 					<ondown>noop</ondown>
 					<onclick>Dialog.Close(1126)</onclick>
-					<include condition="!String.IsEmpty(Window(Home).Property(SetSiLVOSkinColors))">SetPresetSiLVOTheme</include>
-					<include condition="!String.IsEmpty(Window(Home).Property(SetBlueSkinColors))">SetPresetBlueTheme</include>
-					<include condition="!String.IsEmpty(Window(Home).Property(SetOrangeSkinColors))">SetPresetOrangeTheme</include>
-					<include condition="!String.IsEmpty(Window(Home).Property(SetRedSkinColors))">SetPresetRedTheme</include>
-					<include condition="!String.IsEmpty(Window(Home).Property(ResetSkinColors))">ResetSkinColorsOnclick</include>
+					<onclick condition="String.IsEqual(Window(Home).Property(CustomConfirm),cleanlibrary)">CleanLibrary(video)</onclick>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),SiLVOcolors)">SetPresetSiLVOTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),bluecolors)">SetPresetBlueTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),orangecolors)">SetPresetOrangeTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),redcolors)">SetPresetRedTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),supermancolors)">SetPresetSupermanTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),resetcolors)">ResetSkinColorsOnclick</include>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(ResetSkinSettings))">Skin.ResetSettings</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnHidingViz) + !String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">Skin.ToggleSetting(hidevizbehindfanart)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnHidingViz) + !String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">Skin.SetBool(WarnedOnHidingViz)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">Skin.ToggleSetting(KioskMode.Enabled)</onclick>
+					<onclick condition="String.IsEqual(Window(Home).Property(OfferReloadAfterConfirm),kiosk_mode)">Skin.ToggleSetting(KioskMode.Enabled)</onclick>
+					<onclick condition="!String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">ReloadSkin()</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">Skin.SetBool(AskedDefaultBackground)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">SetProperty(CustomSelect,defaultbackground,Home)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">ActivateWindow(1129)</onclick>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<visible>String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>
 				<control type="button" id="901002">
@@ -99,7 +95,7 @@
 					<ondown>noop</ondown>
 					<onclick>Dialog.Close(1126)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">Skin.SetBool(AskedDefaultBackground)</onclick>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<visible>String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>
 				<control type="button" id="901003">
@@ -116,17 +112,16 @@
 					<onright>noop</onright>
 					<onup>noop</onup>
 					<ondown>noop</ondown>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(NotifyFileManager))">Skin.SetBool(WarnedOnFileManager)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(NotifyNoRepo))">ClearProperty(NotifyNoRepo,Home)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(NotWarnedOnMuzicVizInfo))">ClearProperty(NotWarnedOnMuzicVizInfo,Home)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnMusicVizInfo) + !String.IsEmpty(Window(Home).Property(NotWarnedOnMuzicVizInfo))">Skin.SetBool(WarnedOnMusicVizInfo)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnFullscreenInfo) + !String.IsEmpty(Window(Home).Property(NotWarnedOnFullscreenInfo))">Skin.SetBool(WarnedOnFullscreenInfo)</onclick>
 					<onclick>Dialog.Close(1126)</onclick>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<texturenofocus border="5">dialogs/default/inner.png</texturenofocus>
 					<visible>!String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>
 			</control>
 		</control>
+		<include>DebugWindow</include>
 	</controls>
 </window>

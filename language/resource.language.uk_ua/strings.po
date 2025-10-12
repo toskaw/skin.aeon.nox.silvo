@@ -5,17 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KODI Skins\n"
-"Report-Msgid-Bugs-To: http://trac.kodi.tv/\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-05-22 20:14+0000\n"
-"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"PO-Revision-Date: 2025-09-24 06:29+0000\n"
+"Last-Translator: Pavlo Marianov <acid@jack.kyiv.ua>\n"
 "Language-Team: Ukrainian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-aeon-nox-silvo/uk_ua/>\n"
 "Language: uk_ua\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 5.13.3\n"
 
 msgctxt "#31000"
 msgid "Directed by"
@@ -23,10 +23,14 @@ msgstr "Режисер"
 
 msgctxt "#31001"
 msgid "Written by"
-msgstr ""
+msgstr "Сценаріст"
 
 msgctxt "#31002"
 msgid "Blurred album thumb"
+msgstr ""
+
+msgctxt "#31003"
+msgid "Enable viewtype defaults"
 msgstr ""
 
 msgctxt "#31004"
@@ -41,6 +45,18 @@ msgctxt "#31006"
 msgid "View Options"
 msgstr "Налаштування перегляду"
 
+msgctxt "#31007"
+msgid "Cast listing provider"
+msgstr ""
+
+msgctxt "#31008"
+msgid "Loading extended info"
+msgstr ""
+
+msgctxt "#31009"
+msgid "Glow Bar for TopBar"
+msgstr ""
+
 msgctxt "#31010"
 msgid "Next episode"
 msgstr "Наступна серія"
@@ -51,6 +67,10 @@ msgstr ""
 
 msgctxt "#31012"
 msgid "Airs"
+msgstr ""
+
+msgctxt "#31013"
+msgid "Glow Bar for Floor"
 msgstr ""
 
 msgctxt "#31014"
@@ -81,6 +101,10 @@ msgctxt "#31020"
 msgid "Extra-fanart"
 msgstr ""
 
+msgctxt "#31021"
+msgid "Customise mediaflags"
+msgstr ""
+
 msgctxt "#31022"
 msgid "Set multi-image background"
 msgstr ""
@@ -89,13 +113,25 @@ msgctxt "#31023"
 msgid "Set single image background"
 msgstr ""
 
+msgctxt "#31024"
+msgid "Source type"
+msgstr ""
+
 msgctxt "#31025"
 msgid "Items"
-msgstr "у списку"
+msgstr "Об'єкти"
 
 msgctxt "#31026"
 msgid "Misc Options"
 msgstr "Інші параметри"
+
+msgctxt "#31027"
+msgid "Dim background behind lyrics"
+msgstr ""
+
+msgctxt "#31028"
+msgid "Configure the shutdown menu. To prevent blocking access to Kodi settings, i.e. changing to a different skin, the settings button cannot be altered."
+msgstr ""
 
 msgctxt "#31029"
 msgid "Recent movies"
@@ -103,15 +139,39 @@ msgstr "Останні фільми"
 
 msgctxt "#31030"
 msgid "Recent episodes"
-msgstr "Останні епізоди"
+msgstr "Останні серії"
 
 msgctxt "#31031"
 msgid "Random movies"
 msgstr "Випадкові фільми"
 
+msgctxt "#31032"
+msgid "Customise the mediaflags for the following views:[CR]List, Tripanel, Posters, Shift, BannerWall, Icons, RightList, MyFlix, & BigFan."
+msgstr ""
+
 msgctxt "#31033"
 msgid "Random episodes"
-msgstr "Випадкові епізоди"
+msgstr "Випадкові серії"
+
+msgctxt "#31034"
+msgid "Enable to \"lock\" specific views using the Skin Variables script. Disable this if you prefer Kodi to handle the view modes."
+msgstr ""
+
+msgctxt "#31035"
+msgid "Set independent viewtype rules for both the library and plugins."
+msgstr ""
+
+msgctxt "#31036"
+msgid "Choose widget background panel image."
+msgstr ""
+
+msgctxt "#31037"
+msgid "Choose a movie genre path for custom icons or choose a resource pack."
+msgstr ""
+
+msgctxt "#31038"
+msgid "More in"
+msgstr ""
 
 msgctxt "#31039"
 msgid "Actions"
@@ -133,12 +193,24 @@ msgctxt "#31043"
 msgid "Platform"
 msgstr ""
 
+msgctxt "#31044"
+msgid "Preload widgets"
+msgstr ""
+
+msgctxt "#31045"
+msgid "Bigger"
+msgstr ""
+
 msgctxt "#31046"
 msgid "SEEKING"
 msgstr "ПОШУК"
 
 msgctxt "#31047"
 msgid "Set item icon"
+msgstr ""
+
+msgctxt "#31048"
+msgid "Biggest"
 msgstr ""
 
 msgctxt "#31049"
@@ -185,6 +257,14 @@ msgctxt "#31059"
 msgid "Artist Slideshow"
 msgstr ""
 
+msgctxt "#31060"
+msgid "Pointer size"
+msgstr ""
+
+msgctxt "#31061"
+msgid "Show chapter names in seekbar"
+msgstr ""
+
 msgctxt "#31062"
 msgid "Random movie fanart"
 msgstr ""
@@ -205,6 +285,10 @@ msgctxt "#31066"
 msgid "Random fanart"
 msgstr ""
 
+msgctxt "#31067"
+msgid "Movies starring"
+msgstr "Фільми з"
+
 msgctxt "#31068"
 msgid "CD Wall"
 msgstr ""
@@ -217,9 +301,25 @@ msgctxt "#31070"
 msgid "Enable Preshow Experience integration"
 msgstr ""
 
+msgctxt "#31071"
+msgid "TV Shows starring"
+msgstr "Серіали з"
+
+msgctxt "#31072"
+msgid "Episodes starring"
+msgstr "Серії з"
+
+msgctxt "#31073"
+msgid "Movies directed by"
+msgstr "Режисер фільмів"
+
+msgctxt "#31074"
+msgid "Movies written by"
+msgstr "Сценарист фільмів"
+
 msgctxt "#31075"
 msgid "No extra features available"
-msgstr ""
+msgstr "Додаткові функції недоступні"
 
 msgctxt "#31076"
 msgid "Landscape"
@@ -346,7 +446,7 @@ msgid "Similar"
 msgstr ""
 
 msgctxt "#31112"
-msgid "Movies directed by"
+msgid "More from director"
 msgstr ""
 
 msgctxt "#31115"
@@ -362,16 +462,16 @@ msgid "Enable autocomplete"
 msgstr ""
 
 msgctxt "#31122"
-msgid "Enables the autocomplete feature of the virtual keyboard"
+msgid "Enables the autocomplete feature of the virtual keyboard."
 msgstr ""
 
 msgctxt "#31124"
 msgid "Show Background \"Now Playing\" Video"
-msgstr "Відтворюване відео на тлі"
+msgstr "Показувати на тлі відтворюване відео"
 
 msgctxt "#31125"
 msgid "Show Background \"Now Playing\" Visualisation"
-msgstr "Музична візуалізація на тлі"
+msgstr "Показувати на тлі музичну візуалізацію того, що зараз відтворюється"
 
 msgctxt "#31126"
 msgid "TheMovieDb Helper provides details about movies, tvshows and actors from TMDb."
@@ -383,7 +483,7 @@ msgstr ""
 
 msgctxt "#31129"
 msgid "Hide Fanart in full screen visualisation"
-msgstr "Приховувати фанарт у повноекранній візуалізації"
+msgstr "Сховати фанарт у повноекранній візуалізації"
 
 msgctxt "#31131"
 msgid "Guide Timeline View"
@@ -506,7 +606,7 @@ msgid "Enable live background for movie sets"
 msgstr ""
 
 msgctxt "#31165"
-msgid "Enable to display live background for movie sets when browsing your movie library"
+msgid "Enable to display live background for movie sets when browsing your movie library."
 msgstr ""
 
 msgctxt "#31168"
@@ -582,11 +682,11 @@ msgid "Display runtime in hours and minutes"
 msgstr ""
 
 msgctxt "#31198"
-msgid "This setting controls the appearance of cases when using Live Backgrounds"
+msgid "This setting controls the appearance of cases when using Live Backgrounds."
 msgstr ""
 
 msgctxt "#31199"
-msgid "Used to select the default/fallback image skin wide"
+msgid "Used to select the default/fallback image skin wide."
 msgstr ""
 
 msgctxt "#31200"
@@ -594,7 +694,7 @@ msgid "The Image Resource Select Add-on is used to choose a Kodi resource image 
 msgstr ""
 
 msgctxt "#31201"
-msgid "Changes the runtime labels throughout the skin from minutes to hours/minutes"
+msgid "Changes the runtime labels throughout the skin from minutes to hours/minutes."
 msgstr ""
 
 msgctxt "#31205"
@@ -687,7 +787,7 @@ msgstr ""
 
 msgctxt "#31243"
 msgid "Posters"
-msgstr "Постер"
+msgstr "Постери"
 
 msgctxt "#31244"
 msgid "MyFlix"
@@ -902,7 +1002,7 @@ msgid "Panel"
 msgstr "Панель"
 
 msgctxt "#31316"
-msgid "A skin reload is [B]REQUIRED[/B] to disable the media menu and certain buttons that were loaded during startup.[CR]Press CANCEL to abort the requested changes."
+msgid "A skin reload is [B]REQUIRED[/B] to change this setting.[CR]A skin reload does NOT reset any settings.[CR][CR]Press CANCEL to abort the requested changes."
 msgstr ""
 
 msgctxt "#31318"
@@ -915,10 +1015,6 @@ msgstr "Останній вхід"
 
 msgctxt "#31322"
 msgid "This will disable the screensaver during music playback by hiding the visualization. This may cause unwanted [B]IMAGE RETENTION[/B] if not used carefully. Do you accept the risks and want to enable this setting?"
-msgstr ""
-
-msgctxt "#31323"
-msgid "If you cannot locate the directory containing your background images, please add that location as a source in Kodi's File Manager. For more information visit http://kodi.wiki/view/File_manager"
 msgstr ""
 
 msgctxt "#31324"
@@ -939,14 +1035,10 @@ msgstr ""
 
 msgctxt "#31328"
 msgid "Recently Added"
-msgstr "Останні"
+msgstr "Останні додані"
 
 msgctxt "#31329"
 msgid "Taking a Screenshot"
-msgstr ""
-
-msgctxt "#31330"
-msgid "This script is not available in the default Kodi repositiory. The Aeon Nox SiLVO repo is needed to use the click to install feature, without it this script must be installed manually."
 msgstr ""
 
 msgctxt "#31331"
@@ -1002,7 +1094,7 @@ msgid "Display background name"
 msgstr ""
 
 msgctxt "#31344"
-msgid "Display title of movie/tvshow/artist on home screen if the background has a fanart slideshow as background."
+msgid "Display title of movie/tvshow/artist on home screen if the menu item has a fanart slideshow selected as background."
 msgstr ""
 
 msgctxt "#31345"
@@ -1090,7 +1182,7 @@ msgid "Views and widget plot preference"
 msgstr ""
 
 msgctxt "#31372"
-msgid "Choose if library views and widgets should display plot outline or full plot. Falls back to full plot if no outline is available. This does not effect certain areas with limited space for the plot that have this enabled by default"
+msgid "Choose if library views and widgets should display plot outline or full plot. Falls back to full plot if no outline is available. This does not effect certain areas with limited space for the plot that have this enabled by default."
 msgstr ""
 
 msgctxt "#31373"
@@ -1146,7 +1238,7 @@ msgid "Use this to control the opacity of the widgets. [CR]100% has no transpare
 msgstr ""
 
 msgctxt "#31386"
-msgid "This will set a global background overriding any per-widget settings."
+msgid "Enable to set a global widget background overriding any per-widget settings."
 msgstr ""
 
 msgctxt "#31387"
@@ -1259,7 +1351,7 @@ msgstr ""
 
 msgctxt "#31421"
 msgid "Select your Kodi user profile[CR]to login and continue"
-msgstr "Виберіть профіль користувача Kodi,[CR]щоб увійти до системи"
+msgstr "Виберіть профіль користувача Kodi,[CR]щоб увійти до системи та продовжити"
 
 msgctxt "#31422"
 msgid "Customise the Widget Highlight colour on the home screen."
@@ -1297,12 +1389,8 @@ msgctxt "#31431"
 msgid "Resource image addon for displaying the default white recording label icons throughout the skin."
 msgstr ""
 
-msgctxt "#31432"
-msgid "Embuary Info displays extended cast, crew, and video info metadata."
-msgstr ""
-
 msgctxt "#31433"
-msgid "Skin Info Service is used to display movie set information throughout the skin."
+msgid "Skin Variables is a helper script used for many functions."
 msgstr ""
 
 msgctxt "#31434"
@@ -1358,7 +1446,7 @@ msgid "Hide Main Menu elements when pressing back"
 msgstr ""
 
 msgctxt "#31447"
-msgid "Show a popup displaying answers to some FREQUENTLY ASKED QUESTIONS posted by users in the skins thread on the Kodi forums."
+msgid "Show a popup displaying answers to some FREQUENTLY ASKED QUESTIONS posted on the Kodi forums."
 msgstr ""
 
 msgctxt "#31448"
@@ -1555,7 +1643,7 @@ msgstr "Група каналів"
 
 msgctxt "#31502"
 msgid "Live TV"
-msgstr "ТБ"
+msgstr "Ефірне ТБ"
 
 msgctxt "#31503"
 msgid "Add Group"
@@ -1591,7 +1679,7 @@ msgstr ""
 
 msgctxt "#31511"
 msgid "Channel Options"
-msgstr "Параметри каналів"
+msgstr "Параметри каналу"
 
 msgctxt "#31512"
 msgid "Enable fullscreen information for recordings"
@@ -1610,7 +1698,7 @@ msgid "Enable language flags for subtitles, audio language or both to the mediaf
 msgstr ""
 
 msgctxt "#31516"
-msgid "Disable this to show a simplified display of lyrics instead of the default \"Karaoke\" style"
+msgid "Disable this to show a simplified display of lyrics instead of the default \"Karaoke\" style."
 msgstr ""
 
 msgctxt "#31517"
@@ -1743,10 +1831,6 @@ msgstr ""
 
 msgctxt "#31550"
 msgid "Kodi random music fanart"
-msgstr ""
-
-msgctxt "#31551"
-msgid "Embuary Helper provides the Alphabet Jump Letter Bar, scraped ratings from Rotten Tomatoes and MetaCritic in fullscreen info. It also adds similar and more from director when you Enable Extended Info integration in the settings for Video & Music information."
 msgstr ""
 
 msgctxt "#31552"
@@ -1894,15 +1978,15 @@ msgid "Hide System Bars"
 msgstr ""
 
 msgctxt "#31589"
-msgid "Enable to hide the multi-search option in the library views and directly search using the built-in Kodi search"
+msgid "Enable to hide the multi-search option in the library views and directly search using the built-in Kodi search."
 msgstr ""
 
 msgctxt "#31590"
-msgid "Hide the system bar containing the time, date, library statistcs, etc. Will also hide the RSS feed if enabled in Kodi settings"
+msgid "Hide the system bar containing the time, date, library statistcs, etc. Will also hide the RSS feed if enabled in Kodi settings."
 msgstr ""
 
 msgctxt "#31591"
-msgid "Choose a music genre path for custom icons or choose a resource pack"
+msgid "Choose a music genre path for custom icons or choose a resource pack."
 msgstr ""
 
 msgctxt "#31593"
@@ -2173,7 +2257,7 @@ msgstr ""
 
 msgctxt "#31901"
 msgid "36 Hour Forecast"
-msgstr "Прогноз на 36 г."
+msgstr "Прогноз на 36 годин"
 
 msgctxt "#31902"
 msgid "Hourly Forecast"
@@ -2188,7 +2272,7 @@ msgid "10 Day Forecast"
 msgstr "Прогноз на 10 днів"
 
 msgctxt "#31905"
-msgid "Change the position of the system bar to the top or bottom of the screen"
+msgid "Change the position of the system bar to the top or bottom of the screen."
 msgstr ""
 
 msgctxt "#31908"
@@ -2197,7 +2281,7 @@ msgstr "Можливі опади"
 
 msgctxt "#31909"
 msgid "Fetching forecast info..."
-msgstr "Отримання прогнозу…"
+msgstr "Отримання даних прогнозу…"
 
 msgctxt "#31911"
 msgid "Setup the Aeon Nox main menu"
@@ -2257,7 +2341,7 @@ msgid "Aeon Nox main menu layout"
 msgstr ""
 
 msgctxt "#31929"
-msgid "This setting defines the main menu layout. Icons and 5, 3, or 1 labels per page for the horizontal menu. There is also a vertical menu option."
+msgid "This setting defines the main menu layout. For the horizontal menu, you can choose between icons and displaying 5, 3, or 1 visible items at a time. Additionally, there’s a vertical menu option."
 msgstr ""
 
 msgctxt "#31931"
@@ -2293,7 +2377,7 @@ msgid "Choose which overlays to show on thumbs in icon based views. Note that th
 msgstr ""
 
 msgctxt "#31945"
-msgid "This toggles the layout of the List view. Default is a 7 item layout with extended info, \"Slim List\" is a 14 item, more basic layout"
+msgid "This toggles the layout of the List view. Default is a 7 item layout with extended info, \"Slim List\" is a 14 item, more basic layout."
 msgstr ""
 
 msgctxt "#31957"
@@ -2355,7 +2439,7 @@ msgid "Change the way the home menu scrolls in Aeon Nox. Default will scroll in 
 msgstr ""
 
 msgctxt "#31984"
-msgid "When activated the default mediaflags and icons are changed to coloured versions"
+msgid "When activated the default mediaflags and icons are changed to coloured versions."
 msgstr ""
 
 # empty string with id 31985
@@ -2364,7 +2448,7 @@ msgid "Select case style used in all views. Default or clear cases."
 msgstr ""
 
 msgctxt "#31988"
-msgid "Enable setting to animate backgrounds for views and the homescreen"
+msgid "Enable setting to animate backgrounds for views and the homescreen."
 msgstr ""
 
 msgctxt "#31989"

@@ -5,7 +5,6 @@
 	<onunload>ClearProperty(TextViewerSubHeader,Home)</onunload>
 	<onunload>ClearProperty(TextViewerContent,Home)</onunload>
 	<onunload>ClearProperty(AddonNews,Home)</onunload>
-	<onunload>ClearProperty(FAQ,skinsettings)</onunload>
 	<controls>
 		<control type="button" id="64">
 			<oninfo>Dialog.Close(1112)</oninfo>
@@ -17,6 +16,7 @@
 			<include>HiddenObject</include>
 		</control>
 		<include content="DimBackground">
+			<param name="texture">colors/black75.png</param>
 			<param name="timeopen">100</param>
 			<param name="timeclose">50</param>
 			<param name="visible">!Window.IsActive(addoninformation)</param>
@@ -28,15 +28,14 @@
 			<animation effect="fade" time="50" condition="!String.IsEmpty(Window(Home).Property(AddonNews))">WindowClose</animation>
 			<left>270</left>
 			<top>72.5</top>
-			<control type="image">
-				<left>20</left>
-				<width>1342</width>
-				<height>935</height>
-				<texture>colors/black90.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				<visible>String.IsEmpty(Window(Home).Property(AddonNews))</visible>
-			</control>
+			<include content="BackPanel">
+				<param name="left">16</param>
+				<param name="top">-4</param>
+				<param name="width">1350</param>
+				<param name="height">942</param>
+				<param name="texture">colors/black90.png</param>
+				<param name="visible">String.IsEmpty(Window(Home).Property(AddonNews))</param>
+			</include>
 			<control type="label">
 				<left>62</left>
 				<top>40</top>
@@ -66,19 +65,21 @@
 				<font>font16_textbox</font>
 				<textcolor>grey</textcolor>
 				<pagecontrol>61</pagecontrol>
-				<label>$VAR[CustomTextViewerContentVar]</label>
+				<label>$INFO[Window(Home).Property(TextViewerContent)]</label>
 			</control>
 			<control type="scrollbar" id="61">
-				<left>1341</left>
+				<left>1336</left>
 				<top>145</top>
-				<width>20</width>
+				<width>14</width>
 				<height>750</height>
 				<ondown>61</ondown>
 				<onup>61</onup>
 				<showonepage>false</showonepage>
 				<texturesliderbackground>colors/black90.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbar colordiffuse="$VAR[HighlightBarColor]">colors/grey.png</texturesliderbar>
+				<animation effect="fade" start="80" end="40" time="1000" pulse="true" condition="Control.HasFocus(64)">Conditional</animation>
 			</control>
 		</control>
+		<include>DebugWindow</include>
 	</controls>
 </window>

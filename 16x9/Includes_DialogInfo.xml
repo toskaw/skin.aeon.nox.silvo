@@ -1,106 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- DialogVideoInfo -->
+	<include name="InfoBackground">
+		<control type="group">
+			<height>100%</height>
+			<control type="image">
+				<texture>colors/black.png</texture>
+			</control>
+			<control type="image">
+				<aspectratio align="center">scale</aspectratio>
+				<texture background="true">$PARAM[texture]</texture>
+				<fadetime>IconCrossfadeTime</fadetime>
+			</control>
+			<control type="image">
+				<texture border="4">dialogs/info/info_rightpaneltop.png</texture>
+				<colordiffuse>$VAR[DialogInfoDimmerVar]</colordiffuse>
+			</control>
+		</control>
+	</include>
+	<include name="InfoPoster">
+		<control type="image">
+			<texture>colors/black.png</texture>
+		</control>
+		<control type="image">
+			<aspectratio>scale</aspectratio>
+			<fadetime>IconCrossfadeTime</fadetime>
+			<texture background="true">$PARAM[texture]</texture>
+		</control>
+	</include>
+	<include name="InfoActorResourceImage">
+		<control type="image" id="9777">
+			<aspectratio>keep</aspectratio>
+			<fadetime>IconCrossfadeTime</fadetime>
+			<texture background="true">$VAR[VideoInfoActorResourceVar]</texture>
+			<animation effect="fade" time="300">Visible</animation>
+			<visible>[Control.HasFocus(50) | Control.HasFocus(90050)] + System.AddonIsEnabled(resource.images.actorart)</visible>
+		</control>
+	</include>
 	<include name="ExtendedInfoListLayout">
-		<param name="PanelID" />
+		<param name="numitems" default="0" />
+		<param name="width" default="1200" />
 		<param name="overlayVisibility">!String.IsEmpty(ListItem.Property(DBID))</param>
 		<param name="labelVisibility">false</param>
 		<param name="label" default="$INFO[ListItem.Label2]" />
 		<param name="label1" default="$INFO[ListItem.Label]" />
 		<param name="label2" default="$INFO[ListItem.Year]" />
 		<param name="texture" default="$VAR[PosterVar]" />
-		<param name="content" />
-		<param name="sortby" />
-		<param name="limit" />
+		<param name="target" default="videos" />
+		<param name="do_onclick" default="true" />
 		<definition>
-			<left>15</left>
-			<width>1196</width>
-			<height>500</height>
-			<orientation>horizontal</orientation>
-			<preloaditems>2</preloaditems>
-			<onup>90002</onup>
-			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<itemlayout height="500" width="299">
-				<control type="image">
-					<left>-15</left>
-					<top>-10</top>
-					<width>320</width>
-					<height>450</height>
-					<bordersize>22</bordersize>
-					<bordertexture border="20">thumbs/shadow.png</bordertexture>
-					<aspectratio aligny="top">scale</aspectratio>
-					<texture background="true">$PARAM[texture]</texture>
-				</control>
-				<control type="group">
-					<visible>$PARAM[labelVisibility]</visible>
-					<control type="image">
-						<left>5</left>
-						<width>282</width>
-						<height>418</height>
-						<texture>poster_bottom_fade.png</texture>
-					</control>
-					<control type="label">
-						<left>8</left>
-						<top>374</top>
-						<width>274</width>
-						<height>43</height>
-						<align>center</align>
-						<font>font14</font>
-						<shadowcolor>shadow</shadowcolor>
-						<textcolor>white2</textcolor>
-						<label>$PARAM[label]</label>
-					</control>
-				</control>
-				<control type="label">
-					<left>3</left>
-					<top>422</top>
-					<width>284</width>
-					<height>43</height>
-					<align>center</align>
-					<font>font14</font>
-					<shadowcolor>shadow</shadowcolor>
-					<label>$PARAM[label1]</label>
-				</control>
-				<control type="label">
-					<left>3</left>
-					<top>422</top>
-					<width>284</width>
-					<height>43</height>
-					<align>center</align>
-					<font>font14</font>
-					<shadowcolor>shadow</shadowcolor>
-					<label>$PARAM[label1]</label>
-				</control>
-				<control type="image">
-					<left>7</left>
-					<top>12</top>
-					<width>67</width>
-					<height>30</height>
-					<texture>colors/black50.png</texture>
-					<aspectratio aligny="center">scale</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Year) + !Control.HasFocus(90016)</visible>
-				</control>
-				<control type="label">
-					<left>8</left>
-					<top>4</top>
-					<width>274</width>
-					<height>43</height>
-					<font>font14</font>
-					<shadowcolor>shadow</shadowcolor>
-					<label>$PARAM[label2]</label>
-				</control>
-				<control type="image">
-					<left>242</left>
-					<top>13</top>
-					<width>40</width>
-					<height>40</height>
-					<texture>overlays/addons/enabled.png</texture>
-					<visible>$PARAM[overlayVisibility]</visible>
-				</control>
-			</itemlayout>
-			<focusedlayout height="500" width="299">
-				<control type="group">
-					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+			<control type="panel" id="$PARAM[id]">
+				<visible allowhiddenfocus="true">Integer.IsGreater(Container($PARAM[id]).NumItems,$PARAM[numitems])</visible>
+				<left>15</left>
+				<width>$PARAM[width]</width>
+				<height>480</height>
+				<orientation>horizontal</orientation>
+				<preloaditems>2</preloaditems>
+				<scrolltime tween="quadratic" easing="out">300</scrolltime>
+				<onclick condition="Control.HasFocus(50001)">ClearProperty(DirectorID,Home)</onclick>
+				<onclick condition="[Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">SetProperty(1109_origin,$INFO[System.CurrentControlID],Home)</onclick>
+				<onclick condition="Window.IsVisible(1109) + [Control.HasFocus(90050) | Control.HasFocus(50001)]">Dialog.Close(1109)</onclick>
+				<onclick condition="Window.IsVisible(1102) + [Control.HasFocus(50003) | Control.HasFocus(90008) | Control.HasFocus(90009) | Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">Skin.TimerStart(resetfocus1102)</onclick>
+				<include content="ExtendedInfoOnclick" condition="$PARAM[do_onclick]">
+					<param name="id">$PARAM[id]</param>
+				</include>
+				<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo) + [Control.HasFocus(50002) | Control.HasFocus(50003)]">RunScript(plugin.video.themoviedb.helper,blur_image='"$INFO[Container($PARAM[id]).ListItem.Art(poster)]"',prefix=custom_1102)</onclick>
+				<onclick condition="Control.HasFocus(50001)">RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_actor&amp;window_id=Home&amp;&amp;$INFO[Container(50001).ListItem.Label]")</onclick>
+				<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Control.HasFocus(50001)">RunPlugin(plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=$INFO[Container(50001).ListItem.Label])</onclick>
+				<onclick condition="Control.HasFocus(50001)">SetProperty(tmdb_person_search_string,$INFO[Container(50001).ListItem.Label],Home)</onclick>
+				<onclick condition="Control.HasFocus(50001)">ActivateWindow(1107)</onclick>
+				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4701)</onclick>
+				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4610)</onclick>
+				<onclick condition="Control.HasFocus(990010) | Control.HasFocus(990011) | Control.HasFocus(990012)">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=tv,call_auto=1111)</onclick>
+				<onclick condition="Control.HasFocus(990020) | Control.HasFocus(900020)">SetFocus(99)</onclick>
+				<itemlayout height="480" width="300">
 					<control type="image">
 						<left>-15</left>
 						<top>-10</top>
@@ -109,7 +81,16 @@
 						<bordersize>22</bordersize>
 						<bordertexture border="20">thumbs/shadow.png</bordertexture>
 						<aspectratio aligny="top">scale</aspectratio>
-						<texture background="true">$PARAM[texture]</texture>
+						<texture fallback="$PARAM[fallback]" background="true">$PARAM[texture]</texture>
+					</control>
+					<control type="image">
+						<left>-15</left>
+						<top>-10</top>
+						<width>320</width>
+						<height>450</height>
+						<bordersize>22</bordersize>
+						<texture>colors/black25.png</texture>
+						<visible>Window.IsVisible(1125)</visible>
 					</control>
 					<control type="group">
 						<visible>$PARAM[labelVisibility]</visible>
@@ -127,10 +108,19 @@
 							<align>center</align>
 							<font>font14</font>
 							<shadowcolor>shadow</shadowcolor>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<textcolor>white2</textcolor>
 							<label>$PARAM[label]</label>
-							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[PanelID])">Conditional</animation>
 						</control>
+					</control>
+					<control type="label">
+						<left>3</left>
+						<top>422</top>
+						<width>284</width>
+						<height>43</height>
+						<align>center</align>
+						<font>font14</font>
+						<shadowcolor>shadow</shadowcolor>
+						<label>$PARAM[label1]</label>
 					</control>
 					<control type="image">
 						<left>7</left>
@@ -148,21 +138,7 @@
 						<height>43</height>
 						<font>font14</font>
 						<shadowcolor>shadow</shadowcolor>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<label>$PARAM[label2]</label>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[PanelID])">Conditional</animation>
-					</control>
-					<control type="label">
-						<left>3</left>
-						<top>422</top>
-						<width>284</width>
-						<height>43</height>
-						<align>center</align>
-						<font>font14</font>
-						<shadowcolor>shadow</shadowcolor>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
-						<label>$PARAM[label1]</label>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[PanelID])">Conditional</animation>
 					</control>
 					<control type="image">
 						<left>242</left>
@@ -172,551 +148,117 @@
 						<texture>overlays/addons/enabled.png</texture>
 						<visible>$PARAM[overlayVisibility]</visible>
 					</control>
-				</control>
-			</focusedlayout>
-			<content sortby="$PARAM[sortby]" limit="$PARAM[limit]" target="videos" browse="never">$PARAM[content]</content>
+				</itemlayout>
+				<focusedlayout height="480" width="300">
+					<control type="group">
+						<animation effect="zoom" start="90" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+						<control type="image">
+							<left>-15</left>
+							<top>-10</top>
+							<width>320</width>
+							<height>450</height>
+							<bordersize>22</bordersize>
+							<bordertexture border="20">thumbs/shadow.png</bordertexture>
+							<aspectratio aligny="top">scale</aspectratio>
+							<texture fallback="$PARAM[fallback]" background="true">$PARAM[texture]</texture>
+						</control>
+						<!-- <control type="image">
+							<left2</left>
+							<top>8</top>
+							<width>286</width>
+							<height>418</height>
+							<aspectratio aligny="top">scale</aspectratio>
+							<texture fallback="$PARAM[fallback]" background="true">$PARAM[texture]</texture>
+							<bordersize>4</bordersize>
+							<bordertexture border="2" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
+						</control> -->
+						<control type="group">
+							<visible>$PARAM[labelVisibility]</visible>
+							<control type="image">
+								<left>5</left>
+								<width>282</width>
+								<height>418</height>
+								<texture>poster_bottom_fade.png</texture>
+							</control>
+							<control type="label">
+								<left>8</left>
+								<top>374</top>
+								<width>274</width>
+								<height>43</height>
+								<align>center</align>
+								<font>font14</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$PARAM[label]</label>
+								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+							</control>
+						</control>
+						<control type="image">
+							<left>7</left>
+							<top>12</top>
+							<width>67</width>
+							<height>30</height>
+							<texture>colors/black50.png</texture>
+							<aspectratio aligny="center">scale</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Year) + !Control.HasFocus(90016)</visible>
+						</control>
+						<control type="label">
+							<left>8</left>
+							<top>4</top>
+							<width>274</width>
+							<height>43</height>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label2]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="label">
+							<left>3</left>
+							<top>422</top>
+							<width>284</width>
+							<height>43</height>
+							<align>center</align>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label1]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>242</left>
+							<top>13</top>
+							<width>40</width>
+							<height>40</height>
+							<texture>overlays/addons/enabled.png</texture>
+							<visible>$PARAM[overlayVisibility]</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<content sortby="$PARAM[sortby]" limit="$PARAM[limit]" target="$PARAM[target]" browse="never">$PARAM[content]</content>
+			</control>
 		</definition>
 	</include>
-	<include name="VideoCastItem">
-		<param name="CastListItemID" />
-		<definition>
-			<item>
-				<label>$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label]</label>
-				<label2>$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label2]</label2>
-				<icon>$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Icon]</icon>
-				<onclick>SetProperty(ActorID,$PARAM[CastListItemID])</onclick>
-				<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label])</onclick>
-				<onclick>ActivateWindow(1129)</onclick>
-				<visible>!String.IsEmpty(Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label)</visible>
-			</item>
-		</definition>
+	<include name="SkinVariablesCastPanelContent">
+		<content sortby="userpreference">$VAR[SkinVariablesCastPanelContentVar]</content>
 	</include>
-	<include name="CastPanelContent">
-		<include content="VideoCastItem">
-			<param name="CastListItemID">0</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">1</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">2</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">3</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">4</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">5</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">6</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">7</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">8</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">9</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">10</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">11</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">12</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">13</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">14</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">15</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">16</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">17</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">18</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">19</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">20</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">21</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">22</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">23</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">24</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">25</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">26</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">27</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">28</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">29</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">30</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">31</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">32</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">33</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">34</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">35</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">36</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">37</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">38</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">39</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">40</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">41</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">42</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">43</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">44</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">45</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">46</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">47</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">48</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">49</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">50</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">51</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">52</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">53</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">54</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">55</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">56</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">57</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">58</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">59</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">60</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">61</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">62</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">63</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">64</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">65</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">66</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">67</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">68</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">69</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">70</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">71</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">72</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">73</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">74</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">75</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">76</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">77</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">78</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">79</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">80</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">81</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">82</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">83</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">84</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">85</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">86</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">87</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">88</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">89</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">90</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">91</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">92</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">93</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">94</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">95</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">96</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">97</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">98</param>
-		</include>
-		<include content="VideoCastItem">
-			<param name="CastListItemID">99</param>
-		</include>
-	</include>
-	<include name="ExtendedInfoMovieLists">
-		<control type="panel" id="90011">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90011).NumItems,0)</visible>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90011).ListItem.Title,videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]"',call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">90011</param>
-				<param name="content">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</param>
-			</include>
-		</control>
-		<control type="panel" id="90012">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90012).NumItems,0)</visible>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90012).ListItem.Title,videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]"',call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">90012</param>
-				<param name="content">plugin://script.embuary.helper/?info=getdirectedby&amp;dbid=$INFO[ListItem.DBID]</param>
-			</include>
-		</control>
-		<control type="panel" id="90013">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90013).NumItems,0)</visible>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Container(90013).ListItem.DBTYPE,movie)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90013).ListItem.Title,videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]"',call_auto=1111)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Container(90013).ListItem.DBTYPE,tvshow)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90013).ListItem.TVShowTitle,videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]"',call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">90013</param>
-				<param name="content">plugin://script.embuary.helper/?info=getitemsbyactor&amp;type=movie&amp;dbid=$INFO[ListItem.DBID]</param>
-			</include>
-		</control>
-	</include>
-	<include name="ExtendedInfoSeriesLists">
-		<control type="panel" id="90014">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90014).NumItems,0)</visible>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90014).ListItem.TVShowTitle,videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]"',call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">90014</param>
-				<param name="content">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</param>
-				<param name="limit">12</param>
-			</include>
-		</control>
-		<control type="panel" id="90015">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90015).NumItems,0)</visible>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90015).ListItem.TVShowTitle,videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]"',call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">90015</param>
-				<param name="content">plugin://script.embuary.helper/?info=getitemsbyactor&amp;type=tvshow&amp;dbid=$INFO[ListItem.DBID]&amp;content=tvshow</param>
-			</include>
-		</control>
-	</include>
-	<include name="TMDbHelperPersonList">
-		<control type="panel" id="900010">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900010).NumItems,0)</visible>
-			<onclick>RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=movie,call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">900010</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;nextpage=false&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
-				<param name="label">$INFO[Container(900010).ListItem.Property(Character)]</param>
-				<param name="labelVisibility">!String.IsEmpty(Container(900010).ListItem.Property(Character))</param>
-			</include>
-		</control>
-		<control type="panel" id="900011">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900011).NumItems,0)</visible>
-			<onclick>RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=tv,call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">900011</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;nextpage=false&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
-				<param name="label">$INFO[Container(900011).ListItem.Property(Character)]</param>
-				<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Character))</param>
-			</include>
-		</control>
-		<control type="panel" id="900012">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900012).NumItems,0)</visible>
-			<onclick>RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=movie,call_auto=1111)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">900012</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;nextpage=false&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
-				<param name="label">$INFO[Container(900012).ListItem.Property(Job)]</param>
-				<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Job))</param>
-			</include>
-		</control>
-		<control type="panel" id="900020">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900020).NumItems,0)</visible>
-			<onclick>SetFocus(99)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">900020</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;query='"$ESCINFO[ListItem.Label]"'</param>
-			</include>
-		</control>
-	</include>
-	<include name="CustomActorList">
-		<control type="panel" id="90050">
-			<left>15</left>
-			<width>1196</width>
-			<height>500</height>
-			<orientation>horizontal</orientation>
-			<preloaditems>2</preloaditems>
-			<viewtype label="">list</viewtype>
-			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<itemlayout height="500" width="299">
-				<control type="image">
-					<left>-15</left>
-					<top>-10</top>
-					<width>320</width>
-					<height>450</height>
-					<bordersize>22</bordersize>
-					<bordertexture border="20">thumbs/shadow.png</bordertexture>
-					<aspectratio aligny="top">scale</aspectratio>
-					<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
-				</control>
-				<control type="image">
-					<left>5</left>
-					<width>282</width>
-					<height>418</height>
-					<texture>poster_bottom_fade.png</texture>
-				</control>
-				<control type="label">
-					<left>8</left>
-					<top>374</top>
-					<width>274</width>
-					<height>43</height>
-					<align>center</align>
-					<font>font14</font>
-					<shadowcolor>shadow</shadowcolor>
-					<textcolor>white2</textcolor>
-					<label>$INFO[ListItem.Label]</label>
-				</control>
-				<control type="label">
-					<left>3</left>
-					<top>422</top>
-					<width>284</width>
-					<height>43</height>
-					<align>center</align>
-					<font>font14</font>
-					<shadowcolor>shadow</shadowcolor>
-					<textcolor>white2</textcolor>
-					<label>$INFO[ListItem.Label2]</label>
-				</control>
-			</itemlayout>
-			<focusedlayout height="500" width="299">
-				<control type="group">
-					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
-					<control type="image">
-						<left>-15</left>
-						<top>-10</top>
-						<width>320</width>
-						<height>450</height>
-						<bordersize>22</bordersize>
-						<bordertexture border="20" colordiffuse="black">thumbs/shadow.png</bordertexture>
-						<aspectratio aligny="top">scale</aspectratio>
-						<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="image">
-						<left>5</left>
-						<width>282</width>
-						<height>418</height>
-						<texture>poster_bottom_fade.png</texture>
-					</control>
-					<control type="label">
-						<left>8</left>
-						<top>374</top>
-						<width>274</width>
-						<height>43</height>
-						<align>center</align>
-						<font>font14</font>
-						<shadowcolor>shadow</shadowcolor>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
-						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90050)">Conditional</animation>
-					</control>
-					<control type="label">
-						<left>3</left>
-						<top>422</top>
-						<width>284</width>
-						<height>43</height>
-						<align>center</align>
-						<font>font14</font>
-						<shadowcolor>shadow</shadowcolor>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
-						<label>$INFO[ListItem.Label2]</label>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90050)">Conditional</animation>
-					</control>
-				</control>
-			</focusedlayout>
-			<content>
-				<include>CastPanelContent</include>
-			</content>
-		</control>
+	<include name="OnlineCastContent">
+		<content>$VAR[VideoInfoTMDbCastVar]</content>
 	</include>
 	<include name="HiddenActorList">
 		<control type="list" id="50">
 			<include>HiddenList</include>
 		</control>
 	</include>
-	<include name="ExtendedMovieSetPanel">
-		<control type="panel" id="90017">
-			<onclick>Dialog.Close(all,true)</onclick>
-			<onclick>ActivateWindow(Videos,videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick>
-			<visible>!String.IsEqual(Container(90017).NumItems,1)</visible>
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">90017</param>
-				<param name="content">videodb://movies/sets/$INFO[ListItem.SetID]</param>
-				<param name="overlayVisibility">false</param>
-				<param name="sortby">year</param>
-			</include>
-		</control>
-	</include>
-	<include name="ExtendedSeasonPanel">
-		<control type="panel" id="90016">
-			<include content="ExtendedInfoListLayout">
-				<param name="PanelID">90016</param>
-				<param name="label1">$INFO[ListItem.Label]$INFO[ListItem.Property(TotalEpisodes), (,)]</param>
-				<param name="label2" />
-				<param name="content">videodb://tvshows/titles/$INFO[ListItem.DBID]</param>
-				<param name="overlayVisibility">false</param>
-			</include>
-		</control>
-	</include>
 	<include name="DefaultActorList">
-		<control type="panel" id="50">
+		<control type="list" id="50">
 			<left>15</left>
 			<width>1196</width>
-			<height>500</height>
+			<height>480</height>
 			<orientation>horizontal</orientation>
 			<preloaditems>2</preloaditems>
-			<viewtype label="">list</viewtype>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<itemlayout height="500" width="299">
+			<itemlayout height="480" width="299">
 				<control type="image">
 					<left>-15</left>
 					<top>-10</top>
@@ -756,7 +298,7 @@
 					<label>$INFO[ListItem.Label2]</label>
 				</control>
 			</itemlayout>
-			<focusedlayout height="500" width="299">
+			<focusedlayout height="480" width="299">
 				<control type="group">
 					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
 					<control type="image">
@@ -802,6 +344,262 @@
 				</control>
 			</focusedlayout>
 		</control>
+	</include>
+	<include name="CustomActorList">
+		<control type="list" id="90050">
+			<left>15</left>
+			<width>1200</width>
+			<height>480</height>
+			<orientation>horizontal</orientation>
+			<preloaditems>2</preloaditems>
+			<onclick>ClearProperty(DirectorID,Home)</onclick>
+			<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_actor&amp;window_id=Home&amp;&amp;$INFO[Container(90050).ListItem.Label]")</onclick>
+			<onclick condition="!String.IsEmpty(Container(90050).ListItem.Property(tmdb_id))">SetProperty(person_id,$INFO[Container(90050).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
+			<onclick condition="String.IsEmpty(Container(90050).ListItem.Property(tmdb_id))">SetProperty(ActorName,$INFO[Container(90050).ListItem.Label],Home)</onclick>
+			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season)">SetProperty(actor_id,$INFO[Container(90050).CurrentItem],Home)</onclick>
+			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season) + !Skin.HasSetting(OnlineCast)">ActivateWindow(1129)</onclick>
+			<onclick condition="String.IsEqual(ListItem.DBTYPE,season) | Skin.HasSetting(OnlineCast)">ActivateWindow(1109)</onclick>
+			<scrolltime tween="quadratic" easing="out">300</scrolltime>
+			<itemlayout height="480" width="300">
+				<control type="image">
+					<left>-15</left>
+					<top>-10</top>
+					<width>320</width>
+					<height>450</height>
+					<bordersize>22</bordersize>
+					<bordertexture border="20">thumbs/shadow.png</bordertexture>
+					<aspectratio aligny="top">scale</aspectratio>
+					<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
+				</control>
+				<control type="image">
+					<left>5</left>
+					<width>282</width>
+					<height>418</height>
+					<texture>poster_bottom_fade.png</texture>
+				</control>
+				<control type="label">
+					<left>8</left>
+					<top>374</top>
+					<width>274</width>
+					<height>43</height>
+					<align>center</align>
+					<font>font14</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>white2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>3</left>
+					<top>422</top>
+					<width>284</width>
+					<height>43</height>
+					<align>center</align>
+					<font>font14</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>white2</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+				<control type="label">
+					<left>3</left>
+					<top>422</top>
+					<width>284</width>
+					<height>43</height>
+					<align>center</align>
+					<font>font14</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>white2</textcolor>
+					<label>$INFO[ListItem.Property(role)]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="480" width="300">
+				<control type="group">
+					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+					<control type="image">
+						<left>-15</left>
+						<top>-10</top>
+						<width>320</width>
+						<height>450</height>
+						<bordersize>22</bordersize>
+						<bordertexture border="20" colordiffuse="black">thumbs/shadow.png</bordertexture>
+						<aspectratio aligny="top">scale</aspectratio>
+						<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<left>5</left>
+						<width>282</width>
+						<height>418</height>
+						<texture>poster_bottom_fade.png</texture>
+					</control>
+					<control type="label">
+						<left>8</left>
+						<top>374</top>
+						<width>274</width>
+						<height>43</height>
+						<align>center</align>
+						<font>font14</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90050)">Conditional</animation>
+					</control>
+					<control type="label">
+						<left>3</left>
+						<top>422</top>
+						<width>284</width>
+						<height>43</height>
+						<align>center</align>
+						<font>font14</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90050)">Conditional</animation>
+					</control>
+					<control type="label">
+						<left>3</left>
+						<top>422</top>
+						<width>284</width>
+						<height>43</height>
+						<align>center</align>
+						<font>font14</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.Property(role)]</label>
+						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90050)">Conditional</animation>
+					</control>
+				</control>
+			</focusedlayout>
+			<include condition="!Skin.HasSetting(OnlineCast)">SkinVariablesCastPanelContent</include>
+			<include condition="Skin.HasSetting(OnlineCast)">OnlineCastContent</include>
+		</control>
+	</include>
+	<include name="ExtendedInfoMovieLists">
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90011</param>
+			<!-- <param name="content">plugin://script.skinvariables/?info=get_filter_dir&amp;library=video$INFO[Window(Home).Property(encoded_genre_0),&amp;filter_key__zero=genre&amp;filter_value__zero=]$INFO[Window(Home).Property(encoded_genre_1),&amp;filter_key__one=genre&amp;filter_value__one=]$INFO[Window(Home).Property(encoded_genre_2),&amp;filter_key__two=genre&amp;filter_value__two=]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]&amp;&amp;videodb://movies/titles/</param> -->
+			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"genre","operator":"contains", "value":["$INFO[Window(Home).Property(encoded_genre_0)]"]},{"field":"genre","operator":"contains", "value":["$INFO[Window(Home).Property(encoded_genre_1)]"]},{"field":"genre","operator":"contains", "value":["$INFO[Window(Home).Property(encoded_genre_2)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param>
+			<param name="limit">40</param>
+			<param name="sortby">random</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90012</param>
+			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"director","operator":"is","value":["$INFO[Window(Home).Property(split_director.0)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param>
+			<param name="sortby">random</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90013</param>
+			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(random_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param>
+			<!-- <param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"contains","value":["$INFO[Window(Home).Property(random_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"tvshows"}</param> -->
+			<param name="sortby">random</param>
+		</include>
+	</include>
+	<include name="ExtendedInfoSeriesLists">
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90014</param>
+			<param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"genre","operator":"contains", "value":["$INFO[Window(Home).Property(encoded_genre_0)]"]},{"field":"genre","operator":"contains", "value":["$INFO[Window(Home).Property(encoded_genre_1)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"tvshows"}</param>
+			<param name="limit">40</param>
+			<param name="sortby">random</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90015</param>
+			<param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(random_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"tvshows"}</param>
+			<!-- <param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"contains","value":["$INFO[Window(Home).Property(random_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param> -->
+			<param name="sortby">random</param>
+		</include>
+	</include>
+	<include name="ExtendedSeasonPanel">
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90016</param>
+			<param name="do_onclick">false</param>
+			<param name="label1">$INFO[ListItem.Label]$INFO[ListItem.Property(TotalEpisodes), (,)]</param>
+			<param name="label2" />
+			<param name="overlayVisibility">false</param>
+			<param name="content">videodb://tvshows/titles/$INFO[ListItem.DBID]</param>
+		</include>
+	</include>
+	<include name="ExtendedMovieSetPanel">
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90017</param>
+			<param name="overlayVisibility">false</param>
+			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"set","operator":"is","value":["$INFO[ListItem.Set]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param>
+			<param name="sortby">year</param>
+		</include>
+	</include>
+	<include name="ExtendedInfoPersonList">
+		<include content="ExtendedInfoListLayout">
+			<param name="id">990010</param>
+			<param name="label">$INFO[Container(990010).ListItem.Property(Character)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(990010).ListItem.Property(Character))</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">990011</param>
+			<param name="label">$INFO[Container(990011).ListItem.Property(Character)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(990011).ListItem.Property(Character))</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">990012</param>
+			<param name="label">$INFO[Container(990012).ListItem.Property(Job)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(990012).ListItem.Property(Job))</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">990020</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]</param>
+		</include>
+	</include>
+	<include name="ExtendedInfoOnclick">
+		<onclick condition="Window.IsDialogTopMost(movieinformation)">SetProperty(item_origin,$INFO[System.CurrentControlID],Home)</onclick>
+		<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_title_1102&amp;window_id=Home&amp;&amp;$INFO[Container($PARAM[id]).ListItem.Title]")</onclick>
+		<onclick>SetProperty(item_dbid,$INFO[Container($PARAM[id]).Listitem.DBID],Home)</onclick>
+		<onclick>SetProperty(item_dbtype,$INFO[Container($PARAM[id]).Listitem.DBTYPE],Home)</onclick>
+		<onclick>SetProperty(item_poster,$INFO[Container($PARAM[id]).Listitem.Art(poster)],Home)</onclick>
+		<onclick>SetProperty(item_filename,$INFO[Container($PARAM[id]).Listitem.FileName],Home)</onclick>
+		<onclick>SetProperty(item_ext,$INFO[Container($PARAM[id]).Listitem.FileExtension],Home)</onclick>
+		<onclick condition="Container($PARAM[id]).ListItem.IsResumable + !String.IsEqual(Container($PARAM[id]).ListItem.PercentPlayed,0)">SetProperty(item_percentplayed,$INFO[Container($PARAM[id]).ListItem.PercentPlayed,,%],Home)</onclick>
+		<onclick condition="Container($PARAM[id]).ListItem.IsResumable + !String.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),0)">SetProperty(item_percentplayed,$INFO[Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),,%],Home)</onclick>
+		<onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(tmdb))">SetProperty(tmdb_id,$INFO[Container($PARAM[id]).ListItem.UniqueID(tmdb),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_id=],Home)</onclick>
+		<onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(tmdb)) + !String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(imdb))">SetProperty(imdb_id,$INFO[Container($PARAM[id]).ListItem.UniqueID(imdb),plugin://plugin.video.themoviedb.helper/?info=details&amp;imdb_id=],Home)</onclick>
+		<onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(tmdb)) + String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(imdb)) + String.StartsWith(Container($PARAM[id]).ListItem.IMDBNumber,tt)">SetProperty(imdb_id,$INFO[Container($PARAM[id]).ListItem.IMDBNumber,plugin://plugin.video.themoviedb.helper/?info=details&amp;imdb_id=],Home)</onclick>
+		<onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(tmdb)) + String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(imdb)) + !String.IsEmpty(Container($PARAM[id]).ListItem.IMDBNumber)">SetProperty(tmdb_id,$INFO[Container($PARAM[id]).ListItem.IMDBNumber,plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_id=],Home)</onclick>
+		<onclick>ActivateWindow(1102)</onclick>
+	</include>
+	<include name="TMDbHelperPersonList">
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90008</param>
+			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(encoded_actor)]"]}]},"type":"movies"}</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90009</param>
+			<param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(encoded_actor)]"]}]},"type":"tvshows"}</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900010</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
+			<param name="label">$INFO[Container(900010).ListItem.Property(Character)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(900010).ListItem.Property(Character))</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900011</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
+			<param name="label">$INFO[Container(900011).ListItem.Property(Character)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Character))</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900012</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
+			<param name="label">$INFO[Container(900012).ListItem.Property(Job)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(900012).ListItem.Property(Job))</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900020</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
+		</include>
 	</include>
 	<include name="DefaultSetList">
 		<control type="panel" id="50">
@@ -954,7 +752,7 @@
 			<label>$INFO[ListItem.TvShowTitle]</label>
 			<label>$INFO[ListItem.EndTime,$LOCALIZE[31393]: ,]</label>
 			<label>$VAR[VideoInfoTVSubtitleVar]</label>
-			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E,  - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
+			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E,  - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
 		</control>
 	</include>
 	<include name="InfoSublabelMusicvideos">
@@ -976,48 +774,194 @@
 			<label>$INFO[ListItem.Property(Department),$LOCALIZE[31546] ]</label>
 		</control>
 	</include>
+	<include name="InfoDetailsPanel">
+		<control type="group">
+			<left>3</left>
+			<top>110</top>
+			<control type="button" id="$PARAM[button_id]">
+				<top>83</top>
+				<width>1198</width>
+				<height>351</height>
+				<include>ButtonInfoDialogsCommonValues</include>
+				<onunfocus>ClearProperty(MoreInfoTitle,$PARAM[window_id])</onunfocus>
+				<onunfocus>ClearProperty(MoreInfoContent,$PARAM[window_id])</onunfocus>
+				<onclick>SetFocus($PARAM[panel_id])</onclick>
+				<onleft>SetFocus($PARAM[panel_id])</onleft>
+				<onright>SetFocus($PARAM[panel_id])</onright>
+				<onup>SetFocus($PARAM[panel_id])</onup>
+				<ondown>SetFocus($PARAM[panel_id])</ondown>
+			</control>
+			<control type="group">
+				<left>3</left>
+				<top>66</top>
+				<include>VisibleFadeAnimation</include>
+				<visible>Control.HasFocus($PARAM[button_id])</visible>
+				<control type="label">
+					<top>32</top>
+					<width>1198</width>
+					<height>40</height>
+					<font>font48_title</font>
+					<textoffsetx>20</textoffsetx>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<label>$INFO[Window($PARAM[window_id]).Property(MoreInfoTitle)]</label>
+				</control>
+				<control type="textbox">
+					<left>20</left>
+					<top>85</top>
+					<width>1158</width>
+					<height>280</height>
+					<align>justify</align>
+					<font>font18_textbox</font>
+					<label>$INFO[Window($PARAM[window_id]).Property(MoreInfoContent)]</label>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+				</control>
+			</control>
+			<control type="panel" id="$PARAM[panel_id]">
+				<top>78</top>
+				<width>1198</width>
+				<height>360</height>
+				<ondown condition="$PARAM[ondown_condition]">$PARAM[panel_ondown]</ondown>
+				<ondown condition="$PARAM[ondown_condition2]">$PARAM[panel_ondown2]</ondown>
+				<orientation>horizontal</orientation>
+				<visible allowhiddenfocus="true">!Control.HasFocus($PARAM[button_id])</visible>
+				<include>VisibleFadeAnimation</include>
+				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+				<itemlayout height="72" width="1198" condition="!Skin.HasSetting(MoreVideoInfoDetails) | Integer.IsLess(Container($PARAM[panel_id]).NumItems,6)">
+					<control type="label">
+						<width>1198</width>
+						<height>70</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.Label2,, ]$INFO[ListItem.Label,[COLOR grey], [/COLOR]]</label>
+						<textoffsetx>20</textoffsetx>
+					</control>
+				</itemlayout>
+				<focusedlayout height="72" width="1198" condition="!Skin.HasSetting(MoreVideoInfoDetails) | Integer.IsLess(Container($PARAM[panel_id]).NumItems,6)">
+					<control type="image">
+						<top>5</top>
+						<width>1198</width>
+						<height>62</height>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
+						<visible>Control.HasFocus($PARAM[panel_id])</visible>
+						<include>VisibleFadeAnimation</include>
+					</control>
+					<control type="label">
+						<width>1198</width>
+						<height>70</height>
+						<font>font15</font>
+						<label>$INFO[ListItem.Label2,, ]$INFO[ListItem.Label]</label>
+						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[panel_id])">Conditional</animation>
+						<textoffsetx>20</textoffsetx>
+					</control>
+				</focusedlayout>
+				<itemlayout height="72" width="599" condition="Skin.HasSetting(MoreVideoInfoDetails) + Integer.IsGreater(Container($PARAM[panel_id]).NumItems,5)">
+					<control type="label">
+						<width>599</width>
+						<height>70</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.Label2,, ]$INFO[ListItem.Label,[COLOR grey], [/COLOR]]</label>
+						<textoffsetx>20</textoffsetx>
+					</control>
+				</itemlayout>
+				<focusedlayout height="72" width="599" condition="Skin.HasSetting(MoreVideoInfoDetails) + Integer.IsGreater(Container($PARAM[panel_id]).NumItems,5)">
+					<control type="image">
+						<top>5</top>
+						<width>599</width>
+						<height>62</height>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
+						<visible>Control.HasFocus($PARAM[panel_id])</visible>
+						<include>VisibleFadeAnimation</include>
+					</control>
+					<control type="label">
+						<width>599</width>
+						<height>70</height>
+						<font>font15</font>
+						<label>$INFO[ListItem.Label2,, ]$INFO[ListItem.Label]</label>
+						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[panel_id])">Conditional</animation>
+						<textoffsetx>20</textoffsetx>
+					</control>
+				</focusedlayout>
+				<content>
+					<include>$PARAM[include]</include>
+				</content>
+			</control>
+			<control type="group">
+				<visible>!Control.HasFocus($PARAM[button_id])</visible>
+				<left>-13</left>
+				<top>240</top>
+				<control type="button">
+					<width>36</width>
+					<height>36</height>
+					<texturefocus flipx="true" colordiffuse="grey">arrowright2.png</texturefocus>
+					<texturenofocus flipx="true" colordiffuse="grey">arrowright2.png</texturenofocus>
+					<visible>Container($PARAM[panel_id]).HasPrevious</visible>
+					<include>VisibleFadeAnimation</include>
+				</control>
+				<control type="button">
+					<left>1185</left>
+					<width>36</width>
+					<height>36</height>
+					<texturefocus colordiffuse="grey">arrowright2.png</texturefocus>
+					<texturenofocus colordiffuse="grey">arrowright2.png</texturenofocus>
+					<visible>Container($PARAM[panel_id]).HasNext</visible>
+					<include>VisibleFadeAnimation</include>
+				</control>
+			</control>
+			<control type="image">
+				<top>433</top>
+				<height>1</height>
+				<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+			</control>
+		</control>
+	</include>
+	<include name="InfoContentDetails">
+		<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoContentTMDbHelperPerson</include>
+		<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoContentSets</include>
+		<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoContentMovies</include>
+		<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoContentTVShows</include>
+		<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoContentEpisodes</include>
+		<include condition="!String.IsEqual(ListItem.Property(item.type),person)">InfoContentGeneral</include>
+	</include>
+	<include name="CustomInfoContentDetails">
+		<include condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">CustomInfoContentMovies</include>
+		<include condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">CustomInfoContentTVShows</include>
+		<include>CustomInfoContentGeneral</include>
+	</include>
 	<include name="InfoContentSets">
 		<item>
-			<label>$INFO[Window(Home).Property(SkinInfo.Set.Movies.Years)]</label>
-			<label2>$LOCALIZE[652]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[652])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(SkinInfo.Set.Movies.Years)])</onclick>
+			<label>$VAR[VideoDirectorVar]</label>
+			<label2>$LOCALIZE[20348]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20348])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCVAR[VideoDirectorVar])</onclick>
 			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Years))</visible>
+			<visible>!String.IsEmpty(Container(4501).ListItem.Property(director.collection)) | !String.IsEmpty(Container(4500).ListItemNoWrap(0).Director)</visible>
 		</item>
 		<item>
-			<label>$INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</label>
-			<label2>$LOCALIZE[20339]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20339])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(SkinInfo.Set.Movies.Director)])</onclick>
+			<label>$VAR[VideoWriterVar]</label>
+			<label2>$LOCALIZE[20418]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20418])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCVAR[VideoWriterVar])</onclick>
 			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))</visible>
+			<visible>!String.IsEmpty(Container(4501).ListItem.Property(writer.collection)) | !String.IsEmpty(Container(4500).ListItemNoWrap(0).Writer)</visible>
 		</item>
 		<item>
-			<label>$INFO[Window(Home).Property(SkinInfo.Set.Movies.Writer)]</label>
-			<label2>$LOCALIZE[20417]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20417])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(SkinInfo.Set.Movies.Writer)])</onclick>
-			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Writer))</visible>
-		</item>
-		<item>
-			<label>$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</label>
+			<label>$VAR[VideoGenreVar]</label>
 			<label2>$LOCALIZE[515]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCVAR[VideoGenreVar])</onclick>
 			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre))</visible>
+			<visible>!String.IsEmpty(Container(4501).ListItem.Property(genre.collection)) | !String.IsEmpty(Container(4500).ListItemNoWrap(0).Genre)</visible>
 		</item>
 	</include>
 	<include name="InfoContentMovies">
 		<item>
 			<label>$INFO[ListItem.Director]</label>
 			<label2>$LOCALIZE[20339]:</label2>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(DirectorID,True)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(ActorName,$INFO[ListItem.Director])</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">ActivateWindow(1129)</onclick>
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SendClick(2003,13)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(ActorName,$INFO[ListItem.Director],Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(DirectorID,True,Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Director)</visible>
 		</item>
 		<item>
@@ -1062,20 +1006,97 @@
 			<visible>!String.IsEmpty(ListItem.Premiered)</visible>
 		</item>
 	</include>
+	<include name="CustomInfoContentMovies">
+		<item>
+			<label>$INFO[Container(4800).ListItem.Director]</label>
+			<label2>$LOCALIZE[20339]:</label2>
+			<onfocus>ClearProperty(person_id,Home)</onfocus>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsGreater(Container(4800).ListItem.Property(director.count),1)">RunScript(plugin.video.themoviedb.helper,add_query='"$INFO[Container(4800).ListItem.Property(director.collection)]"',type=person,call_auto=1111)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">SetProperty(DirectorID,True,Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">Skin.TimerStart(startbusyspinner)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">SetProperty(tmdb_person_search_string,$INFO[Container(4800).ListItem.Director],Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">ActivateWindow(1107)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Director)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Director]</label>
+			<label2>$LOCALIZE[20339]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Director) + !String.IsEmpty(Container(4801).ListItem.Director)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.Writer]</label>
+			<label2>$LOCALIZE[20417]:</label2>
+			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(MoreInfoTitle,$LOCALIZE[20417])</onclick>
+			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Writer])</onclick>
+			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(64)</onclick>
+			<onfocus>ClearProperty(person_id,Home)</onfocus>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsGreater(Container(4800).ListItem.Property(writer.count),1)">RunScript(plugin.video.themoviedb.helper,add_query='"$INFO[Container(4800).ListItem.Writer]"',type=person,call_auto=1111)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(writer.count),2)">SetProperty(person_id,$INFO[Container(4801).ListItem.Property(Writer.1.TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(writer.count),2)">ActivateWindow(1109)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Writer)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Writer]</label>
+			<label2>$LOCALIZE[20417]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Writer) + !String.IsEmpty(Container(4801).ListItem.Writer)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Genre])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Container(4801).ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Property(Budget)]</label>
+			<label2>$LOCALIZE[31850]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31850])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4801).ListItem.Property(Budget)])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4801).ListItem.Property(Budget)) + !String.IsEqual(Container(4801).ListItem.Property(Budget),$0) + !Skin.HasSetting(TMDbHelper.HideBudgetRevenue) + String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Property(Revenue)]</label>
+			<label2>$LOCALIZE[31851]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31851])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4801).ListItem.Property(Revenue)])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4801).ListItem.Property(Revenue)) + !String.IsEqual(Container(4801).ListItem.Property(Revenue),$0) + !Skin.HasSetting(TMDbHelper.HideBudgetRevenue) + String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.Premiered]</label>
+			<label2>$LOCALIZE[172]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[172])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Premiered]</label>
+			<label2>$LOCALIZE[172]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Container(4801).ListItem.Premiered)</visible>
+		</item>
+	</include>
 	<include name="InfoContentTVShows">
 		<item>
-			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
+			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
 			<label2>$LOCALIZE[19031]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[19031])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Next_Aired.Name)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Next_Aired.Title)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)])</onclick>
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)]</label>
+			<label>$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)]</label>
 			<label2>$LOCALIZE[31374]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31374])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Last_Aired.Name)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Last_Aired.Title)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)])</onclick>
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</visible>
 		</item>
@@ -1096,12 +1117,56 @@
 			<visible>!String.IsEmpty(ListItem.Premiered)</visible>
 		</item>
 	</include>
+	<include name="CustomInfoContentTVShows">
+		<item>
+			<label>$INFO[Container(4800).ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Genre])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Container(4801).ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.Premiered]</label>
+			<label2>$LOCALIZE[31452]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31452])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Premiered]</label>
+			<label2>$LOCALIZE[172]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Container(4801).ListItem.Premiered)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(4801).ListItem.Property(Next_Aired.Title)]$INFO[Container(4801).ListItem.Property(Next_Aired), (,)]</label>
+			<label2>$LOCALIZE[19031]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[19031])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4801).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(4801).ListItem.Property(Next_Aired.Title)]$INFO[Container(4801).ListItem.Property(Next_Aired), (,)])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4801).ListItem.Property(Next_Aired))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Property(Last_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(4801).ListItem.Property(Last_Aired.Title)]$INFO[Container(4801).ListItem.Property(Last_Aired), (,)]</label>
+			<label2>$LOCALIZE[31374]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31374])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4801).ListItem.Property(Last_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(4801).ListItem.Property(Last_Aired.Title)]$INFO[Container(4801).ListItem.Property(Last_Aired), (,)])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4801).ListItem.Property(Last_Aired))</visible>
+		</item>
+	</include>
 	<include name="InfoContentEpisodes">
 		<item>
 			<label>$INFO[ListItem.Director]</label>
 			<label2>$LOCALIZE[20339]:</label2>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(DirectorID,True)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(ActorName,$INFO[ListItem.Director])</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(DirectorID,True,Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(ActorName,$INFO[ListItem.Director],Home)</onclick>
 			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">ActivateWindow(1129)</onclick>
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SendClick(2003,13)</onclick>
 			<visible>!String.IsEmpty(ListItem.Director)</visible>
@@ -1188,7 +1253,7 @@
 			<label2>$LOCALIZE[573]:</label2>
 			<onclick>Dialog.Close(movieinformation)</onclick>
 			<onclick>ActivateWindow(Videos,$INFO[ListItem.Path],return)</onclick>
-			<visible>!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(ListItem.Path) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
+			<visible>!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(ListItem.Path) + !Skin.HasSetting(Disable.VideoInfoPathDetails) + !String.StartsWith(ListItem.FilenameAndPath,stack://)</visible>
 		</item>
 		<item>
 			<label>$INFO[ListItem.Filename]</label>
@@ -1196,7 +1261,73 @@
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21800])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Filename])</onclick>
 			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(ListItem.Filename) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
+			<visible>!String.IsEmpty(ListItem.Filename) + !Skin.HasSetting(Disable.VideoInfoPathDetails) + !String.StartsWith(ListItem.FilenameAndPath,stack://)</visible>
+		</item>
+		<item>
+			<label>$INFO[ListItem.FilenameAndPath]</label>
+			<label2>$LOCALIZE[573]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[573])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.FilenameAndPath])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.FilenameAndPath) + !Skin.HasSetting(Disable.VideoInfoPathDetails) + String.StartsWith(ListItem.FilenameAndPath,stack://)</visible>
+		</item>
+	</include>
+	<include name="CustomInfoContentGeneral">
+		<item>
+			<label>$INFO[Window(Home).Property(item_percentplayed)]</label>
+			<label2>$LOCALIZE[575]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[575])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Window(Home).Property(item_percentplayed)])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + !String.IsEmpty(Window(Home).Property(item_percentplayed))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.LastPlayed]</label>
+			<label2>$LOCALIZE[568]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[568])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.LastPlayed])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.LastPlayed)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.DateAdded]</label>
+			<label2>$LOCALIZE[570]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[570])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.DateAdded])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.DateAdded)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.Playcount]</label>
+			<label2>$LOCALIZE[567]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[567])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Playcount])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Playcount)</visible>
+		</item>
+		<!-- Tags Not Available for Perfomance Reasons, Use TMDBh -->
+		<!-- <item>
+			<label>$INFO[Container(4801).ListItem.Tag]</label>
+			<label2>$LOCALIZE[20459]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20459])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4801).ListItem.Tag])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>String.IsEmpty(Container(4800).ListItem.Property(tag)) + !String.IsEmpty(Container(4801).ListItem.Tag)</visible>
+		</item> -->
+		<item>
+			<label>$INFO[Container(4800).ListItem.Property(file)]</label>
+			<label2>$LOCALIZE[573]:</label2>
+			<onclick>Dialog.Close(all,true)</onclick>
+			<onclick>ActivateWindow(Videos,$ESCINFO[Container(4800).ListItem.Property(file)],return)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Property(file)) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
+		</item>
+		<item>
+			<label>$INFO[Window(Home).Property(item_filename)]</label>
+			<label2>$LOCALIZE[21800]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21800])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(item_filename)])</onclick>
+			<onclick>SetFocus(4700)</onclick>
+			<visible>!String.IsEmpty(Window(Home).Property(item_filename)) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
 		</item>
 	</include>
 	<include name="InfoContentTMDbHelperPerson">
@@ -1241,49 +1372,38 @@
 			<visible>!String.IsEmpty(ListItem.Property(Aliases))</visible>
 		</item>
 	</include>
-	<include name="InfoDefaultRuntime">
-		<control type="group">
-			<visible>[!String.IsEmpty(Container(9143).ListItem.Property(Duration)) + !String.IsEqual(Container(9143).ListItem.Property(Duration),0) | !String.IsEmpty(ListItem.Duration)]</visible>
-			<width>120</width>
-			<height>90</height>
-			<control type="label">
-				<width>auto</width>
-				<height>60</height>
-				<align>center</align>
-				<label>$INFO[ListItem.Duration(mins)]</label>
-				<font>font48_bold</font>
-				<textcolor>grey</textcolor>
-				<visible>!String.IsEmpty(ListItem.Duration)</visible>
+	<include name="InfoPlot">
+		<param name="top" default="0" />
+		<param name="width" default="1162" />
+		<param name="height" default="345" />
+		<param name="label" default="$VAR[VideoPlotVar]" />
+		<param name="button_id" default="90003" />
+		<definition>
+			<control type="textbox">
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<label>$PARAM[label]</label>
+				<align>justify</align>
+				<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus($PARAM[button_id])</autoscroll>
+				<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[button_id])">Conditional</animation>
+				<visible>$PARAM[visible]</visible>
 			</control>
-			<control type="label">
-				<width>auto</width>
-				<height>60</height>
-				<align>center</align>
-				<label>$INFO[Container(9143).ListItem.Property(Duration)]</label>
-				<font>font48_bold</font>
-				<textcolor>grey</textcolor>
-				<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + String.IsEmpty(ListItem.Duration)</visible>
-			</control>
-			<control type="label">
-				<top>50</top>
-				<width>auto</width>
-				<height>30</height>
-				<align>center</align>
-				<label>[LOWERCASE]$LOCALIZE[12391][/LOWERCASE]</label>
-				<font>font12</font>
-				<textcolor>grey</textcolor>
-			</control>
-		</control>
+		</definition>
 	</include>
-	<include name="InfoHourMinRuntime">
-		<control type="label">
-			<width max="160">auto</width>
-			<height>90</height>
-			<font>font48_bold</font>
-			<textcolor>grey</textcolor>
-			<label>$VAR[ItemDurationVar]</label>
-			<visible>[!String.IsEmpty(Container(9143).ListItem.Property(Duration)) + !String.IsEqual(Container(9143).ListItem.Property(Duration),0) | !String.IsEmpty(ListItem.Duration)]</visible>
-		</control>
+	<include name="InfoRuntime">
+		<param name="label" default="$VAR[DurationVar]" />
+		<param name="visible" default="!String.IsEmpty(ListItem.Duration) | !String.IsEmpty(Container(9143).ListItem.Property(Duration))" />
+		<definition>
+			<control type="label">
+				<width max="160">auto</width>
+				<height>90</height>
+				<font>font48_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$PARAM[label]</label>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
 	</include>
 	<include name="InfoEpNumber">
 		<control type="label">
@@ -1295,44 +1415,58 @@
 		</control>
 	</include>
 	<include name="InfoMPAA">
-		<control type="image">
-			<width>135</width>
-			<height>90</height>
-			<include>MediaFlagValues</include>
-			<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-		</control>
+		<param name="texture" default="$VAR[RatingFlagVar]" />
+		<definition>
+			<control type="image">
+				<width>135</width>
+				<height>90</height>
+				<include>MediaFlagValues</include>
+				<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$PARAM[texture]</texture>
+			</control>
+		</definition>
 	</include>
 	<include name="InfoSetRating">
 		<control type="label">
 			<width>auto</width>
 			<align>center</align>
-			<label>$INFO[ListItem.Rating,$LOCALIZE[31146] ]</label>
+			<label>$LOCALIZE[652]: $INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]</label>
+			<font>font16_title_bold</font>
+			<textcolor>grey</textcolor>
+		</control>
+		<control type="label">
+			<width>auto</width>
+			<align>center</align>
+			<label>$INFO[ListItem.Rating, • $LOCALIZE[31146] ]</label>
 			<font>font16_title_bold</font>
 			<textcolor>grey</textcolor>
 		</control>
 	</include>
 	<include name="InfoTVWatchedPercent">
-		<control type="group">
-			<visible>Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)</visible>
-			<width>165</width>
-			<control type="label">
-				<width>auto</width>
-				<height>60</height>
-				<align>center</align>
-				<label>$INFO[ListItem.Property(WatchedEpisodePercent),,%]</label>
-				<font>font16_title_bold</font>
-				<textcolor>grey</textcolor>
+		<param name="visible" default="Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)" />
+		<param name="label" default="$INFO[ListItem.Property(WatchedEpisodePercent),,%]" />
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<width>165</width>
+				<control type="label">
+					<width>auto</width>
+					<height>60</height>
+					<align>center</align>
+					<label>$PARAM[label]</label>
+					<font>font16_title_bold</font>
+					<textcolor>grey</textcolor>
+				</control>
+				<control type="label">
+					<top>50</top>
+					<width>auto</width>
+					<height>30</height>
+					<align>center</align>
+					<label>[LOWERCASE]$LOCALIZE[19256][/LOWERCASE]</label>
+					<font>font12</font>
+					<textcolor>grey</textcolor>
+				</control>
 			</control>
-			<control type="label">
-				<top>50</top>
-				<width>auto</width>
-				<height>30</height>
-				<align>center</align>
-				<label>[LOWERCASE]$LOCALIZE[19256][/LOWERCASE]</label>
-				<font>font12</font>
-				<textcolor>grey</textcolor>
-			</control>
-		</control>
+		</definition>
 	</include>
 	<include name="InfoMainRating">
 		<control type="group">
@@ -1357,6 +1491,34 @@
 			</control>
 		</control>
 	</include>
+	<!-- <include name="InfoMainRating">
+		<definition>
+			<param name="visible" default="!String.IsEmpty(ListItem.Rating)" />
+			<param name="rating" default="$INFO[ListItem.Rating]" />
+			<param name="label" default="$VAR[RatingAndVotesVar]" />
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<width>165</width>
+				<control type="label">
+					<width>165</width>
+					<height>60</height>
+					<align>center</align>
+					<label>$PARAM[rating]</label>
+					<font>font16_title_bold</font>
+					<textcolor>grey</textcolor>
+				</control>
+				<control type="label">
+					<top>50</top>
+					<width>165</width>
+					<height>30</height>
+					<align>center</align>
+					<label>[LOWERCASE]$PARAM[label][/LOWERCASE]</label>
+					<font>font12</font>
+					<textcolor>grey</textcolor>
+				</control>
+			</control>
+		</definition>
+	</include> -->
 	<include name="InfoTop250">
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Top250)</visible>
@@ -1377,8 +1539,31 @@
 			</control>
 		</control>
 	</include>
+	<!-- <include name="InfoTop250">
+		<definition>
+			<param name="visible" default="!String.IsEmpty(ListItem.Top250)" />
+			<param name="label" default="$INFO[ListItem.Top250, #]" />
+			<control type="grouplist">
+				<visible>$PARAM[visible]</visible>
+				<width>165</width>
+				<orientation>horizontal</orientation>
+				<control type="image">
+					<width>65</width>
+					<aspectratio>keep</aspectratio>
+					<colordiffuse>grey</colordiffuse>
+					<texture>logos/imdb.png</texture>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<align>center</align>
+					<font>font16_title_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$PARAM[label]</label>
+				</control>
+			</control>
+		</definition>
+	</include> -->
 	<include name="InfoExtendedRatings">
-		<!-- Kodi RT Critic Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallcritics))</visible>
 			<width>165</width>
@@ -1396,7 +1581,6 @@
 				<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper RT Critic Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
 			<width>165</width>
@@ -1414,7 +1598,6 @@
 				<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
 			</control>
 		</control>
-		<!-- Kodi RT Audience Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallaudience))</visible>
 			<width>165</width>
@@ -1432,7 +1615,6 @@
 				<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper RT Audience Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(ListItem.Rating(tomatometerallaudience)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
 			<width>165</width>
@@ -1450,7 +1632,6 @@
 				<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</label>
 			</control>
 		</control>
-		<!-- Kodi TMDb Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(themoviedb))</visible>
 			<width>165</width>
@@ -1487,7 +1668,6 @@
 				<label>$INFO[ListItem.Rating(tmdb)]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper TMDb Rating -->
 		<control type="grouplist">
 			<visible>String.IsEmpty(ListItem.Rating(themoviedb)) + String.IsEmpty(ListItem.Rating(tmdb)) + !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)</visible>
 			<width>165</width>
@@ -1506,7 +1686,6 @@
 				<label>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</label>
 			</control>
 		</control>
-		<!-- Kodi Trakt Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(trakt))</visible>
 			<width>165</width>
@@ -1524,7 +1703,6 @@
 				<label>$INFO[ListItem.Rating(trakt)]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper Trakt Rating -->
 		<control type="grouplist">
 			<visible>String.IsEmpty(ListItem.Rating(trakt)) + !String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating))</visible>
 			<width>165</width>
@@ -1553,11 +1731,60 @@
 			<label>$INFO[ListItem.Property(Age),, $LOCALIZE[31544]]</label>
 		</control>
 	</include>
-	<!-- DialogAddonInfo -->
 	<include name="AddonInfoTextboxSmall">
 		<height>520</height>
 	</include>
 	<include name="AddonInfoTextboxLarge">
 		<height>690</height>
+	</include>
+	<include name="TMDbHInfoContentPerson">
+		<item>
+			<label>$INFO[Container(11090).ListItem.Property(Birthday)]</label>
+			<label2>$LOCALIZE[21893]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21893])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Birthday)])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Birthday))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(11090).ListItem.Property(Deathday)]</label>
+			<label2>$LOCALIZE[21897]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21897])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Deathday)])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Deathday))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(11090).ListItem.Property(Born)]</label>
+			<label2>$LOCALIZE[31600]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31600])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Born)])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Born))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(11090).ListItem.Property(Gender)]</label>
+			<label2>$LOCALIZE[39025]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[39025])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Gender)])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Gender))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(11090).ListItem.Property(Known_For.1.Title)]$INFO[Container(11090).ListItem.Property(Known_For.2.Title),$COMMA ]$INFO[Container(11090).ListItem.Property(Known_For.3.Title),$COMMA ]$INFO[Container(11090).ListItem.Property(Known_For.4.Title),$COMMA ]</label>
+			<label2>$LOCALIZE[31546]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31546])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Known_For.1.Title),$LOCALIZE[31546]: ]$ESCINFO[Container(11090).ListItem.Property(Known_For.2.Title),$COMMA ]$ESCINFO[Container(11090).ListItem.Property(Known_For.3.Title),$COMMA ]$ESCINFO[Container(11090).ListItem.Property(Known_For.4.Title),$COMMA ])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Known_For.1.Title)) + !String.IsEmpty(Container(11090).ListItem.Property(Known_For.2.Title)) + !String.IsEmpty(Container(11090).ListItem.Property(Known_For.3.Title)) + !String.IsEmpty(Container(11090).ListItem.Property(Known_For.4.Title))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(11090).ListItem.Property(Aliases)]</label>
+			<label2>$LOCALIZE[31614]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31614])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Aliases)])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Aliases))</visible>
+		</item>
 	</include>
 </includes>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fonts>
 	<fontset id="Default" idloc="31390">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -15,10 +17,9 @@
 			<size>21</size>
 		</font>
 		<font>
-			<name>font11_compact</name>
+			<name>font11</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
 			<size>24</size>
-			<linespacing>.8</linespacing>
 		</font>
 		<font>
 			<name>font12</name>
@@ -34,6 +35,11 @@
 			<name>font13_bold</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
 			<style>bold</style>
+			<size>30</size>
+		</font>
+		<font>
+			<name>font13mono</name>
+			<filename>RobotoMono-Regular.ttf</filename>
 			<size>30</size>
 		</font>
 		<font>
@@ -261,7 +267,7 @@
 			<name>font_version</name>
 			<filename>LeagueGothic-Regular.ttf</filename>
 			<linespacing>0</linespacing>
-			<size>60</size>
+			<size>50</size>
 		</font>
 		<font>
 			<name>font_MainMenu</name>
@@ -291,8 +297,6 @@
 			<style>uppercase</style>
 			<size>120</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>
@@ -308,6 +312,8 @@
 		</font>
 	</fontset>
 	<fontset id="Arial" idloc="31391" unicode="true">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -322,7 +328,7 @@
 			<size>36</size>
 		</font>
 		<font>
-			<name>font11_compact</name>
+			<name>font11</name>
 			<filename>arial.ttf</filename>
 			<size>36</size>
 			<linespacing>.8</linespacing>
@@ -342,6 +348,11 @@
 			<filename>arial.ttf</filename>
 			<style>bold</style>
 			<size>36</size>
+		</font>
+		<font>
+			<name>font13mono</name>
+			<filename>RobotoMono-Regular.ttf</filename>
+			<size>30</size>
 		</font>
 		<font>
 			<name>font14_textbox</name>
@@ -578,8 +589,6 @@
 			<style>uppercase</style>
 			<size>140</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>
@@ -595,6 +604,8 @@
 		</font>
 	</fontset>
 	<fontset id="NoTo" idloc="31964">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -846,8 +857,6 @@
 			<style>uppercase</style>
 			<size>120</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>
@@ -863,6 +872,8 @@
 		</font>
 	</fontset>
 	<fontset id="Raleway" idloc="31223">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -1114,8 +1125,6 @@
 			<style>uppercase</style>
 			<size>120</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>
@@ -1131,6 +1140,8 @@
 		</font>
 	</fontset>
 	<fontset id="Ubuntu Condensed" idloc="31481">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -1145,7 +1156,7 @@
 			<size>21</size>
 		</font>
 		<font>
-			<name>font11_compact</name>
+			<name>font11</name>
 			<filename>UbuntuCondensed-Regular.ttf</filename>
 			<size>24</size>
 			<linespacing>.8</linespacing>
@@ -1164,6 +1175,11 @@
 			<name>font13_bold</name>
 			<filename>UbuntuCondensed-Regular.ttf</filename>
 			<style>bold</style>
+			<size>30</size>
+		</font>
+		<font>
+			<name>font13mono</name>
+			<filename>RobotoMono-Regular.ttf</filename>
 			<size>30</size>
 		</font>
 		<font>
@@ -1416,8 +1432,6 @@
 			<style>uppercase</style>
 			<size>120</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>
@@ -1433,6 +1447,8 @@
 		</font>
 	</fontset>
 	<fontset id="Fira Sans" idloc="31482">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -1684,8 +1700,6 @@
 			<style>uppercase</style>
 			<size>120</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>
@@ -1701,6 +1715,8 @@
 		</font>
 	</fontset>
 	<fontset id="Caviar Dreams" idloc="31483">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -1715,7 +1731,7 @@
 			<size>21</size>
 		</font>
 		<font>
-			<name>font11_compact</name>
+			<name>font11</name>
 			<filename>CaviarDreams.ttf</filename>
 			<size>24</size>
 			<linespacing>.8</linespacing>
@@ -1734,6 +1750,11 @@
 			<name>font13_bold</name>
 			<filename>CaviarDreams.ttf</filename>
 			<style>bold</style>
+			<size>30</size>
+		</font>
+		<font>
+			<name>font13mono</name>
+			<filename>RobotoMono-Regular.ttf</filename>
 			<size>30</size>
 		</font>
 		<font>
@@ -1985,8 +2006,6 @@
 			<style>uppercase</style>
 			<size>120</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>
@@ -2002,6 +2021,8 @@
 		</font>
 	</fontset>
 	<fontset id="Play Regular" idloc="31484">
+		<!-- Icons -->
+		<include>CommonIconFonts</include>
 		<!-- Lyrics Fonts -->
 		<include>LyricsFonts</include>
 		<!-- Normal Fonts -->
@@ -2016,7 +2037,7 @@
 			<size>21</size>
 		</font>
 		<font>
-			<name>font11_compact</name>
+			<name>font11</name>
 			<filename>play.regular.ttf</filename>
 			<size>24</size>
 			<linespacing>.8</linespacing>
@@ -2036,6 +2057,11 @@
 			<filename>play.regular.ttf</filename>
 			<style>bold</style>
 			<size>29</size>
+		</font>
+		<font>
+			<name>font13mono</name>
+			<filename>RobotoMono-Regular.ttf</filename>
+			<size>30</size>
 		</font>
 		<font>
 			<name>font14_textbox</name>
@@ -2286,8 +2312,6 @@
 			<style>uppercase</style>
 			<size>120</size>
 		</font>
-		<!-- Icons -->
-		<include>CommonIconFonts</include>
 		<!-- Misc Fonts -->
 		<font>
 			<name>fontCDartist</name>

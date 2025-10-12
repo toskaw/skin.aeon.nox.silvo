@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) + System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$INFO[ListItem.Icon],prop=MyProp,radius=10)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[PosterVar]"')</onload>
-	<onload>SetFocus(9003)</onload>
+	<onload>SetFocus(90003)</onload>
 	<onload condition="String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5010)</onload>
 	<onload condition="!String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5000)</onload>
+	<!-- <onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(thumb)|Icon,Home)</onload> -->
 	<controls>
 		<control type="group">
-			<animation effect="slide" start="-729,0" end="0,0" time="320" tween="quadratic" condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
-			<animation effect="slide" start="-729,0" end="0,0" delay="250" time="320" tween="quadratic" condition="Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
+			<animation effect="slide" start="-729,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="-729,0" time="500" tween="quadratic">WindowClose</animation>
 			<control type="image">
 				<width>729</width>
@@ -40,8 +40,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<animation effect="slide" start="1242,0" end="0,0" time="320" tween="quadratic" condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
-			<animation effect="slide" start="1242,0" end="0,0" delay="250" time="320" tween="quadratic" condition="Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
+			<animation effect="slide" start="1242,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="1242,0" time="500" tween="quadratic">WindowClose</animation>
 			<left>729</left>
 			<control type="group">
@@ -169,7 +168,7 @@
 					<top>99</top>
 					<width>1188</width>
 					<height>1</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 				</control>
 				<control type="grouplist">
 					<top>90</top>
@@ -264,7 +263,7 @@
 					<top>175</top>
 					<width>1188</width>
 					<height>1</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 				</control>
 				<control type="button" id="64">
 					<left>-12</left>
@@ -307,7 +306,7 @@
 							<top>5</top>
 							<width>598</width>
 							<height>62</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(300)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -335,7 +334,7 @@
 							<top>5</top>
 							<width>1195</width>
 							<height>62</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(300)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -694,14 +693,14 @@
 					<top>526</top>
 					<width>1188</width>
 					<height>1</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 				</control>
 				<control type="image">
 					<left>-11</left>
 					<top>588</top>
 					<width>1188</width>
 					<height>1</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 				</control>
 				<control type="button">
 					<left>-43</left>
@@ -739,7 +738,7 @@
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label>[B]$VAR[VideoInfoButtonLabelVar][/B]</label>
 						<enable>no</enable>
-						<visible>!ControlGroup(9001).HasFocus | ControlGroup(9001).HasFocus(9003)</visible>
+						<visible>!ControlGroup(9001).HasFocus | ControlGroup(9001).HasFocus(90003)</visible>
 					</control>
 					<control type="button">
 						<top>516</top>
@@ -752,7 +751,7 @@
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label>$VAR[DialogInfoDetailsLabelVar]</label>
 						<enable>no</enable>
-						<visible>ControlGroup(9001).HasFocus + !Control(9003).HasFocus</visible>
+						<visible>ControlGroup(9001).HasFocus + !Control(90003).HasFocus</visible>
 					</control>
 					<control type="grouplist" id="9000">
 						<left>620</left>
@@ -804,8 +803,8 @@
 							<include>ButtonInfoDialogsCommonValues</include>
 							<texturenofocus />
 							<alttexturenofocus />
-							<label></label>
-							<altlabel></altlabel>
+							<label></label>
+							<altlabel></altlabel>
 							<onclick>SendClick(7)</onclick>
 							<usealttexture>!String.IsEmpty(ListItem.UserRating)</usealttexture>
 						</control>
@@ -815,7 +814,7 @@
 							<width>70</width>
 							<texturenofocus />
 							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
+							<label></label>
 							<onclick>SendClick(6)</onclick>
 							<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
 						</control>
@@ -843,7 +842,7 @@
 				<control type="group" id="9002">
 					<width>1190</width>
 					<height>510</height>
-					<control type="button" id="9003">
+					<control type="button" id="90003">
 						<description>FS Plot</description>
 						<texturenofocus />
 						<width>1186</width>
@@ -867,20 +866,18 @@
 						<align>justify</align>
 						<label>$VAR[MusicInfoPlotVar]</label>
 						<autoscroll time="3000" delay="6000" repeat="6000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-						<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9003)">Conditional</animation>
+						<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90003)">Conditional</animation>
 					</control>
 				</control>
 				<control type="panel" id="9050">
 					<width>1195</width>
 					<height>490</height>
 					<preloaditems>2</preloaditems>
-					<onup>9003</onup>
-					<viewtype label="">list</viewtype>
+					<onup>90003</onup>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<orientation>horizontal</orientation>
 					<onclick>Dialog.Close(musicinformation)</onclick>
-					<onclick condition="!System.AddonIsEnabled(script.embuary.helper)">ActivateWindow(Music,"musicdb://albums/$INFO[ListItem.DBID]/")</onclick>
-					<onclick condition="System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=goto,path='"musicdb://albums/$INFO[ListItem.DBID]/"',target=music)</onclick>
+					<onclick>ActivateWindow(Music,musicdb://albums/$INFO[Container(9050).ListItem.DBID]/,return)</onclick>
 					<visible>String.IsEqual(ListItem.DBTYPE,artist)</visible>
 					<itemlayout height="245" width="239">
 						<control type="image">
@@ -888,10 +885,10 @@
 							<top>2</top>
 							<width>218</width>
 							<height>218</height>
-							<bordersize>4</bordersize>
-							<bordertexture colordiffuse="shadow" border="4">thumbs/thumbnail_focused.png</bordertexture>
 							<aspectratio aligny="top">scale</aspectratio>
-							<texture background="true" fallback="DefaultMusicAlbums.png">$INFO[ListItem.Icon]</texture>
+							<texture border="4" background="true" fallback="DefaultMusicAlbums.png">$INFO[ListItem.Icon]</texture>
+							<bordersize>4</bordersize>
+							<bordertexture border="4" infill="false">colors/black.png</bordertexture>
 						</control>
 						<control type="label">
 							<left>2</left>
@@ -912,10 +909,10 @@
 								<top>2</top>
 								<width>218</width>
 								<height>218</height>
-								<bordersize>4</bordersize>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="4">thumbs/thumbnail_focused.png</bordertexture>
 								<aspectratio aligny="top">scale</aspectratio>
-								<texture background="true" fallback="DefaultMusicAlbums.png">$INFO[ListItem.Icon]</texture>
+								<texture border="4" background="true" fallback="DefaultMusicAlbums.png">$INFO[ListItem.Icon]</texture>
+								<bordersize>4</bordersize>
+								<bordertexture border="4" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							</control>
 							<control type="label">
 								<left>2</left>
@@ -941,7 +938,6 @@
 					<height>492</height>
 					<onleft>50</onleft>
 					<onright>50</onright>
-					<viewtype label="">list</viewtype>
 					<pagecontrol>61</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<orientation>horizontal</orientation>
@@ -969,7 +965,7 @@
 						<control type="image">
 							<width>593</width>
 							<height>82</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 							<visible>Control.HasFocus(50)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -999,7 +995,6 @@
 				<width>1186</width>
 				<height>240</height>
 				<onup>9050</onup>
-				<viewtype label="">list</viewtype>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<orientation>horizontal</orientation>
 				<visible>Control.HasFocus(9050) | Control.HasFocus(9060)</visible>
@@ -1027,7 +1022,7 @@
 					<control type="image">
 						<width>593</width>
 						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 						<visible>Control.HasFocus(9060)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
@@ -1076,5 +1071,6 @@
 			<include>HiddenObject</include>
 			<imagepath background="true">$INFO[ListItem.Icon]</imagepath>
 		</control>
+		<include>DebugWindow</include>
 	</controls>
 </window>

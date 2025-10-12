@@ -2,7 +2,7 @@
 <window>
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<controls>
-		<control type="panel" id="50">
+		<control type="list" id="50">
 			<include>HiddenList</include>
 		</control>
 		<control type="group">
@@ -12,22 +12,20 @@
 				<effect type="zoom" start="150" end="100" center="auto" time="500" tween="cubic" easing="out" />
 				<effect type="fade" end="100" time="250" />
 			</animation>
-			<control type="image">
-				<left>-1</left>
-				<top>-1</top>
-				<width>1802</width>
-				<height>902</height>
-				<texture>colors/black90.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">-4</param>
+				<param name="top">-4</param>
+				<param name="width">1810</param>
+				<param name="height">910</param>
+				<param name="texture">colors/black90.png</param>
+			</include>
 			<control type="image">
 				<width>360</width>
 				<height>360</height>
 				<aspectratio>keep</aspectratio>
-				<texture background="true">$INFO[ListItem.Icon]</texture>
-				<bordertexture border="1">thumbs/panel_border.png</bordertexture>
-				<bordersize>1</bordersize>
+				<texture border="2" background="true">$INFO[ListItem.Icon]</texture>
+				<bordersize>2</bordersize>
+				<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 			</control>
 			<control type="grouplist" id="9000">
 				<top>360</top>
@@ -134,7 +132,7 @@
 				<left>360</left>
 				<width>1</width>
 				<height>900</height>
-				<texture colordiffuse="grey4">separator_vertical.png</texture>
+				<texture colordiffuse="grey4">colors/white.png</texture>
 			</control>
 			<control type="group">
 				<left>361</left>
@@ -190,13 +188,13 @@
 					<top>200</top>
 					<width>1439</width>
 					<height>3</height>
-					<texture colordiffuse="grey4">separator_horizontal.png</texture>
+					<texture colordiffuse="grey4">colors/white.png</texture>
 				</control>
 				<control type="image">
 					<top>740</top>
 					<width>1439</width>
 					<height>3</height>
-					<texture colordiffuse="grey4">separator_horizontal.png</texture>
+					<texture colordiffuse="grey4">colors/white.png</texture>
 					<visible>[!String.IsEqual(ListItem.AddonLifecycleType,$LOCALIZE[24169]) | !String.IsEmpty(ListItem.AddonDisclaimer)] + String.IsEmpty(Window(Home).Property(AddonNews))</visible>
 				</control>
 				<control type="group">
@@ -276,5 +274,8 @@
 				</control>
 			</control>
 		</control>
+		<include content="DebugWindow">
+			<param name="visible">Window.IsDialogTopMost(addoninformation)</param>
+		</include>
 	</controls>
 </window>

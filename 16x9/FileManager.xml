@@ -9,12 +9,13 @@
 				<left>50</left>
 				<top>60</top>
 				<include>WindowOpenCloseAnimation</include>
-				<control type="image">
-					<top>148</top>
-					<width>885</width>
-					<height>784</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">27</param>
+					<param name="top">178</param>
+					<param name="width">830</param>
+					<param name="height">730</param>
+					<param name="texture">colors/black.png</param>
+				</include>
 				<control type="label" id="101">
 					<top>910</top>
 					<width>821</width>
@@ -71,7 +72,7 @@
 						<control type="image">
 							<width>821</width>
 							<height>60</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 							<visible>Control.HasFocus(20)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -100,12 +101,13 @@
 				<left>985</left>
 				<top>60</top>
 				<include>WindowOpenCloseAnimation</include>
-				<control type="image">
-					<top>148</top>
-					<width>885</width>
-					<height>784</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">27</param>
+					<param name="top">178</param>
+					<param name="width">830</param>
+					<param name="height">730</param>
+					<param name="texture">colors/black.png</param>
+				</include>
 				<control type="label" id="102">
 					<left>50</left>
 					<top>910</top>
@@ -164,7 +166,7 @@
 						<control type="image">
 							<width>821</width>
 							<height>60</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 							<visible>Control.HasFocus(21)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -220,11 +222,11 @@
 					</control>
 					<control type="label">
 						<width>30</width>
-						<height>40</height>
-						<font>IconTiny</font>
+						<height>42</height>
+						<font>IconTinyMD</font>
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<label></label>
+						<label></label>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -237,11 +239,11 @@
 					</control>
 					<control type="label">
 						<width>30</width>
-						<height>40</height>
-						<font>IconTiny</font>
+						<height>42</height>
+						<font>IconTinyMD</font>
 						<textcolor>grey2</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<label></label>
+						<label></label>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -263,11 +265,11 @@
 					</control>
 					<control type="label">
 						<width>30</width>
-						<height>40</height>
-						<font>IconTiny</font>
+						<height>42</height>
+						<font>IconTinyMD</font>
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<label></label>
+						<label></label>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -280,14 +282,15 @@
 					</control>
 					<control type="label">
 						<width>30</width>
-						<height>40</height>
-						<font>IconTiny</font>
+						<height>42</height>
+						<font>IconTinyMD</font>
 						<textcolor>grey2</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<label></label>
+						<label></label>
 					</control>
 				</control>
 			</control>
 		</control>
+		<include>DebugWindow</include>
 	</controls>
 </window>
