@@ -197,7 +197,7 @@
 								<texturebg border="3">colors/blank.png</texturebg>
 								<midtexture>colors/white50.png</midtexture>
 							</control>
-							<control type="slider" id="403">
+<!--							<control type="slider" id="403">
 								<top>-6</top>
 								<width>1208</width>
 								<height>24</height>
@@ -205,7 +205,7 @@
 								<textureslidernib colordiffuse="$VAR[ThemeLabelColor]">osd/progress/nub_bar.png</textureslidernib>
 								<textureslidernibfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</textureslidernibfocus>
 								<visible>Player.SeekEnabled</visible>
-							</control>
+							</control> -->
 						</control>
 						<control type="progress">
 							<width>1208</width>
