@@ -1,3 +1,12 @@
+# Aeon Nox: SiLVO toskaw 改造版
+
+老眼で文字が見にくかったので、フォントサイズを全部1.5倍にした改造版です
+
+## 改造点
+- [x] フォントサイズを1.5倍に変更
+- [x] TV番組リストのアイコンを放送局から動画のサムネールに変更
+- [x] アイコン表示の画像サイズを横長に変更
+
 # Aeon Nox: SiLVO
 [![Kodi badge](https://img.shields.io/badge/SKIN%20for-Kodi-blue.svg)](https://forum.kodi.tv/forumdisplay.php?fid=142)
 
