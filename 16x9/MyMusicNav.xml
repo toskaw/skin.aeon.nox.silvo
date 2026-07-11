@@ -5,7 +5,6 @@
 	<menucontrol>9051</menucontrol>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
-	<!-- <onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload> -->
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<controls>
@@ -114,7 +113,7 @@
 			<visible>Container.Content(artists)</visible>
 		</control>
 		<control type="group">
-			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<visible>$EXP[StartupIntroActive]</visible>
 			<include>CommonBackground</include>
 			<control type="group">
 				<visible>Control.IsVisible(52) | Control.IsVisible(54)</visible>
@@ -266,7 +265,7 @@
 				<top>970</top>
 				<width>100%</width>
 				<height>140</height>
-				<texture border="1">gradient_floor.png</texture>
+				<texture>gradient_floor.png</texture>
 				<visible>Control.IsVisible(52) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(500)</visible>
 			</control>
 			<!-- Scrollbars -->
@@ -313,7 +312,7 @@
 						<label>137</label>
 					</control>
 					<control type="edit" id="19">
-						<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+						<visible>$EXP[CanFilterSimple]</visible>
 						<description>Filter</description>
 						<textwidth>345</textwidth>
 						<include>ButtonCommonValues</include>
@@ -385,7 +384,7 @@
 				</control>
 				<include>MediaMenuPlayerControls</include>
 			</control>
-			<include>DefaultLetterJump</include>
+			<include>LetterJump</include>
 			<!-- Fullscreen Fanart -->
 			<control type="group">
 				<visible>!String.IsEmpty(Window(Home).Property(Enable.FullscreenFanart))</visible>

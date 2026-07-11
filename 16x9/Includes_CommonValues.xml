@@ -56,6 +56,8 @@
 		<aligny>center</aligny>
 		<font>font13</font>
 		<radioposx>300</radioposx>
+		<texturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+		<alttexturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</alttexturefocus>
 	</include>
 	<include name="SettingsButtonCommonValues">
 		<param name="is_addon_status" default="false" />
@@ -110,6 +112,17 @@
 		<textcolor>grey</textcolor>
 		<focusedcolor>white</focusedcolor>
 	</include>
+	<include name="ButtonMenuCommonValues">
+		<width>510</width>
+		<height>60</height>
+		<font>font14</font>
+		<textoffsetx>30</textoffsetx>
+		<textcolor>grey2</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<aligny>center</aligny>
+		<texturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+		<texturenofocus border="10,8,10,8">button_nofocus.png</texturenofocus>
+	</include>
 	<include name="Objects_KeyOff">
 		<textoffsety>32</textoffsety>
 		<align>center</align>
@@ -151,7 +164,7 @@
 		<shadowcolor>shadow</shadowcolor>
 		<focusedcolor>white</focusedcolor>
 	</include>
-	<include name="SettingsPanelButtonsValues">
+	<!-- <include name="SettingsPanelButtonsValues">
 		<height>90</height>
 		<width>1256</width>
 		<textoffsetx>15</textoffsetx>
@@ -160,7 +173,7 @@
 		<font>font15</font>
 		<textcolor>grey2</textcolor>
 		<focusedcolor>grey2</focusedcolor>
-	</include>
+	</include> -->
 	<!-- Media Flags -->
 	<include name="MediaFlagValues">
 		<width>170</width>
@@ -185,11 +198,4 @@
 			<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
 		</definition>
 	</include>
-	<!-- EXP -->
-	<expression name="HasVerticalMenuWithExtended">String.IsEqual(Skin.String(MainMenu.Layout),vertical) + [String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]</expression>
-	<expression name="WidgetFanartVisible">[[String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart)) + ControlGroup(90010).HasFocus] | [String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart.2)) + ControlGroup(90020).HasFocus]]</expression>
-	<expression name="HasInfoPlotArt">[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(ListItem.Art(discart))] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(clearart))] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(tvshow.clearart))</expression>
-	<expression name="NoInfoPlotArt">[String.IsEqual(ListItem.DBTYPE,movie) + [!Skin.HasSetting(discartoninfo) | String.IsEmpty(ListItem.Art(discart))]] | [String.IsEqual(ListItem.DBTYPE,tvshow) + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(clearart))]] | [[String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(tvshow.clearart))]] | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person) | String.IsEqual(ListItem.DBTYPE,musicvideo)</expression>
-	<expression name="HasCustomInfoPlotArt">[String.IsEqual(Window(Home).Property(item_dbtype),movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(Container(4800).ListItem.Art(discart))] | [String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(Container(4800).ListItem.Art(clearart))] | [String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(Container(4800).ListItem.Art(tvshow.clearart))</expression>
-	<expression name="NoCustomInfoPlotArt">[String.IsEqual(Window(Home).Property(item_dbtype),movie) + [!Skin.HasSetting(discartoninfo) | String.IsEmpty(Container(4800).ListItem.Art(discart))]] | [String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(Container(4800).ListItem.Art(clearart))]] | [[String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(Container(4800).ListItem.Art(tvshow.clearart))]]</expression>
 </includes>

@@ -33,7 +33,7 @@
 					<viewtype label="535">list</viewtype>
 					<pagecontrol>95060</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<visible>True + !Skin.HasSetting(skinvariables.viewtypes) | [$EXP[Exp_View_50] + Skin.HasSetting(skinvariables.viewtypes)]</visible>
+					<visible>True + !Skin.HasSetting(Enable_ViewLocking) | [$EXP[ShortcutView_50] + Skin.HasSetting(Enable_ViewLocking)]</visible>
 					<itemlayout height="120" width="1140" condition="Container.Content(movies)">
 						<control type="image">
 							<left>10</left>
@@ -951,7 +951,7 @@
 			<control type="group">
 				<left>1320</left>
 				<top>200</top>
-				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
+				<visible>Container.Content(movies) | Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211]) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
 				<include>VisibleFadeAnimation</include>
 				<control type="image">
 					<width>570</width>
@@ -964,7 +964,7 @@
 					<visible>Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
 				</control>
 				<control type="group">
-					<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+					<visible>Container.Content(movies) | Container.Content(videoversions) | Container.Content(tvshows) | Container.Content(seasons)</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -1015,7 +1015,7 @@
 			<control type="group" id="8001">
 				<left>1280</left>
 				<top>125</top>
-				<visible>![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
+				<visible>![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)] + ![Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211])] + !Container.Content(videoextras)</visible>
 				<animation effect="fade" time="250">Visible</animation>
 				<include content="BackPanel">
 					<param name="left">-4</param>
@@ -2224,7 +2224,7 @@
 					<viewtype label="535">list</viewtype>
 					<pagecontrol>95060</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<visible>True + !Skin.HasSetting(skinvariables.viewtypes) | [$EXP[Exp_View_50] + Skin.HasSetting(skinvariables.viewtypes)]</visible>
+					<visible>True + !Skin.HasSetting(Enable_ViewLocking) | [$EXP[ShortcutView_50] + Skin.HasSetting(Enable_ViewLocking)]</visible>
 					<itemlayout height="60" width="1140" condition="!Container.Content(addons)">
 						<control type="label">
 							<left>30</left>
@@ -2441,10 +2441,10 @@
 				</control>
 				<control type="image">
 					<left>32</left>
-					<top>406</top>
+					<top>464</top>
 					<width>506</width>
-					<height>60</height>
-					<texture border="1">separator2.png</texture>
+					<height>1</height>
+					<texture colordiffuse="grey4">colors/white.png</texture>
 					<visible>Container.Content(episodes) | Container.Content(videos)</visible>
 				</control>
 				<control type="button">
@@ -2462,10 +2462,10 @@
 				</control>
 				<control type="image">
 					<left>32</left>
-					<top>500</top>
+					<top>544</top>
 					<width>506</width>
-					<height>60</height>
-					<texture border="1">separator2.png</texture>
+					<height>1</height>
+					<texture colordiffuse="grey4">colors/white.png</texture>
 					<visible>Container.Content(episodes) | Container.Content(videos)</visible>
 				</control>
 				<control type="group">

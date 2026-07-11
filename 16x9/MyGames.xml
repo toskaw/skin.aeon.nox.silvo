@@ -96,7 +96,7 @@
 				<top>970</top>
 				<width>100%</width>
 				<height>140</height>
-				<texture border="1">gradient_floor.png</texture>
+				<texture>gradient_floor.png</texture>
 			</control>
 		</control>
 		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
@@ -107,7 +107,7 @@
 			<control type="grouplist" id="9050">
 				<include>MediaMenuTop</include>
 				<control type="edit" id="19">
-					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+					<visible>$EXP[CanFilterSimple]</visible>
 					<description>Filter</description>
 					<textwidth>345</textwidth>
 					<include>ButtonCommonValues</include>

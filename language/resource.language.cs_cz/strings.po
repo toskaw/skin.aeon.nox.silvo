@@ -5,17 +5,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KODI Skins\n"
-"Report-Msgid-Bugs-To: translations@kodi.tv\n"
+"Report-Msgid-Bugs-To: http://trac.kodi.tv/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-11-27 12:13+0000\n"
-"Last-Translator: HansCR <h.vanek@gmail.com>\n"
+"PO-Revision-Date: 2026-07-10 03:22+0000\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-aeon-nox-silvo/cs_cz/>\n"
 "Language: cs_cz\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 2026.7\n"
+
+msgctxt "Addon Summary"
+msgid "Created by BigNoid, Modded by SiLVO, and Widgets by Mr. V"
+msgstr "Vytvořil BigNoid, upravil SiLVO, widgety od Mr. V"
+
+msgctxt "Addon Description"
+msgid "Completely redesigned to create a modern look, while retaining the classic Aeon feel."
+msgstr "Kompletně přepracováno pro moderní vzhled při zachování klasického stylu Aeon."
 
 msgctxt "#31000"
 msgid "Directed by"
@@ -23,7 +31,7 @@ msgstr "Režisér"
 
 msgctxt "#31001"
 msgid "Written by"
-msgstr "Scénarista"
+msgstr "Scenárista"
 
 msgctxt "#31002"
 msgid "Blurred album thumb"
@@ -31,11 +39,11 @@ msgstr "Rozmazaný náhled alba"
 
 msgctxt "#31003"
 msgid "Enable viewtype defaults"
-msgstr ""
+msgstr "Povolit výchozí typy zobrazení"
 
 msgctxt "#31004"
 msgid "Working"
-msgstr "Pracuji"
+msgstr "Probíhá zpracování"
 
 msgctxt "#31005"
 msgid "Fixed"
@@ -43,7 +51,7 @@ msgstr "Pevné"
 
 msgctxt "#31006"
 msgid "View Options"
-msgstr "Zobrazit možnosti"
+msgstr "Možnosti zobrazení"
 
 msgctxt "#31007"
 msgid "Cast listing provider"
@@ -55,7 +63,7 @@ msgstr "Načítání rozšířených informací"
 
 msgctxt "#31009"
 msgid "Glow Bar for TopBar"
-msgstr ""
+msgstr "Zvýrazňující pruh horního panelu"
 
 msgctxt "#31010"
 msgid "Next episode"
@@ -71,7 +79,7 @@ msgstr "Vysílá"
 
 msgctxt "#31013"
 msgid "Glow Bar for Floor"
-msgstr ""
+msgstr "Zvýrazňující pruh spodního panelu"
 
 msgctxt "#31014"
 msgid "Extras"
@@ -79,15 +87,15 @@ msgstr "Extra doplňky"
 
 msgctxt "#31015"
 msgid "Set path to video genre fanart folder"
-msgstr "Nastavit cestu do video genre fanart složky"
+msgstr "Nastavit cestu ke složce s fanartem žánrů videí"
 
 msgctxt "#31016"
 msgid "Poster"
-msgstr "Plagát"
+msgstr "Plakát"
 
 msgctxt "#31017"
 msgid "Set path to music genre fanart folder"
-msgstr "Nastavit cestu do video music fanart složky"
+msgstr "Nastavit cestu ke složce s fanartem hudebních žánrů"
 
 msgctxt "#31018"
 msgid "InfoPanel"
@@ -154,8 +162,8 @@ msgid "Random episodes"
 msgstr "Náhodná epizoda"
 
 msgctxt "#31034"
-msgid "Enable to \"lock\" specific views using the Skin Variables script. Disable this if you prefer Kodi to handle the view modes."
-msgstr "Povolit pro „uzamknutí“ konkrétního zobrazení pomocí skriptu Skin Variables. Zakázat, pokud preferujete, aby se o režimy zobrazení staralo Kodi."
+msgid "Enable to \"lock\" specific views. Disable this if you prefer Kodi to handle view modes."
+msgstr ""
 
 msgctxt "#31035"
 msgid "Set independent viewtype rules for both the library and plugins."
@@ -179,7 +187,7 @@ msgstr "Činnosti"
 
 msgctxt "#31040"
 msgid "Now Playing"
-msgstr "Nyní přehrávám"
+msgstr "Právě se přehrává"
 
 msgctxt "#31041"
 msgid "Select widget"
@@ -203,7 +211,7 @@ msgstr "Větší"
 
 msgctxt "#31046"
 msgid "SEEKING"
-msgstr "VYHLEDÁVÁM"
+msgstr "VYHLEDÁVÁNÍ"
 
 msgctxt "#31047"
 msgid "Set item icon"
@@ -255,7 +263,7 @@ msgstr "Informace PVR"
 
 msgctxt "#31059"
 msgid "Artist Slideshow"
-msgstr "Prezentace umělce"
+msgstr "Artist Slideshow"
 
 msgctxt "#31060"
 msgid "Pointer size"
@@ -341,6 +349,14 @@ msgctxt "#31080"
 msgid "Manage submenu"
 msgstr "Změna podnabídky"
 
+msgctxt "#31081"
+msgid "Top movies"
+msgstr ""
+
+msgctxt "#31082"
+msgid "Top TV"
+msgstr ""
+
 msgctxt "#31083"
 msgid "Enable Next Aired information in the videolibrary"
 msgstr "Povolit informaci o dalším vysílání v knihovně videí"
@@ -365,6 +381,10 @@ msgctxt "#31088"
 msgid "BannerWall"
 msgstr "Bannerová zeď"
 
+msgctxt "#31089"
+msgid "Next up"
+msgstr ""
+
 msgctxt "#31090"
 msgid "Seconds"
 msgstr "Vteřin"
@@ -377,6 +397,10 @@ msgctxt "#31092"
 msgid "Fullscreen fanart"
 msgstr "Celoobrazovkový fanart"
 
+msgctxt "#31093"
+msgid "Recently added (grouped)"
+msgstr ""
+
 msgctxt "#31094"
 msgid "List view layout"
 msgstr "Seznam rozvržení"
@@ -385,9 +409,13 @@ msgctxt "#31095"
 msgid "Slim List"
 msgstr "Úzký seznam"
 
+msgctxt "#31096"
+msgid "Created by"
+msgstr ""
+
 msgctxt "#31097"
 msgid "Movie playlist statistics"
-msgstr "Statistiky playlistů filmů"
+msgstr "Statistiky filmových seznamů stop"
 
 msgctxt "#31098"
 msgid "TV Show playlist statistics"
@@ -395,7 +423,7 @@ msgstr "Statistiky seznamů televizních pořadů"
 
 msgctxt "#31099"
 msgid "Musicvideo playlist statistics"
-msgstr "Statistiky playlistů hudebních videí"
+msgstr "Statistiky seznamů stop hudebních videí"
 
 msgctxt "#31100"
 msgid "View:"
@@ -449,13 +477,37 @@ msgctxt "#31112"
 msgid "More from director"
 msgstr "Více od režiséra"
 
+msgctxt "#31113"
+msgid "Manage artwork"
+msgstr ""
+
+msgctxt "#31114"
+msgid "More videos from"
+msgstr ""
+
 msgctxt "#31115"
 msgid "Alternate sublabel"
 msgstr "Alternativní popisek"
 
+msgctxt "#31116"
+msgid "Related artists"
+msgstr ""
+
 msgctxt "#31117"
 msgid "Fallback"
 msgstr "Náhradní"
+
+msgctxt "#31118"
+msgid "Use online metadata (genre tags, plot, record label) for music videos."
+msgstr ""
+
+msgctxt "#31119"
+msgid "Prefer online metadata for music videos"
+msgstr ""
+
+msgctxt "#31120"
+msgid "Skin Playlists"
+msgstr ""
 
 msgctxt "#31121"
 msgid "Enable autocomplete"
@@ -464,6 +516,10 @@ msgstr "Zapnout automatické dokončování"
 msgctxt "#31122"
 msgid "Enables the autocomplete feature of the virtual keyboard."
 msgstr "Povolit funkci automatického dokončování na virtuální klávesnici."
+
+msgctxt "#31123"
+msgid "Live Backgrounds"
+msgstr ""
 
 msgctxt "#31124"
 msgid "Show Background \"Now Playing\" Video"
@@ -559,7 +615,7 @@ msgstr "IMDb logo"
 
 msgctxt "#31152"
 msgid "Poster"
-msgstr "Plagát"
+msgstr "Plakát"
 
 msgctxt "#31153"
 msgid "Disable views"
@@ -567,7 +623,7 @@ msgstr "Vypnout pohledy"
 
 msgctxt "#31154"
 msgid "Show Artist Slideshow when playing music"
-msgstr "Zobrazit přehlídku interpreta při přehrávání hudby"
+msgstr "Zobrazit Artist Slideshow při přehrávání hudby"
 
 msgctxt "#31155"
 msgid "Widgets"
@@ -603,11 +659,11 @@ msgstr "Střídat"
 
 msgctxt "#31164"
 msgid "Enable live background for movie sets"
-msgstr "Povolit živé pozadí pro soubory filmů"
+msgstr "Povolit živé pozadí pro sbírky filmů"
 
 msgctxt "#31165"
 msgid "Enable to display live background for movie sets when browsing your movie library."
-msgstr "Povolit pro zobrazení živého pozadí pro kolekce filmů při procházení knihovny filmů."
+msgstr "Povolí zobrazení živého pozadí pro sbírky filmů při procházení knihovny filmů."
 
 msgctxt "#31168"
 msgid "Enable to make the submenu permanently visible. Default is hidden until pressing down."
@@ -699,7 +755,7 @@ msgstr "Změní označení doby běhu v celém vzhledu z minut na hodiny/minuty.
 
 msgctxt "#31205"
 msgid "Lyrics Source"
-msgstr "Zdroj textu písní"
+msgstr "Zdroj textů písní"
 
 msgctxt "#31210"
 msgid "Popular Movies"
@@ -819,7 +875,7 @@ msgstr "Galerie"
 
 msgctxt "#31252"
 msgid "TopBar"
-msgstr "TopBar"
+msgstr "Horní panel"
 
 msgctxt "#31253"
 msgid "Banners"
@@ -863,7 +919,7 @@ msgstr "Skrýt štítky nabídky"
 
 msgctxt "#31264"
 msgid "Displays artist fanart provided by the Artist Slideshow addon as the background of the home menu."
-msgstr "Zobrazí jako pozadí domovské nabídky fanart umělce poskytovaný doplňkem Artist Slideshow."
+msgstr "Zobrazí jako pozadí domovské nabídky fanart interpreta poskytovaný doplňkem Artist Slideshow."
 
 msgctxt "#31265"
 msgid "This will reset the main menu to its defaults.[CR]This action cannot be undone."
@@ -1230,8 +1286,8 @@ msgid "Resets the path to your music genre fanart folder."
 msgstr "Resetuje cestu ke složce fanartů žánru hudby."
 
 msgctxt "#31384"
-msgid "This activates animated snow falling over all backgrounds.[CR]This may cause perfomance issues on low powered devices."
-msgstr "Toto aktivuje animaci sněžení přes všechna pozadí.[CR]Může způsobit problémy s výkonem na slabších zařízeních."
+msgid "This activates falling snow or leaves over all backgrounds.[CR]This may cause performance issues on low powered devices."
+msgstr ""
 
 msgctxt "#31385"
 msgid "Use this to control the opacity of the widgets. [CR]100% has no transparency."
@@ -1343,7 +1399,7 @@ msgstr "Nastavení barvy Motivu Hlavní Nabídky."
 
 msgctxt "#31418"
 msgid "Choose the colour for the TopBar in views and other sections not on the Home screen."
-msgstr "Zvolte barvu pro horní panel v zobrazeních a jiných oblastech, ne v Domácí obrazovce."
+msgstr "Zvolte barvu horního panelu v zobrazeních a dalších částech mimo domovskou obrazovku."
 
 msgctxt "#31420"
 msgid "Choose the colour of the Progress bar displayed during fullscreen video playback."
@@ -1377,10 +1433,6 @@ msgctxt "#31427"
 msgid "Skin Shortcuts is responsible for handeling all aspects of the main menu."
 msgstr "Vzhled Zkratky je zodpovědný za obsluhu všech aspektů hlavní nabídky."
 
-msgctxt "#31428"
-msgid "The Grab Fanart script provides the random fanart slideshows for the main menu."
-msgstr "Skript Grab Fanart poskytuje náhodnou přehlídku fanartů pro hlavní nabídku."
-
 msgctxt "#31430"
 msgid "Resource image addon for displaying the default white studio icons throughout the skin."
 msgstr "Doplněk s kolekcí obrázků pro zobrazování předvolených bílých ikon filmových studií v celém vzhledu."
@@ -1390,8 +1442,8 @@ msgid "Resource image addon for displaying the default white recording label ico
 msgstr "Doplněk s kolekcí obrázků pro zobrazování předvolených bílých ikon nahrávacích studií v celém vzhledu."
 
 msgctxt "#31433"
-msgid "Skin Variables is a helper script used for many functions."
-msgstr "Skin Variables je pomocný script využitelný pro mnoho funkcí."
+msgid "Skin Info is a helper script used for many functions."
+msgstr ""
 
 msgctxt "#31434"
 msgid "Alt fanart"
@@ -1411,7 +1463,7 @@ msgstr "Používat nápisy při pozastavení"
 
 msgctxt "#31438"
 msgid "Click to install Artist Slideshow"
-msgstr "Kliknutím nainstalujete Prezentaci umělce"
+msgstr "Kliknutím nainstalujete Artist Slideshow"
 
 msgctxt "#31439"
 msgid "There are no default backgrounds in this skin, would you like to choose one now?[CR]You can still select one in Skin settings > General if you choose No."
@@ -1515,7 +1567,7 @@ msgstr "Stiskněte [B]VLEVO[/B] pro zobrazení zápletky.[CR]Stiskněte [B]VPRAV
 
 msgctxt "#31467"
 msgid "This will disable the TopBar completely and ignore all on/off view settings."
-msgstr "Úplně zakáže Horní lištu a nastavení jejich jednotlivých komponent budou ignorovaná."
+msgstr "Úplně zakáže horní panel a všechna nastavení jeho zapnutí/vypnutí v jednotlivých zobrazeních budou ignorována."
 
 msgctxt "#31468"
 msgid "Restore"
@@ -1523,7 +1575,7 @@ msgstr "Obnovit"
 
 msgctxt "#31469"
 msgid "Disable the TopBar"
-msgstr "Zakázat Horní lištu"
+msgstr "Zakázat horní panel"
 
 msgctxt "#31470"
 msgid "Set Weather background"
@@ -1555,7 +1607,7 @@ msgstr "Trakt je používaný na synchronizaci vašich kolekcí a osobních hodn
 
 msgctxt "#31478"
 msgid "Artist Slideshow is used to display artist fanart for both the home screen and during fullscreen music playback."
-msgstr "Artist Slideshow je používaný na zobrazení fanartů interpretů jak na domácí obrazovce, tak i při přehrávaní hudby v režimu celé obrazovky."
+msgstr "Artist Slideshow se používá k zobrazení fanartu interpretů na domovské obrazovce i při přehrávání hudby v režimu celé obrazovky."
 
 msgctxt "#31479"
 msgid "Preshow Experience can create sequences of trivia slides, show video bumpers, play trailers and more to bring the experience of a movie theater to your living room."
@@ -1643,7 +1695,7 @@ msgstr "Skupina kanálů"
 
 msgctxt "#31502"
 msgid "Live TV"
-msgstr "Televize"
+msgstr "Živá TV"
 
 msgctxt "#31503"
 msgid "Add Group"
@@ -1679,7 +1731,7 @@ msgstr "JukeBox"
 
 msgctxt "#31511"
 msgid "Channel Options"
-msgstr "Nastavení kanálů"
+msgstr "Možnosti kanálů"
 
 msgctxt "#31512"
 msgid "Enable fullscreen information for recordings"
@@ -1767,7 +1819,7 @@ msgstr "Poslední přidané Seriály"
 
 msgctxt "#31533"
 msgid "Unwatched movies"
-msgstr "Neshlédnuté filmy"
+msgstr "Nezhlédnuté filmy"
 
 msgctxt "#31534"
 msgid "Best picture winners"
@@ -1811,7 +1863,7 @@ msgstr "roků"
 
 msgctxt "#31545"
 msgid "Crew"
-msgstr "Tým"
+msgstr "Štáb"
 
 msgctxt "#31546"
 msgid "Known for"
@@ -2075,7 +2127,7 @@ msgstr "Zdrojový balík pro ikony filmových žánrů"
 
 msgctxt "#31620"
 msgid "Floor"
-msgstr "Podlaha"
+msgstr "Spodní panel"
 
 msgctxt "#31622"
 msgid "Set movie genre icons"
@@ -2179,19 +2231,19 @@ msgstr "Čistě bílá"
 
 msgctxt "#31725"
 msgid "Coloured default"
-msgstr ""
+msgstr "Barevné výchozí"
 
 msgctxt "#31726"
 msgid "Coloured flat"
-msgstr ""
+msgstr "Barevné ploché"
 
 msgctxt "#31727"
 msgid "Coloured clear"
-msgstr ""
+msgstr "Barevné průhledné"
 
 msgctxt "#31728"
 msgid "Coloured clear white"
-msgstr ""
+msgstr "Barevné průhledné bílé"
 
 msgctxt "#31729"
 msgid "Show on panel"
@@ -2266,8 +2318,8 @@ msgid "Weekend Forecast"
 msgstr "Předpověď na víkend"
 
 msgctxt "#31904"
-msgid "10 Day Forecast"
-msgstr "Předpověď na 10 dní"
+msgid "Daily Forecast"
+msgstr ""
 
 msgctxt "#31905"
 msgid "Change the position of the system bar to the top or bottom of the screen."
@@ -2279,7 +2331,7 @@ msgstr "Pravděpodobnost srážek"
 
 msgctxt "#31909"
 msgid "Fetching forecast info..."
-msgstr "Získávám informace předpovědi..."
+msgstr "Získávají se informace o předpovědi..."
 
 msgctxt "#31911"
 msgid "Setup the Aeon Nox main menu"
@@ -2332,7 +2384,7 @@ msgstr "Zvolte co se zobrazí jako pozadí nabídek nabídky."
 
 msgctxt "#31926"
 msgid "Select library paths, add-ons, playlists or favourites as your menu item."
-msgstr "Vyberte cesty knihoven, doplňky, playlisty nebo oblíbené jako vaši položku nabídky."
+msgstr "Vyberte jako položku nabídky cesty knihoven, doplňky, seznamy stop nebo oblíbené položky."
 
 msgctxt "#31928"
 msgid "Aeon Nox main menu layout"
@@ -2413,7 +2465,7 @@ msgstr "Skrýt vizualizaci za fanartem (nejlépe funguje s waveform)"
 
 msgctxt "#31973"
 msgid "Mod delay"
-msgstr ""
+msgstr "Prodleva animace"
 
 msgctxt "#31974"
 msgid "Select the style of cases used in all views"
@@ -2460,6 +2512,26 @@ msgstr "Vybrat, kde má být umístěno tlačítko PreShow zážitek"
 msgctxt "#31994"
 msgid "Vertical Menu"
 msgstr "Svislá nabídka"
+
+#~ msgctxt "#31034"
+#~ msgid "Enable to \"lock\" specific views using the Skin Variables script. Disable this if you prefer Kodi to handle the view modes."
+#~ msgstr "Povolit pro „uzamknutí“ konkrétního zobrazení pomocí skriptu Skin Variables. Zakázat, pokud preferujete, aby se o režimy zobrazení staralo Kodi."
+
+#~ msgctxt "#31384"
+#~ msgid "This activates animated snow falling over all backgrounds.[CR]This may cause perfomance issues on low powered devices."
+#~ msgstr "Toto aktivuje animaci sněžení přes všechna pozadí.[CR]Může způsobit problémy s výkonem na slabších zařízeních."
+
+#~ msgctxt "#31428"
+#~ msgid "The Grab Fanart script provides the random fanart slideshows for the main menu."
+#~ msgstr "Skript Grab Fanart poskytuje náhodnou přehlídku fanartů pro hlavní nabídku."
+
+#~ msgctxt "#31433"
+#~ msgid "Skin Variables is a helper script used for many functions."
+#~ msgstr "Skin Variables je pomocný script využitelný pro mnoho funkcí."
+
+#~ msgctxt "#31904"
+#~ msgid "10 Day Forecast"
+#~ msgstr "Předpověď na 10 dní"
 
 #~ msgctxt "#31032"
 #~ msgid "Customise the mediaflags for the following views:[CR]List, Tripanel, Posters, Shift, BannerWall, Small Icons, Icons, RightList, MyFlix, & BigFan."

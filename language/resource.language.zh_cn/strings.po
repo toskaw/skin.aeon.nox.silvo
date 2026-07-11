@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KODI Skins\n"
-"Report-Msgid-Bugs-To: translations@kodi.tv\n"
+"Report-Msgid-Bugs-To: http://trac.kodi.tv/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2026-04-17 07:13+0000\n"
+"PO-Revision-Date: 2026-07-07 21:58+0000\n"
 "Last-Translator: wabisabi926 <wabisabi926@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-aeon-nox-silvo/zh_Hans/>\n"
 "Language: zh_cn\n"
@@ -15,7 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.7\n"
+
+msgctxt "Addon Summary"
+msgid "Created by BigNoid, Modded by SiLVO, and Widgets by Mr. V"
+msgstr "由 BigNoid 原创制作，SiLVO 负责改版优化，小组件由 Mr. V 开发"
+
+msgctxt "Addon Description"
+msgid "Completely redesigned to create a modern look, while retaining the classic Aeon feel."
+msgstr "全面重新设计，打造现代时尚外观，同时保留 Aeon 系列经典质感。"
 
 msgctxt "#31000"
 msgid "Directed by"
@@ -31,7 +39,7 @@ msgstr "模糊专辑缩略图"
 
 msgctxt "#31003"
 msgid "Enable viewtype defaults"
-msgstr "启用视图类型默认设置"
+msgstr "启用视图类型默认值"
 
 msgctxt "#31004"
 msgid "Working"
@@ -147,15 +155,15 @@ msgstr "随机电影"
 
 msgctxt "#31032"
 msgid "Customise the mediaflags for the following views:[CR]List, Tripanel, Posters, Shift, BannerWall, Icons, RightList, MyFlix, & BigFan."
-msgstr "为以下视图自定义媒体标志：[CR]列表、三面板、海报、Shift、横幅墙、图标、右列表、MyFlix 和 BigFan。"
+msgstr "自定义以下视图的媒体标志：[CR]List, Tripanel, Posters, Shift, BannerWall, Icons, RightList, MyFlix, & BigFan."
 
 msgctxt "#31033"
 msgid "Random episodes"
 msgstr "随机剧集"
 
 msgctxt "#31034"
-msgid "Enable to \"lock\" specific views using the Skin Variables script. Disable this if you prefer Kodi to handle the view modes."
-msgstr "使用皮肤变量脚本 \"锁定 \"特定视图。如果您希望由 Kodi 来处理视图模式，请禁用此功能。"
+msgid "Enable to \"lock\" specific views. Disable this if you prefer Kodi to handle view modes."
+msgstr ""
 
 msgctxt "#31035"
 msgid "Set independent viewtype rules for both the library and plugins."
@@ -323,7 +331,7 @@ msgstr "没有额外的功能"
 
 msgctxt "#31076"
 msgid "Landscape"
-msgstr "横向"
+msgstr "横版"
 
 msgctxt "#31077"
 msgid "ShowCase"
@@ -340,6 +348,14 @@ msgstr "平移"
 msgctxt "#31080"
 msgid "Manage submenu"
 msgstr "管理子菜单"
+
+msgctxt "#31081"
+msgid "Top movies"
+msgstr ""
+
+msgctxt "#31082"
+msgid "Top TV"
+msgstr ""
 
 msgctxt "#31083"
 msgid "Enable Next Aired information in the videolibrary"
@@ -365,6 +381,10 @@ msgctxt "#31088"
 msgid "BannerWall"
 msgstr "横幅墙"
 
+msgctxt "#31089"
+msgid "Next up"
+msgstr ""
+
 msgctxt "#31090"
 msgid "Seconds"
 msgstr "秒"
@@ -377,6 +397,10 @@ msgctxt "#31092"
 msgid "Fullscreen fanart"
 msgstr "全屏背景图"
 
+msgctxt "#31093"
+msgid "Recently added (grouped)"
+msgstr ""
+
 msgctxt "#31094"
 msgid "List view layout"
 msgstr "列表视图布局"
@@ -384,6 +408,10 @@ msgstr "列表视图布局"
 msgctxt "#31095"
 msgid "Slim List"
 msgstr "细列表"
+
+msgctxt "#31096"
+msgid "Created by"
+msgstr ""
 
 msgctxt "#31097"
 msgid "Movie playlist statistics"
@@ -449,13 +477,37 @@ msgctxt "#31112"
 msgid "More from director"
 msgstr "导演的更多作品"
 
+msgctxt "#31113"
+msgid "Manage artwork"
+msgstr ""
+
+msgctxt "#31114"
+msgid "More videos from"
+msgstr ""
+
 msgctxt "#31115"
 msgid "Alternate sublabel"
 msgstr "备用子标签"
 
+msgctxt "#31116"
+msgid "Related artists"
+msgstr ""
+
 msgctxt "#31117"
 msgid "Fallback"
 msgstr "备选"
+
+msgctxt "#31118"
+msgid "Use online metadata (genre tags, plot, record label) for music videos."
+msgstr ""
+
+msgctxt "#31119"
+msgid "Prefer online metadata for music videos"
+msgstr ""
+
+msgctxt "#31120"
+msgid "Skin Playlists"
+msgstr ""
 
 msgctxt "#31121"
 msgid "Enable autocomplete"
@@ -464,6 +516,10 @@ msgstr "启用自动补全"
 msgctxt "#31122"
 msgid "Enables the autocomplete feature of the virtual keyboard."
 msgstr "启用虚拟键盘的自动补全功能。"
+
+msgctxt "#31123"
+msgid "Live Backgrounds"
+msgstr ""
 
 msgctxt "#31124"
 msgid "Show Background \"Now Playing\" Video"
@@ -555,7 +611,7 @@ msgstr "来自 TMDb 的在线信息"
 
 msgctxt "#31150"
 msgid "IMDb logo"
-msgstr "IMDB徽标"
+msgstr "IMDB 徽标"
 
 msgctxt "#31152"
 msgid "Poster"
@@ -575,7 +631,7 @@ msgstr "部件"
 
 msgctxt "#31156"
 msgid "Clearart"
-msgstr "ClearART"
+msgstr "透明艺术图"
 
 msgctxt "#31157"
 msgid "Submenu always visible"
@@ -595,7 +651,7 @@ msgstr "扩展"
 
 msgctxt "#31161"
 msgid "Choose the position of the RSS feed. Top of the screen, bottom of the screen or the default location directly underneath the main menu."
-msgstr "选择RSS订阅的位置。屏幕顶部、屏幕底部或主菜单正下方的默认位置。"
+msgstr "选择 RSS 订阅的位置。屏幕顶部、屏幕底部或主菜单正下方的默认位置。"
 
 msgctxt "#31162"
 msgid "Alternate"
@@ -627,7 +683,7 @@ msgstr "模糊信息背后的背景"
 
 msgctxt "#31179"
 msgid "Live TV settings"
-msgstr "Live TV设置"
+msgstr "Live TV 设置"
 
 msgctxt "#31180"
 msgid "Minutes left"
@@ -691,7 +747,7 @@ msgstr "用于选择全局皮肤的默认 / 备用图像。"
 
 msgctxt "#31200"
 msgid "The Image Resource Select Add-on is used to choose a Kodi resource image pack similiar to weather artwork and icons."
-msgstr "图像资源选择插件用于选择诸如天气图片和图标的KODI资源图像包。"
+msgstr "图像资源选择插件用于选择诸如天气图片和图标的 KODI 资源图像包。"
 
 msgctxt "#31201"
 msgid "Changes the runtime labels throughout the skin from minutes to hours/minutes."
@@ -715,7 +771,7 @@ msgstr "单徽标"
 
 msgctxt "#31218"
 msgid "Use vinyl record instead of blank CD for disc fallback"
-msgstr "使用黑胶唱片作为回落的光盘图"
+msgstr "光盘备用图标使用黑胶唱片样式，而非空白光盘样式"
 
 msgctxt "#31219"
 msgid "Language flags"
@@ -723,7 +779,7 @@ msgstr "语言标识"
 
 msgctxt "#31220"
 msgid "RSS Feed"
-msgstr "RSS订阅"
+msgstr "RSS 订阅"
 
 msgctxt "#31222"
 msgid "Mini"
@@ -811,7 +867,7 @@ msgstr "横幅方式"
 
 msgctxt "#31249"
 msgid "BigFan"
-msgstr "大同人画"
+msgstr "大封面视图"
 
 msgctxt "#31251"
 msgid "Gallery"
@@ -851,7 +907,7 @@ msgstr "设置每张图片的多背景图循环速度"
 
 msgctxt "#31261"
 msgid "Choose the position of the RSS feed. Top of the screen or bottom of the screen."
-msgstr "选择RSS订阅的位置。屏幕顶部或屏幕底部。"
+msgstr "选择 RSS 订阅的位置。屏幕顶部或屏幕底部。"
 
 msgctxt "#31262"
 msgid "Hides the labels below the icons on the main menu."
@@ -1103,7 +1159,7 @@ msgstr "主菜单自定义工具"
 
 msgctxt "#31346"
 msgid "OSD Progress Bar"
-msgstr "OSD进度条"
+msgstr "OSD 进度条"
 
 msgctxt "#31347"
 msgid "Hide CD"
@@ -1111,7 +1167,7 @@ msgstr "隐藏光盘"
 
 msgctxt "#31348"
 msgid "Dimmer"
-msgstr "DIMMER"
+msgstr "亮度调节"
 
 msgctxt "#31349"
 msgid "Left"
@@ -1151,7 +1207,7 @@ msgstr "紧凑"
 
 msgctxt "#31363"
 msgid "No Guide"
-msgstr "无指引"
+msgstr "无指南"
 
 msgctxt "#31364"
 msgid "Timeshift"
@@ -1230,12 +1286,12 @@ msgid "Resets the path to your music genre fanart folder."
 msgstr "重置音乐类型背景图文件夹的路径。"
 
 msgctxt "#31384"
-msgid "This activates animated snow falling over all backgrounds.[CR]This may cause perfomance issues on low powered devices."
-msgstr "这会激活显示所有背景的动画雪花。[CR]这可能会导致低功耗设备出现性能问题。"
+msgid "This activates falling snow or leaves over all backgrounds.[CR]This may cause performance issues on low powered devices."
+msgstr ""
 
 msgctxt "#31385"
 msgid "Use this to control the opacity of the widgets. [CR]100% has no transparency."
-msgstr "使用此选项可以控制小组件的不透明度。[CR]100%为不透明。"
+msgstr "使用此选项可以控制小部件的不透明度。[CR]100% 为不透明。"
 
 msgctxt "#31386"
 msgid "Enable to set a global widget background overriding any per-widget settings."
@@ -1377,10 +1433,6 @@ msgctxt "#31427"
 msgid "Skin Shortcuts is responsible for handeling all aspects of the main menu."
 msgstr "外观快捷方式负责处理主菜单的所有方面。"
 
-msgctxt "#31428"
-msgid "The Grab Fanart script provides the random fanart slideshows for the main menu."
-msgstr "抓取背景图插件：为主菜单提供随机背景图轮播。"
-
 msgctxt "#31430"
 msgid "Resource image addon for displaying the default white studio icons throughout the skin."
 msgstr "资源图像插件，用于在整个皮肤中显示默认的白色工作室图标。"
@@ -1390,8 +1442,8 @@ msgid "Resource image addon for displaying the default white recording label ico
 msgstr "资源图像插件，用于在整个皮肤中显示默认的白色录制标签图标。"
 
 msgctxt "#31433"
-msgid "Skin Variables is a helper script used for many functions."
-msgstr "皮肤变量是一个用于实现多种功能的辅助脚本。"
+msgid "Skin Info is a helper script used for many functions."
+msgstr ""
 
 msgctxt "#31434"
 msgid "Alt fanart"
@@ -1447,7 +1499,7 @@ msgstr "按后退时隐藏主菜单元素"
 
 msgctxt "#31447"
 msgid "Show a popup displaying answers to some FREQUENTLY ASKED QUESTIONS posted on the Kodi forums."
-msgstr "显示一个弹出窗口，显示Kodi论坛上发布的一些常见问题的答案。"
+msgstr "显示一个弹出窗口，显示 Kodi 论坛上发布的一些常见问题的答案。"
 
 msgctxt "#31448"
 msgid "[B]CONFIGURE ADD-ONS[/B][CR]Manage your installed Add-ons[CR]Browse for and install Add-ons  •  Check for Add-on updates"
@@ -1551,7 +1603,7 @@ msgstr "评论员"
 
 msgctxt "#31477"
 msgid "Trakt is used to synchronize your collection and personal ratings to your Trakt.tv account."
-msgstr "TRAKT用于将您的收藏和个人评分同步到您的TRAKT.TV帐户。"
+msgstr "TRAKT 用于将您的收藏和个人评分同步到您的 TRAKT.TV 帐户。"
 
 msgctxt "#31478"
 msgid "Artist Slideshow is used to display artist fanart for both the home screen and during fullscreen music playback."
@@ -1623,7 +1675,7 @@ msgstr "将皮肤颜色重设为默认值"
 
 msgctxt "#31497"
 msgid "Move the system bar to the top of the home window. Only works when the RSS feed is NOT set to the high position when enabled in System > Interface > Skin."
-msgstr "将系统栏移动到主窗口的顶部。如果在系统>界面>外观中启用RSS订阅，则仅当RSS订阅未设置为高位置时才起作用。"
+msgstr "将系统栏移动到主窗口的顶部。如果在系统>界面>外观中启用 RSS 订阅，则仅当 RSS 订阅未设置为高位置时才起作用。"
 
 msgctxt "#31498"
 msgid "Move System Bar to top of screen"
@@ -1663,11 +1715,11 @@ msgstr "可用组"
 
 msgctxt "#31507"
 msgid "Show clearart in tv information"
-msgstr "在电视信息中显示ClearART"
+msgstr "在电视信息中显示透明艺术图"
 
 msgctxt "#31508"
 msgid "Move OSD buttons to top"
-msgstr "将OSD按钮移动到顶部"
+msgstr "将 OSD 按钮移动到顶部"
 
 msgctxt "#31509"
 msgid "Tiny posters"
@@ -1747,7 +1799,7 @@ msgstr "请等待"
 
 msgctxt "#31528"
 msgid "PVR stream"
-msgstr "PVR串流"
+msgstr "PVR 串流"
 
 msgctxt "#31529"
 msgid "Properties"
@@ -1811,7 +1863,7 @@ msgstr "岁"
 
 msgctxt "#31545"
 msgid "Crew"
-msgstr "演职人员"
+msgstr "演员"
 
 msgctxt "#31546"
 msgid "Known for"
@@ -1843,11 +1895,11 @@ msgstr "切换以启用或禁用。您可以使用禁用而不是删除来隐藏
 
 msgctxt "#31554"
 msgid "Choose the menu item icon when the Aeon Nox main menu layout is set to Icons."
-msgstr "当Aeon Nox主菜单布局设置为图标时，你可以选择菜单项图标。"
+msgstr "当 Aeon Nox 主菜单布局设置为图标时，你可以选择菜单项图标。"
 
 msgctxt "#31555"
 msgid "Use this to set the default action without changing the label. Choose 'Custom item' for any of Kodi's built-in functions. (http://kodi.wiki/?title=List_of_Built_In_Functions)"
-msgstr "使用此选项设置默认操作，而不更改标签。为Kodi的任何内置功能选择“自定义项”。(http://kodi.wiki/?title=List_of_Built_In_Functions)"
+msgstr "使用此选项设置默认操作，而不更改标签。为 Kodi 的任何内置功能选择“自定义项”。(http://kodi.wiki/?title=List_of_Built_In_Functions)"
 
 msgctxt "#31556"
 msgid "Choose the submenu items displayed below your menu for Horizontal or in the left slide out submenu for the Vertical menu."
@@ -1863,7 +1915,7 @@ msgstr "选择小组件 1 将显示的内容。小组件 1 总是在水平菜单
 
 msgctxt "#31559"
 msgid "Choose what Widget 2 will display. Widget 2 swaps location depending on the Aeon Nox main menu horizontal position. If it is low then it will be at the top of the screen and centered will be below the Horizontal menu. Vertical menu location is always near the bottom of the Home window."
-msgstr "选择Widget 2将显示的内容。Widget 2根据Aeon Nox主菜单水平位置变换位置。如果主菜单较低，则它将位于屏幕顶部，主菜单居中时它位于水平菜单下方。垂直菜单时位置总是在主页窗口的底部附近。"
+msgstr "选择 小组件 2 将显示的内容。小组件 2 根据 Aeon Nox 主菜单水平位置变换位置。如果主菜单较低，则它将位于屏幕顶部，主菜单居中时它位于水平菜单下方。垂直菜单时位置总是在主页窗口的底部附近。"
 
 msgctxt "#31560"
 msgid "This will enable a separate Widget displaying what is currently recording and/or the next scheduled timer. If Widget 2 is enabled on the same menu item then it will be hidden until focused."
@@ -1915,7 +1967,7 @@ msgstr "选择显示电影合集剧情的首选方式。将显示合集中所有
 
 msgctxt "#31573"
 msgid "Seasons falling"
-msgstr "季度完结"
+msgstr "季完结"
 
 msgctxt "#31574"
 msgid "Preferred plot for movie sets"
@@ -1931,7 +1983,7 @@ msgstr "重启到安卓"
 
 msgctxt "#31577"
 msgid "Auto hide OSD"
-msgstr "自动隐藏OSD"
+msgstr "自动隐藏 OSD"
 
 msgctxt "#31578"
 msgid "Random music videos"
@@ -1995,7 +2047,7 @@ msgstr "[B]配置皮肤设置[/B][CR]自定义主菜单  •  选择皮肤颜色
 
 msgctxt "#31594"
 msgid "[B]OPEN FILE MANAGER[/B][CR]Access files from within Kodi[CR]Add source  •  Perform file operations"
-msgstr "[B]打开文件夹[/B][CR]从Kodi中访问文件[CR]添加源  •  执行文件操作"
+msgstr "[B] 打开文件管理器[/B][CR]从 Kodi 中访问文件[CR]添加源  •  执行文件操作"
 
 msgctxt "#31595"
 msgid "[B]OPEN THE EVENT LOG[/B][CR]Library update reports  •  Failed scrapes  •  Missing files[CR]PVR events  •  Add-on events"
@@ -2023,7 +2075,7 @@ msgstr "在电影详情页显示光盘封面"
 
 msgctxt "#31603"
 msgid "Aeon Nox main menu navigation style"
-msgstr "Aeon Nox主菜单导航风格"
+msgstr "Aeon Nox 主菜单导航风格"
 
 msgctxt "#31604"
 msgid "Information"
@@ -2039,7 +2091,7 @@ msgstr "徽标"
 
 msgctxt "#31607"
 msgid "HD/SD/3D indicators"
-msgstr "HD/SD/3D指示器"
+msgstr "HD/SD/3D 指示器"
 
 msgctxt "#31608"
 msgid "Cases"
@@ -2092,11 +2144,11 @@ msgstr "设置关机菜单"
 
 msgctxt "#31625"
 msgid "Focused OSD Buttons"
-msgstr "聚焦的OSD按钮"
+msgstr "聚焦的 OSD 按钮"
 
 msgctxt "#31626"
 msgid "Unfocused OSD Buttons"
-msgstr "未聚焦的OSD按钮"
+msgstr "未聚焦的 OSD 按钮"
 
 msgctxt "#31627"
 msgid "Use this to customise the colour for the item selected."
@@ -2124,7 +2176,7 @@ msgstr "面板小组件信息"
 
 msgctxt "#31706"
 msgid "Art"
-msgstr "插图"
+msgstr "艺术图"
 
 msgctxt "#31707"
 msgid "Case"
@@ -2257,7 +2309,7 @@ msgstr "使用此选项可更改每张图像的多背景图循环速度。"
 
 msgctxt "#31901"
 msgid "36 Hour Forecast"
-msgstr "36小时预报"
+msgstr "36 小时预报"
 
 msgctxt "#31902"
 msgid "Hourly Forecast"
@@ -2268,8 +2320,8 @@ msgid "Weekend Forecast"
 msgstr "一周预报"
 
 msgctxt "#31904"
-msgid "10 Day Forecast"
-msgstr "10日预报"
+msgid "Daily Forecast"
+msgstr ""
 
 msgctxt "#31905"
 msgid "Change the position of the system bar to the top or bottom of the screen."
@@ -2285,7 +2337,7 @@ msgstr "获取天气信息..."
 
 msgctxt "#31911"
 msgid "Setup the Aeon Nox main menu"
-msgstr "设置Aeon Nox主菜单"
+msgstr "设置 Aeon Nox 主菜单"
 
 msgctxt "#31912"
 msgid "Customise the main menu with widgets, backgrounds, and statistics. Add your own custom main menu items."
@@ -2293,7 +2345,7 @@ msgstr "使用小工具、背景和统计数据自定义主菜单。添加自己
 
 msgctxt "#31913"
 msgid "Aeon Nox main menu horizontal position"
-msgstr "Aeon Nox主菜单水平位置"
+msgstr "Aeon Nox 主菜单水平位置"
 
 msgctxt "#31914"
 msgid "Change the horizontal position of the main menu."
@@ -2321,7 +2373,7 @@ msgstr "播放电影或插曲时，在主屏幕上显示包含媒体信息的小
 
 msgctxt "#31922"
 msgid "This enables custom genre backgrounds when browsing through the videolibrary's genre node. Filenames should match the genre label. Extension must be .jpg."
-msgstr "在浏览视频资料库的类型节点时，这将启用自定义类型背景。文件名应与类型标签匹配。扩展名必须是.jpg。"
+msgstr "在浏览视频资料库的类型节点时，这将启用自定义类型背景。文件名应与类型标签匹配。扩展名必须是 .jpg。"
 
 # empty string with id 31923
 msgctxt "#31924"
@@ -2338,7 +2390,7 @@ msgstr "选择库路径、加载项、播放列表或收藏夹作为菜单项。
 
 msgctxt "#31928"
 msgid "Aeon Nox main menu layout"
-msgstr "Aeon Nox主菜单布局"
+msgstr "Aeon Nox 主菜单布局"
 
 msgctxt "#31929"
 msgid "This setting defines the main menu layout. For the horizontal menu, you can choose between icons and displaying 5, 3, or 1 visible items at a time. Additionally, there’s a vertical menu option."
@@ -2378,7 +2430,7 @@ msgstr "在基于图标的视图中，选择要在缩略图上显示的叠加层
 
 msgctxt "#31945"
 msgid "This toggles the layout of the List view. Default is a 7 item layout with extended info, \"Slim List\" is a 14 item, more basic layout."
-msgstr "这将切换列表视图的布局。默认是带有扩展信息的7项布局，“精简列表”是14项，更基本的布局。"
+msgstr "这将切换列表视图的布局。默认是带有扩展信息的 7 项布局，“精简列表”是 14 项，更基本的布局。"
 
 msgctxt "#31957"
 msgid "Apps"
@@ -2407,7 +2459,7 @@ msgstr "开盒模式"
 # empty strings from id 31967 to 31969
 msgctxt "#31970"
 msgid "Rate on Trakt"
-msgstr "在TRAKT评分"
+msgstr "在 Trakt 评分"
 
 msgctxt "#31971"
 msgid "Hide visualization behind fanart (works best with waveform)"
@@ -2436,7 +2488,7 @@ msgstr "滑动合集光盘封面"
 
 msgctxt "#31980"
 msgid "Change the way the home menu scrolls in Aeon Nox. Default will scroll in a cycle. \"Fixed\" has a beginning and end."
-msgstr "更改Aeon Nox中主菜单的滚动方式。默认值将循环滚动。“固定”则有开始和结束。"
+msgstr "更改 Aeon Nox 中主菜单的滚动方式。默认值将循环滚动。“固定”则有开始和结束。"
 
 msgctxt "#31984"
 msgid "When activated the default mediaflags and icons are changed to coloured versions."
@@ -2462,6 +2514,26 @@ msgstr "选择 \"预览体验 \"按钮的位置"
 msgctxt "#31994"
 msgid "Vertical Menu"
 msgstr "垂直菜单"
+
+#~ msgctxt "#31034"
+#~ msgid "Enable to \"lock\" specific views using the Skin Variables script. Disable this if you prefer Kodi to handle the view modes."
+#~ msgstr "使用皮肤变量脚本 \"锁定 \"特定视图。如果您希望由 Kodi 来处理视图模式，请禁用此功能。"
+
+#~ msgctxt "#31384"
+#~ msgid "This activates animated snow falling over all backgrounds.[CR]This may cause perfomance issues on low powered devices."
+#~ msgstr "这会激活显示所有背景的动画雪花。[CR]这可能会导致低功耗设备出现性能问题。"
+
+#~ msgctxt "#31428"
+#~ msgid "The Grab Fanart script provides the random fanart slideshows for the main menu."
+#~ msgstr "抓取背景图插件：为主菜单提供随机背景图轮播。"
+
+#~ msgctxt "#31433"
+#~ msgid "Skin Variables is a helper script used for many functions."
+#~ msgstr "皮肤变量是一个用于实现多种功能的辅助脚本。"
+
+#~ msgctxt "#31904"
+#~ msgid "10 Day Forecast"
+#~ msgstr "10 日预报"
 
 #~ msgctxt "#31323"
 #~ msgid "If you cannot locate the directory containing your background images, please add that location as a source in Kodi's File Manager. For more information visit http://kodi.wiki/view/File_manager"

@@ -3,7 +3,7 @@
 	<defaultcontrol>20</defaultcontrol>
 	<controls>
 		<control type="group">
-			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<visible>$EXP[StartupIntroActive]</visible>
 			<include>CommonBackground</include>
 			<control type="group">
 				<left>50</left>
@@ -195,7 +195,7 @@
 				<top>970</top>
 				<width>100%</width>
 				<height>140</height>
-				<texture border="1">gradient_floor.png</texture>
+				<texture>gradient_floor.png</texture>
 			</control>
 			<include>Topbar</include>
 			<control type="group">

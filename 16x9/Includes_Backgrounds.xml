@@ -2,6 +2,7 @@
 <includes>
 	<include name="CommonBackground">
 		<control type="group">
+			<visible>!Window.IsActive(1113)</visible>
 			<animation effect="fade" time="500" delay="300" condition="Window.Previous(Home)">WindowOpen</animation>
 			<animation effect="fade" time="500" condition="!Window.Previous(Home)">WindowOpen</animation>
 			<animation effect="fade" time="500">WindowClose</animation>
@@ -33,7 +34,7 @@
 			</control>
 		</control>
 		<control type="image">
-			<visible>Control.IsVisible(51) + Skin.HasSetting(Enable.AlternateInfowall) | Control.IsVisible(502) | Control.IsVisible(503) | Control.IsVisible(504) | Control.IsVisible(505) | Control.IsVisible(506) | Control.IsVisible(508) | Control.IsVisible(511) | Control.IsVisible(507) + Skin.HasSetting(alternatebiglistlayout) | Control.IsVisible(509) + Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo) | Window.IsVisible(settings) | Window.IsVisible(1107)</visible>
+			<visible>Control.IsVisible(51) + Skin.HasSetting(Enable.AlternateInfowall) | Control.IsVisible(502) | Control.IsVisible(503) | Control.IsVisible(504) | Control.IsVisible(505) | Control.IsVisible(506) | Control.IsVisible(508) | Control.IsVisible(511) | Control.IsVisible(507) + Skin.HasSetting(alternatebiglistlayout) | Control.IsVisible(509) + Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo) | Window.IsVisible(settings) | Window.IsVisible(weather)</visible>
 			<include>FullscreenDimensions</include>
 			<texture>colors/black.png</texture>
 			<colordiffuse>$VAR[BackgroundDimVar]</colordiffuse>
@@ -55,7 +56,7 @@
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
 			<control type="group">
-				<visible>Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(systeminfo) | Window.IsVisible(profiles) | Window.IsVisible(filemanager) | Control.IsVisible(50) + !Window.IsVisible(eventlog) + !Window.IsVisible(addonbrowser) + !Window.IsVisible(music) + !Window.IsVisible(programs) + !Container.Content(addons) + !Container.Content(files) + !Window.IsActive(1133) + !Container.Content(images) + !Container.Content(games) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(55) + !Window.IsActive(music) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) + !Container.Content(images) | Control.IsVisible(506) + Container.Content(movies) + String.IsEmpty(Skin.String(506.movies.ViewFloorStatus)) | Control.IsVisible(506) + Container.Content(sets) + String.IsEmpty(Skin.String(506.sets.ViewFloorStatus)) | Control.IsVisible(506) + [Container.Content(tvshows) | Container.Content(seasons)] + String.IsEmpty(Skin.String(506.tvshows.ViewFloorStatus)) | Control.IsVisible(506) + Container.Content(episodes) + String.IsEmpty(Skin.String(506.episodes.ViewFloorStatus)) | Control.IsVisible(510)</visible>
+				<visible>Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(systeminfo) | Window.IsVisible(profiles) | Window.IsVisible(filemanager) | Control.IsVisible(50) + !Window.IsVisible(eventlog) + !Window.IsVisible(addonbrowser) + !Window.IsVisible(music) + !Window.IsVisible(programs) + !Container.Content(addons) + !Container.Content(files) + !Window.IsActive(1133) + !Container.Content(images) + !Container.Content(games) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(55) + !Window.IsActive(music) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) + !Container.Content(images) | Control.IsVisible(506) + [Container.Content(movies) | Container.Content(videoversions)] + String.IsEmpty(Skin.String(506.movies.ViewFloorStatus)) | Control.IsVisible(506) + Container.Content(sets) + String.IsEmpty(Skin.String(506.sets.ViewFloorStatus)) | Control.IsVisible(506) + [Container.Content(tvshows) | Container.Content(seasons)] + String.IsEmpty(Skin.String(506.tvshows.ViewFloorStatus)) | Control.IsVisible(506) + Container.Content(episodes) + String.IsEmpty(Skin.String(506.episodes.ViewFloorStatus)) | Control.IsVisible(510)</visible>
 				<include>ViewAnimation</include>
 				<animation effect="slide" end="0,-210" time="320" tween="cubic" easing="out" condition="Control.IsVisible(56) | Control.IsVisible(57)">Conditional</animation>
 				<animation effect="slide" end="0,-100" time="320" tween="cubic" easing="out" condition="Window.IsVisible(Settings.xml) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo) | Control.IsVisible(500) + ![Window.IsVisible(music) | Window.IsActive(addonbrowser)]">Conditional</animation>
@@ -68,7 +69,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(1140) | Window.IsActive(systeminfo) | Window.IsActive(profiles) | Window.IsActive(weather)</visible>
+				<visible>Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(1140) | Window.IsActive(systeminfo) | Window.IsActive(profiles)</visible>
 				<visible>!Window.IsActive(service-LibreELEC-Settings-mainWindow.xml) + !Window.IsActive(service-CoreELEC-Settings-mainWindow.xml)</visible>
 				<animation effect="slide" end="30" condition="Window.IsActive(profiles)">Conditional</animation>
 				<animation effect="slide" end="0,-25" condition="Window.IsActive(settings)">Conditional</animation>
@@ -170,13 +171,6 @@
 			</control>
 		</control>
 	</include>
-	<!-- <include name="HomePlaylistFanart">
-		<control type="wraplist" id="9040">
-			<include>ListAutoscrollTime</include>
-			<include>HiddenList</include>
-			<content sortby="random" limit="100">$INFO[Container(9000).ListItem.Property(backgroundPlaylist)]</content>
-		</control>
-	</include> -->
 	<include name="HomeFanart">
 		<control type="image">
 			<include>FullscreenDimensions</include>

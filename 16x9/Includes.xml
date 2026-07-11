@@ -7,6 +7,7 @@
 	<include file="Includes_Debug.xml" />
 	<include file="Includes_DialogInfo.xml" />
 	<include file="Includes_DialogSettings.xml" />
+	<include file="Includes_Expressions.xml" />
 	<include file="Includes_Games.xml" />
 	<include file="Includes_Home.xml" />
 	<include file="Includes_LiveBG.xml" />
@@ -17,9 +18,9 @@
 	<include file="Includes_Select.xml" />
 	<include file="Includes_ViewSettings.xml" />
 	<include file="Includes_Views.xml" />
+	<include file="Includes_Weather.xml" />
 	<include file="Includes_Widgets.xml" />
 	<include file="script-skinshortcuts-includes.xml" />
-	<include file="script-skinviewtypes-includes.xml" />
 	<include file="Variables.xml" />
 	<include file="Variables_Artwork.xml" />
 	<include file="Variables_InfoPanel.xml" />
@@ -28,7 +29,7 @@
 	<include file="Variables_Widgets.xml" />
 	<!-- Media Menu -->
 	<include name="SideBladeLeft">
-		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu)) | Window.IsActive(videos) + Window.IsVisible(selectdialog) | Window.IsVisible(1126) | Window.IsVisible(progressdialog)">Conditional</animation>
+		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu)) | Window.IsActive(videos) + Window.IsVisible(selectdialog) | Window.IsVisible(1126) | Window.IsVisible(progressdialog) | !String.IsEmpty(Window(Home).Property(SkinInfo.ToolsMenuActive))">Conditional</animation>
 		<animation effect="slide" start="0,0" end="-440,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
 		<control type="image">
 			<width>432</width>
@@ -105,9 +106,9 @@
 			<textwidth>352</textwidth>
 			<include>ButtonCommonValues</include>
 			<label>$INFO[Container.Viewmode,$LOCALIZE[31100] ]</label>
-			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">SetProperty(CustomSideMenu,viewselection,Home)</onclick>
-			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1104)</onclick>
-			<onclick condition="Skin.HasSetting(skinvariables.viewtypes) + Window.IsActive(MyVideoNav.xml)">Runscript(script.skinvariables,action=buildviews,contentid=$VAR[SkinVariablesContentIDVar],pluginname=$INFO[Container.PluginName])</onclick>
+			<onclick condition="!Skin.HasSetting(Enable_ViewLocking) | !Window.IsActive(MyVideoNav.xml)">SetProperty(CustomSideMenu,viewselection,Home)</onclick>
+			<onclick condition="!Skin.HasSetting(Enable_ViewLocking) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1104)</onclick>
+			<onclick condition="Skin.HasSetting(Enable_ViewLocking) + Window.IsActive(MyVideoNav.xml)">RunScript(script.skinshortcuts,type=viewselect,content=$VAR[ShortcutsViewContentVar],plugin=$INFO[Container.PluginName])</onclick>
 			<visible>!Window.IsActive(tvchannels)</visible>
 		</control>
 		<control type="button" id="7031">
@@ -135,23 +136,24 @@
 			<onclick condition="Control.IsVisible(507)">SetProperty(actualViewtype,BigList,Home)</onclick>
 			<onclick condition="Control.IsVisible(508)">SetProperty(actualViewtype,SongList,Home)</onclick>
 			<onclick condition="Control.IsVisible(509)">SetProperty(actualViewtype,MyFlix,Home)</onclick>
-			<onclick condition="Control.IsVisible(512)">SetProperty(actualViewtype,BigFan,Home)</onclick>
 			<onclick condition="Control.IsVisible(510)">SetProperty(actualViewtype,FanartList,Home)</onclick>
-			<onclick condition="Control.IsVisible(513)">SetProperty(actualViewtype,MusicJukebox,Home)</onclick>
 			<onclick condition="Control.IsVisible(511)">SetProperty(actualViewtype,FullscreenWall,Home)</onclick>
+			<onclick condition="Control.IsVisible(512)">SetProperty(actualViewtype,BigFan,Home)</onclick>
+			<onclick condition="Control.IsVisible(513)">SetProperty(actualViewtype,MusicJukebox,Home)</onclick>
 			<onclick>SetProperty(CustomSideMenu,viewsettings,Home)</onclick>
 			<onclick>ActivateWindow(1104)</onclick>
 		</control>
 		<control type="button" id="3">
 			<description>Sort by button</description>
 			<include>ButtonCommonValues</include>
-			<label>103</label>
 		</control>
 		<control type="togglebutton" id="4">
 			<description>Sort asc</description>
 			<include>ButtonCommonValues</include>
-			<label>31051</label>
-			<altlabel>31050</altlabel>
+			<label>$LOCALIZE[31051]</label>
+			<altlabel>$LOCALIZE[31050]</altlabel>
+			<texturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+			<alttexturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</alttexturefocus>
 			<usealttexture>Container.SortDirection(Ascending)</usealttexture>
 		</control>
 		<control type="button" id="2001">
@@ -633,7 +635,7 @@
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<scroll>true</scroll>
-						<scrollspeed>60</scrollspeed>
+						<scrollspeed>40</scrollspeed>
 						<scrollout>false</scrollout>
 						<pauseatend>4000</pauseatend>
 						<textoffsetx>10</textoffsetx>
@@ -736,7 +738,7 @@
 			<height>810</height>
 			<texture colordiffuse="grey4">colors/white.png</texture>
 			<animation effect="slide" end="91" condition="Window.IsActive(profiles)">Conditional</animation>
-			<animation effect="slide" end="275" condition="Window.IsActive(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(skinshortcuts-management-widget))">Conditional</animation>
+			<animation effect="slide" end="275" condition="Window.IsActive(script-skinshortcuts.xml)">Conditional</animation>
 			<animation effect="slide" end="120" condition="Window.IsVisible(1115)">Conditional</animation>
 			<visible>!Window.IsVisible(1117)</visible>
 		</control>
@@ -842,9 +844,8 @@
 				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
-				<onclick>DialogSelectAudio</onclick>
-				<oninfo>ActivateWindow(osdaudiosettings)</oninfo>
-				<visible>Integer.IsGreater(VideoPlayer.AudioStreamCount,1)</visible>
+				<onup condition="Integer.IsGreater(VideoPlayer.AudioStreamCount,1)">DialogSelectAudio</onup>
+				<onclick>ActivateWindow(osdaudiosettings)</onclick>
 			</control>
 			<control type="button" id="702">
 				<texturefocus />
@@ -855,9 +856,8 @@
 				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
-				<onclick>DialogSelectVideo</onclick>
-				<oninfo>ActivateWindow(osdvideosettings)</oninfo>
-				<visible>Integer.IsGreater(VideoPlayer.VideoStreamCount,1)</visible>
+				<onup condition="Integer.IsGreater(VideoPlayer.VideoStreamCount,1)">DialogSelectVideo</onup>
+				<onclick>ActivateWindow(osdvideosettings)</onclick>
 			</control>
 			<control type="togglebutton" id="703">
 				<texturefocus />
@@ -871,8 +871,8 @@
 				<width>100</width>
 				<height>100</height>
 				<usealttexture>VideoPlayer.HasSubtitles</usealttexture>
-				<onclick condition="!VideoPlayer.HasSubtitles">ActivateWindow(OSDSubtitleSettings)</onclick>
-				<onclick condition="VideoPlayer.HasSubtitles">DialogSelectSubtitle</onclick>
+				<onup condition="VideoPlayer.HasSubtitles">DialogSelectSubtitle</onup>
+				<onclick>ActivateWindow(OSDSubtitleSettings)</onclick>
 				<oninfo>ActivateWindow(SubtitleSearch)</oninfo>
 			</control>
 			<control type="button" id="600">
@@ -1439,7 +1439,7 @@
 					<label>[UPPERCASE][B]$LOCALIZE[112][/B][/UPPERCASE]</label>
 					<font>BigAssTimeFont</font>
 					<textcolor>B3FFFFFF</textcolor>
-					<visible>Skin.HasSetting(PausedLabel)</visible>
+					<visible>Skin.HasSetting(PausedLabel) + !Window.IsVisible(fullscreeninfo)</visible>
 				</control>
 			</control>
 		</control>
@@ -1481,7 +1481,7 @@
 				<param name="visible">Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)</param>
 			</include>
 			<control type="group">
-				<visible>![Container.OnNext | Container.OnPrevious]</visible>
+				<visible>$EXP[ContainerNotScrolling]</visible>
 				<include>ViewAnimation</include>
 				<control type="group">
 					<visible>String.IsEqual(Control.GetLabel(4420),1) | String.IsEqual(Control.GetLabel(4420),2)</visible>
@@ -1777,7 +1777,7 @@
 						<fadetime>200</fadetime>
 						<texture background="true">$VAR[GlobalBackgroundVar]</texture>
 						<aspectratio scalediffuse="false" aligny="center">scale</aspectratio>
-						<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+						<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
 				</control>
@@ -1847,7 +1847,7 @@
 						<height>380</height>
 						<fadetime>200</fadetime>
 						<texture background="true">$VAR[PosterThumbVar]</texture>
-						<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+						<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
 				</control>
@@ -2068,7 +2068,7 @@
 						<visible>Container.Content(tvshows)</visible>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Status) | !String.IsEmpty(ListItem.Status)</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status)) | !String.IsEmpty(ListItem.Status)</visible>
 							<height>40</height>
 							<control type="label">
 								<left>5</left>
@@ -2089,7 +2089,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) | !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))</visible>
 							<height>40</height>
 							<control type="togglebutton">
 								<left>5</left>
@@ -2099,7 +2099,7 @@
 								<include>NoFocusObject</include>
 								<label></label>
 								<altlabel></altlabel>
-								<usealttexture>String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</usealttexture>
+								<usealttexture>String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired))</usealttexture>
 							</control>
 							<control type="label">
 								<left>40</left>
@@ -2668,6 +2668,11 @@
 			<size>35</size>
 		</font>
 		<font>
+			<name>IconMediaMenuButtons</name>
+			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
+			<size>45</size>
+		</font>
+		<font>
 			<name>IconMediumMD</name>
 			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
 			<size>50</size>
@@ -2678,9 +2683,9 @@
 			<size>65</size>
 		</font>
 		<font>
-			<name>IconMediaMenuButtons</name>
+			<name>IconWeather</name>
 			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
-			<size>45</size>
+			<size>80</size>
 		</font>
 	</include>
 	<!-- Scrollbars -->
@@ -2890,7 +2895,8 @@
 				<visible>VideoPlayer.HasInfo + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos)] | [VideoPlayer.HasInfo + Skin.HasSetting(Enable.RecordingInfo) + Pvr.IsPlayingRecording] | VideoPlayer.HasInfo + Skin.HasSetting(Enable.AddonInfo) + !Pvr.IsPlayingRecording</visible>
 				<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
 			</control>
-			<include condition="VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos)">LibraryFullscreenInfo</include>
+			<include condition="VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)">LibraryFullscreenInfo</include>
+			<include condition="VideoPlayer.Content(musicvideos)">MusicVideoFullscreenInfo</include>
 			<include condition="VideoPlayer.HasInfo + Skin.HasSetting(Enable.AddonInfo) + ![VideoPlayer.Content(LiveTV) | Pvr.IsPlayingRecording | VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos)] | [VideoPlayer.HasInfo + Skin.HasSetting(Enable.RecordingInfo) + Pvr.IsPlayingRecording]">OtherFullscreenInfo</include>
 		</control>
 	</include>
@@ -2900,7 +2906,6 @@
 			<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
 			<control type="group">
 				<top>-110</top>
-				<visible>!VideoPlayer.Content(musicvideos)</visible>
 				<visible>!Skin.HasSetting(Disable.FullscreenPoster)</visible>
 				<control type="image">
 					<left>20</left>
@@ -2918,14 +2923,6 @@
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>
 				</control>
-			</control>
-			<control type="image">
-				<top>30</top>
-				<width>400</width>
-				<height>400</height>
-				<aspectratio aligny="top">stretch</aspectratio>
-				<texture background="true" diffuse="thumbs/movieposter_mask.png">$VAR[PlayerPosterVar]</texture>
-				<visible>VideoPlayer.Content(musicvideos)</visible>
 			</control>
 			<control type="group">
 				<left>250</left>
@@ -3050,7 +3047,7 @@
 									</control>
 								</control>
 								<control type="grouplist">
-									<visible>!String.IsEmpty(VideoPlayer.Top250)</visible>
+									<visible>!String.IsEmpty(VideoPlayer.Top250) + Integer.IsLessOrEqual(VideoPlayer.Top250,250)</visible>
 									<width>165</width>
 									<itemgap>5</itemgap>
 									<orientation>horizontal</orientation>
@@ -3076,7 +3073,7 @@
 									<itemgap>10</itemgap>
 									<orientation>horizontal</orientation>
 									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating))]</visible>
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.Tomatoes)) | !String.IsEmpty(Container(8001).ListItem.Property(Rating.Tomatoes.Percent))]</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3084,18 +3081,18 @@
 											<height>55</height>
 											<aspectratio>keep</aspectratio>
 											<colordiffuse>grey</colordiffuse>
-											<texture>$VAR[RottenFreshLogoVar]</texture>
+											<texture>$VAR[PlayerRottenFreshLogoVar]</texture>
 										</control>
 										<control type="label">
 											<height>60</height>
 											<width>auto</width>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
+											<label>$VAR[PlayerRottenFreshLabelVar]</label>
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(VideoPlayer.Rating(tomatometerallaudience)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter))]</visible>
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.Popcorn)) | !String.IsEmpty(Container(8001).ListItem.Property(Rating.Popcorn.Percent))]</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3103,18 +3100,18 @@
 											<height>55</height>
 											<aspectratio>keep</aspectratio>
 											<colordiffuse>grey</colordiffuse>
-											<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
+											<texture>$VAR[PlayerRottenFreshAudienceLogoVar]</texture>
 										</control>
 										<control type="label">
 											<width>auto</width>
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
+											<label>$VAR[PlayerRottenFreshAudienceLabelVar]</label>
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>!String.IsEmpty(Container(4501).ListItem.Property(ratings.themoviedb.rating)) | !String.IsEmpty(Container(4501).ListItem.Property(ratings.tmdb.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.TMDb_Rating))</visible>
+										<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.themoviedb)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.tmdb)) | !String.IsEmpty(Container(8001).ListItem.Rating(themoviedb)) | !String.IsEmpty(Container(8001).ListItem.Rating(tmdb))</visible>
 										<width>140</width>
 										<itemgap>10</itemgap>
 										<orientation>horizontal</orientation>
@@ -3130,11 +3127,11 @@
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$VAR[TMDbRatingsLabelVar]</label>
+											<label>$VAR[PlayerTMDbRatingsLabelVar]</label>
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Trakt_Rating))</visible>
+										<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.trakt)) | !String.IsEmpty(Container(8001).ListItem.Rating(trakt))</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3149,7 +3146,7 @@
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating)]</label>
+											<label>$VAR[PlayerTraktRatingsLabelVar]</label>
 										</control>
 									</control>
 								</control>
@@ -3185,8 +3182,8 @@
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<scroll>true</scroll>
-							<label>$INFO[Window(Home).Property(TMDbHelper.Player.Budget),$LOCALIZE[31850]: [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(TMDbHelper.Player.Revenue),[COLOR grey]  •  [/COLOR]$LOCALIZE[31851]: [COLOR grey],[/COLOR]]</label>
-							<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Budget)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Revenue))]</visible>
+							<label>$INFO[Container(8001).ListItem.Property(TMDb.Budget),$LOCALIZE[31850]: [COLOR grey],[/COLOR]]$INFO[Container(8001).ListItem.Property(TMDb.Revenue),[COLOR grey]  •  [/COLOR]$LOCALIZE[31851]: [COLOR grey],[/COLOR]]</label>
+							<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Container(8001).ListItem.Property(TMDb.Budget)) | !String.IsEmpty(Container(8001).ListItem.Property(TMDb.Revenue))]</visible>
 						</control>
 						<control type="label">
 							<width>1420</width>
@@ -3244,6 +3241,241 @@
 					<control type="scrollbar" id="61">
 						<include>HiddenObject</include>
 					</control>
+				</control>
+			</control>
+			<control type="panel" id="90099">
+				<visible allowhiddenfocus="true">!String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))</visible>
+				<left>480</left>
+				<top>100</top>
+				<width>1400</width>
+				<height>400</height>
+				<orientation>horizontal</orientation>
+				<itemlayout width="240" height="360">
+					<control type="image">
+						<left>10</left>
+						<width>220</width>
+						<height>290</height>
+						<bordersize>10</bordersize>
+						<bordertexture border="10">thumbs/poster_border.png</bordertexture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>290</top>
+						<width>220</width>
+						<height>30</height>
+						<align>center</align>
+						<font>font14</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>white</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>328</top>
+						<width>220</width>
+						<height>30</height>
+						<align>center</align>
+						<font>font12</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="480" width="300">
+					<control type="group">
+						<animation effect="zoom" start="90" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+						<control type="image">
+							<left>-15</left>
+							<top>-10</top>
+							<width>320</width>
+							<height>450</height>
+							<bordersize>22</bordersize>
+							<bordertexture border="20" infill="false">thumbs/shadow.png</bordertexture>
+							<aspectratio aligny="top">scale</aspectratio>
+							<texture fallback="$PARAM[fallback]" background="true">$PARAM[texture]</texture>
+						</control>
+						<control type="group">
+							<visible>$PARAM[labelVisibility]</visible>
+							<control type="image">
+								<left>5</left>
+								<width>282</width>
+								<height>418</height>
+								<texture>poster_bottom_fade.png</texture>
+							</control>
+							<control type="label">
+								<left>8</left>
+								<top>374</top>
+								<width>274</width>
+								<height>43</height>
+								<align>center</align>
+								<font>font14</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$PARAM[label]</label>
+								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+							</control>
+						</control>
+						<control type="image">
+							<left>7</left>
+							<top>12</top>
+							<width>67</width>
+							<height>30</height>
+							<texture>colors/black50.png</texture>
+							<aspectratio aligny="center">scale</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Year) + !Control.HasFocus(90016)</visible>
+						</control>
+						<control type="label">
+							<left>8</left>
+							<top>4</top>
+							<width>274</width>
+							<height>43</height>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label2]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="label">
+							<left>3</left>
+							<top>422</top>
+							<width>284</width>
+							<height>43</height>
+							<align>center</align>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label1]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>242</left>
+							<top>13</top>
+							<width>40</width>
+							<height>40</height>
+							<texture>overlays/addons/enabled.png</texture>
+							<visible>$PARAM[overlayVisibility]</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<content browse="never">$VAR[SkinInfoCastPathVar]</content>
+			</control>
+		</control>
+	</include>
+	<include name="MusicVideoFullscreenInfo">
+		<control type="group">
+			<top>764</top>
+			<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+			<control type="image">
+				<top>-120</top>
+				<width>400</width>
+				<height>400</height>
+				<aspectratio aligny="bottom">keep</aspectratio>
+				<texture background="true">$VAR[PlayerPosterVar]</texture>
+				<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+				<bordersize>20</bordersize>
+			</control>
+			<control type="group">
+				<left>400</left>
+				<top>25</top>
+				<control type="image">
+					<left>1057</left>
+					<top>-284</top>
+					<width>450</width>
+					<height>260</height>
+					<aspectratio aligny="bottom">keep</aspectratio>
+					<texture background="true">$VAR[PlayerArtworkVar]</texture>
+					<visible>!Skin.HasSetting(Disable.FullscreenInfoLogo)</visible>
+				</control>
+				<control type="grouplist">
+					<width>1420</width>
+					<height>300</height>
+					<usecontrolcoords>true</usecontrolcoords>
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails))</visible>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font30_title_bold</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[VideoPlayer.Artist]</label>
+						<visible>!String.IsEmpty(VideoPlayer.Artist)</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[Player.Title]$INFO[VideoPlayer.Year, (,)]</label>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[VideoPlayer.Album]$INFO[VideoPlayer.Genre, • ]$VAR[PlayerMusicVideoStudioVar, • ]</label>
+						<visible>!String.IsEmpty(VideoPlayer.Album) | !String.IsEmpty(VideoPlayer.Genre)</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[Player.FinishTime,$LOCALIZE[31393]: ,]$INFO[VideoPlayer.Director, [COLOR grey] • [/COLOR] $LOCALIZE[31000]:[COLOR grey] ,[/COLOR]]</label>
+					</control>
+				</control>
+				<control type="grouplist">
+					<width>1420</width>
+					<height>300</height>
+					<usecontrolcoords>true</usecontrolcoords>
+					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails))</visible>
+					<control type="label">
+						<width>1420</width>
+						<height>35</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$LOCALIZE[207]</label>
+					</control>
+					<control type="textbox" id="400">
+						<top>27</top>
+						<width>1420</width>
+						<height>170</height>
+						<font>font15_textbox2</font>
+						<textcolor>grey</textcolor>
+						<label>$VAR[PlayerMusicVideoPlotVar]</label>
+						<pagecontrol>61</pagecontrol>
+						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+					</control>
+				</control>
+				<control type="grouplist">
+					<width>1420</width>
+					<height>300</height>
+					<usecontrolcoords>true</usecontrolcoords>
+					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<scroll>true</scroll>
+						<label fallback="$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Album.Tags),$LOCALIZE[20459]: [COLOR grey],[/COLOR]]">$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Track.Tags),$LOCALIZE[20459]: [COLOR grey],[/COLOR]]</label>
+						<visible>!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Track.Tags)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Album.Tags))</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[VideoPlayer.LastPlayed,$LOCALIZE[568]: [COLOR grey],[/COLOR]]$INFO[VideoPlayer.PlayCount,[COLOR grey]  •  [/COLOR]$LOCALIZE[567]: [COLOR grey],[/COLOR]]</label>
+						<visible>!String.IsEmpty(VideoPlayer.LastPlayed)</visible>
+					</control>
+				</control>
+				<control type="scrollbar" id="61">
+					<include>HiddenObject</include>
 				</control>
 			</control>
 		</control>
@@ -3506,9 +3738,9 @@
 		</control>
 	</include>
 	<!-- Content Lists -->
-	<include name="SkinVariablesContentList">
-		<param name="id" default="4501" />
-		<param name="content" default="$VAR[SkinVariableDBContainerPluginPathVar]" />
+	<include name="SkinInfoContentList">
+		<param name="id" default="5000" />
+		<param name="content" default="$VAR[SkinInfoLibraryPathVar]" />
 		<definition>
 			<control type="list" id="$PARAM[id]">
 				<include>HiddenList</include>
@@ -3516,269 +3748,87 @@
 			</control>
 		</definition>
 	</include>
-	<include name="TMDbHelperContentList">
-		<control type="list" id="9143">
-			<include>HiddenList</include>
-		</control>
-	</include>
 	<!-- Letter Jump -->
-	<include name="AlphabetNumber">
-		<control type="label">
-			<width>60</width>
-			<height>37</height>
-			<align>center</align>
-			<font>font15_title</font>
-			<textcolor>grey2</textcolor>
-			<label>#</label>
-			<visible>![String.IsEqual(ListItem.SortLetter,$NUMBER[0]) | String.IsEqual(ListItem.SortLetter,$NUMBER[1]) | String.IsEqual(ListItem.SortLetter,$NUMBER[2]) | String.IsEqual(ListItem.SortLetter,$NUMBER[3]) | String.IsEqual(ListItem.SortLetter,$NUMBER[4]) | String.IsEqual(ListItem.SortLetter,$NUMBER[5]) | String.IsEqual(ListItem.SortLetter,$NUMBER[6]) | String.IsEqual(ListItem.SortLetter,$NUMBER[7]) | String.IsEqual(ListItem.SortLetter,$NUMBER[8]) | String.IsEqual(ListItem.SortLetter,$NUMBER[9])]</visible>
-		</control>
-		<control type="label">
-			<width>60</width>
-			<height>37</height>
-			<align>center</align>
-			<font>font15_title</font>
-			<textcolor>$VAR[ThemeLabelColor]</textcolor>
-			<label>#</label>
-			<visible>[String.IsEqual(ListItem.SortLetter,$NUMBER[0]) | String.IsEqual(ListItem.SortLetter,$NUMBER[1]) | String.IsEqual(ListItem.SortLetter,$NUMBER[2]) | String.IsEqual(ListItem.SortLetter,$NUMBER[3]) | String.IsEqual(ListItem.SortLetter,$NUMBER[4]) | String.IsEqual(ListItem.SortLetter,$NUMBER[5]) | String.IsEqual(ListItem.SortLetter,$NUMBER[6]) | String.IsEqual(ListItem.SortLetter,$NUMBER[7]) | String.IsEqual(ListItem.SortLetter,$NUMBER[8]) | String.IsEqual(ListItem.SortLetter,$NUMBER[9])]</visible>
-		</control>
-	</include>
-	<include name="AlphabetLetter">
-		<control type="label">
-			<width>60</width>
-			<height>37</height>
-			<align>center</align>
-			<font>font15_title</font>
-			<textcolor>grey2</textcolor>
-			<label>$PARAM[letter]</label>
-			<visible>!String.IsEqual(ListItem.SortLetter,$PARAM[letter])</visible>
-		</control>
-		<control type="label">
-			<width>60</width>
-			<height>37</height>
-			<align>center</align>
-			<font>font15_title</font>
-			<textcolor>$VAR[ThemeLabelColor]</textcolor>
-			<label>$PARAM[letter]</label>
-			<visible>String.IsEqual(ListItem.SortLetter,$PARAM[letter])</visible>
-		</control>
-	</include>
-	<include name="DefaultLetterJump">
-		<control type="button" id="615">
-			<description>Go to Letter</description>
-			<include>HiddenObject</include>
-			<onleft>SetFocus(50)</onleft>
-			<onright condition="!Control.IsVisible(51) + !Control.IsVisible(500) + !Control.IsVisible(511)">4400</onright>
-			<onright condition="Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(511)">SetFocus(50)</onright>
-			<onup>SetFocus(50)</onup>
-			<onup>Action(prevletter)</onup>
-			<onup>SetFocus(615)</onup>
-			<ondown>SetFocus(50)</ondown>
-			<ondown>Action(nextletter)</ondown>
-			<ondown>SetFocus(615)</ondown>
-			<visible>[[Container.HasNext | Container.HasPrevious] + String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
-		</control>
-		<control type="button" id="616">
-			<description>Go to Letter</description>
-			<include>HiddenObject</include>
-			<onup>SetFocus(50)</onup>
-			<ondown>4400</ondown>
-			<onleft>SetFocus(50)</onleft>
-			<onleft>Action(prevletter)</onleft>
-			<onleft>SetFocus(616)</onleft>
-			<onright>SetFocus(50)</onright>
-			<onright>Action(nextletter)</onright>
-			<onright>SetFocus(616)</onright>
-			<visible>[[Container.HasNext | Container.HasPrevious] + String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
-		</control>
+	<include name="LetterJump">
 		<control type="group">
 			<left>1860</left>
 			<animation effect="slide" end="100,0" time="200" tween="quadratic" easing="out" condition="!Control.HasFocus(615)">Conditional</animation>
-			<visible>Control.HasFocus(615)</visible>
+			<visible>[[[Container.HasNext | Container.HasPrevious] + String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])] + [Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(55) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(501) | Control.IsVisible(502) | Control.IsVisible(503) | Control.IsVisible(506) | Control.IsVisible(507) | Control.IsVisible(508) | Control.IsVisible(510) | Control.IsVisible(511) | Control.IsVisible(513)]]</visible>
 			<control type="image">
 				<width>60</width>
 				<height>100%</height>
 				<texture>colors/black.png</texture>
 			</control>
-			<control type="grouplist">
-				<top>44</top>
+			<control type="list" id="615">
+				<top>40</top>
 				<width>60</width>
-				<height>1036</height>
-				<include>AlphabetNumber</include>
-				<include content="AlphabetLetter">
-					<param name="letter">A</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">B</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">C</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">D</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">E</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">F</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">G</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">H</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">I</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">J</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">K</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">L</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">M</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">N</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">O</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">P</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Q</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">R</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">S</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">T</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">U</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">V</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">W</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">X</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Y</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Z</param>
-				</include>
+				<height>1000</height>
+				<onleft>50</onleft>
+				<onright condition="!Control.IsVisible(51) + !Control.IsVisible(500) + !Control.IsVisible(511)">4400</onright>
+				<onright condition="Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(511)">50</onright>
+				<onback>50</onback>
+				<itemlayout width="60" height="37">
+					<control type="label">
+						<width>60</width>
+						<height>37</height>
+						<align>center</align>
+						<font>font15_title</font>
+						<textcolor>grey2</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="60" height="37">
+					<control type="label">
+						<width>60</width>
+						<height>37</height>
+						<align>center</align>
+						<font>font15_title</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+				</focusedlayout>
+				<content>plugin://script.skin.info.service/?action=letter_jump&amp;target=$VAR[CurrentViewID]&amp;reload=$INFO[Container($VAR[CurrentViewID]).NumItems]$INFO[Container($VAR[CurrentViewID]).SortMethod]$INFO[Container($VAR[CurrentViewID]).SortOrder]$INFO[Container($VAR[CurrentViewID]).FolderPath]</content>
 			</control>
 		</control>
 		<control type="group">
 			<top>1000</top>
 			<animation effect="slide" end="0,100" time="200" tween="quadratic" easing="out" condition="!Control.HasFocus(616)">Conditional</animation>
-			<visible>Control.HasFocus(616)</visible>
+			<visible>[[[Container.HasNext | Container.HasPrevious] + String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])] + [Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(504) | Control.IsVisible(505) | Control.IsVisible(509) | Control.IsVisible(512)]]</visible>
 			<control type="image">
 				<width>100%</width>
 				<height>80</height>
-				<texture>bottombar.png</texture>
+				<texture>colors/black.png</texture>
 			</control>
-			<control type="grouplist">
+			<control type="list" id="616">
 				<left>60</left>
 				<top>20</top>
 				<width>1800</width>
 				<height>60</height>
 				<orientation>horizontal</orientation>
-				<align>center</align>
-				<include>AlphabetNumber</include>
-				<include content="AlphabetLetter">
-					<param name="letter">A</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">B</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">C</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">D</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">E</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">F</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">G</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">H</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">I</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">J</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">K</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">L</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">M</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">N</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">O</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">P</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Q</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">R</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">S</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">T</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">U</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">V</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">W</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">X</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Y</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Z</param>
-				</include>
+				<onup>50</onup>
+				<ondown>4400</ondown>
+				<onback>50</onback>
+				<itemlayout width="66" height="60">
+					<control type="label">
+						<width>66</width>
+						<height>60</height>
+						<align>center</align>
+						<font>font15_title</font>
+						<textcolor>grey2</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="66" height="60">
+					<control type="label">
+						<width>66</width>
+						<height>60</height>
+						<align>center</align>
+						<font>font15_title</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+				</focusedlayout>
+				<content>plugin://script.skin.info.service/?action=letter_jump&amp;target=$VAR[CurrentViewID]&amp;reload=$INFO[Container($VAR[CurrentViewID]).NumItems]$INFO[Container($VAR[CurrentViewID]).SortMethod]$INFO[Container($VAR[CurrentViewID]).SortOrder]$INFO[Container($VAR[CurrentViewID]).FolderPath]</content>
 			</control>
 		</control>
 	</include>

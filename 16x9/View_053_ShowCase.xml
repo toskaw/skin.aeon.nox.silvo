@@ -23,7 +23,7 @@
 		<onup condition="Control.IsVisible(62)">62</onup> -->
 		<ondown condition="Control.IsVisible(95360)">95360</ondown>
 		<ondown condition="!Control.IsVisible(95360)">4400</ondown>
-		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets) | Container.Content(musicvideos)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_53]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_53]</visible>
 		<viewtype label="31077">bigwrap</viewtype>
 		<pagecontrol>95360</pagecontrol>
 		<scrolltime tween="quadratic">300</scrolltime>
@@ -554,7 +554,7 @@
 		<height>434</height>
 		<align>center</align>
 		<aspectratio>scale</aspectratio>
-		<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+		<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 		<bordersize>20</bordersize>
 	</include>
 	<include name="MovieShowcaseCase">
@@ -588,7 +588,7 @@
 		<width>80</width>
 		<height>80</height>
 		<bordersize>20</bordersize>
-		<visible>[!String.IsEmpty(Skin.String(53.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(53.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(53.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(53.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(53.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</visible>
+		<visible>[!String.IsEmpty(Skin.String(53.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(53.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(53.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(53.Seasons.DisableOverlay)) + Container.Content(seasons)]</visible>
 	</include>
 	<include name="ShowCaseItemContent">
 		<param name="ListItem.Position" />
@@ -1002,7 +1002,7 @@
 		<value>$INFO[ListItem(9).Icon]</value>
 	</variable>
 	<variable name="ShowcaseRes-7Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(-7).IsCollection">set.png</value>
 		<value condition="ListItem(-7).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(-7).Filename,hddvd)">hddvd.png</value>
@@ -1012,7 +1012,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes-6Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(-6).IsCollection">set.png</value>
 		<value condition="ListItem(-6).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(-6).Filename,hddvd)">hddvd.png</value>
@@ -1022,7 +1022,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes-5Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(-5).IsCollection">set.png</value>
 		<value condition="ListItem(-5).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(-5).Filename,hddvd)">hddvd.png</value>
@@ -1032,7 +1032,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes-4Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(-4).IsCollection">set.png</value>
 		<value condition="ListItem(-4).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(-4).Filename,hddvd)">hddvd.png</value>
@@ -1042,7 +1042,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes-3Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(-3).IsCollection">set.png</value>
 		<value condition="ListItem(-3).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(-3).Filename,hddvd)">hddvd.png</value>
@@ -1052,7 +1052,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes-2Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(-2).IsCollection">set.png</value>
 		<value condition="ListItem(-2).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(-2).Filename,hddvd)">hddvd.png</value>
@@ -1062,7 +1062,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes-1Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(-1).IsCollection">set.png</value>
 		<value condition="ListItem(-1).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(-1).Filename,hddvd)">hddvd.png</value>
@@ -1072,7 +1072,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes1Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(1).IsCollection">set.png</value>
 		<value condition="ListItem(1).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(1).Filename,hddvd)">hddvd.png</value>
@@ -1082,7 +1082,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes2Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(2).IsCollection">set.png</value>
 		<value condition="ListItem(2).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(2).Filename,hddvd)">hddvd.png</value>
@@ -1092,7 +1092,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes3Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(3).IsCollection">set.png</value>
 		<value condition="ListItem(3).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(3).Filename,hddvd)">hddvd.png</value>
@@ -1102,7 +1102,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes4Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(4).IsCollection">set.png</value>
 		<value condition="ListItem(4).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(4).Filename,hddvd)">hddvd.png</value>
@@ -1112,7 +1112,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes5Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(5).IsCollection">set.png</value>
 		<value condition="ListItem(5).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(5).Filename,hddvd)">hddvd.png</value>
@@ -1122,7 +1122,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes6Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(6).IsCollection">set.png</value>
 		<value condition="ListItem(6).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(6).Filename,hddvd)">hddvd.png</value>
@@ -1132,7 +1132,7 @@
 		<value>trailer.png</value>
 	</variable>
 	<variable name="ShowcaseRes7Var">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">tvseries.png</value>
+		<value condition="$EXP[IsTVShowOrSeason]">tvseries.png</value>
 		<value condition="ListItem(7).IsCollection">set.png</value>
 		<value condition="ListItem(7).IsStereoscopic">3d.png</value>
 		<value condition="String.Contains(ListItem(7).Filename,hddvd)">hddvd.png</value>
