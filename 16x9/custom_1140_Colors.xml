@@ -75,6 +75,7 @@
 						<ondown>9004</ondown>
 						<visible>Container(9000).HasFocus(4)</visible>
 						<control type="radiobutton" id="400">
+							<!-- kdk-ignore: labels -->
 							<label>SiLVO</label>
 							<onclick>SetProperty(CustomConfirm,SiLVOcolors,Home)</onclick>
 							<onclick>ActivateWindow(1126)</onclick>
@@ -107,6 +108,7 @@
 							</include>
 						</control>
 						<control type="radiobutton" id="404">
+							<!-- kdk-ignore: labels -->
 							<label>Superman</label>
 							<onclick>SetProperty(CustomConfirm,supermancolors,Home)</onclick>
 							<onclick>ActivateWindow(1126)</onclick>
@@ -276,6 +278,14 @@
 							<onclick>Skin.SetColor(HighlightBarColor,31304,FF2A52BE,special://skin/extras/colors.xml)</onclick>
 							<include content="CustomColorRadioButton">
 								<param name="ColorStringVar">$VAR[HighlightBarColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="207">
+							<label>$LOCALIZE[31130]</label>
+							<onclick>SetProperty(Reset.Color,FocusedScrollbarColor)</onclick>
+							<onclick>Skin.SetColor(FocusedScrollbarColor,31130,FF6DB9E5,special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[FocusedScrollbarColor]</param>
 							</include>
 						</control>
 						<control type="radiobutton" id="202">

@@ -1,0 +1,20 @@
+name: kdk skin validate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    if: github.repository == 'MikeSiLVO/skin.aeon.nox.silvo'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - run: pip install kdk==2.0.0
+
+      # ubuntu so case-sensitive paths are checked the way Kodi sees them
+      - run: kdk validate --strict --github .

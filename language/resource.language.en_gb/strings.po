@@ -529,6 +529,10 @@ msgctxt "#31125"
 msgid "Show Background \"Now Playing\" Visualisation"
 msgstr ""
 
+msgctxt "#31128"
+msgid "Prefer animated artwork"
+msgstr ""
+
 msgctxt "#31126"
 msgid "TheMovieDb Helper provides details about movies, tvshows and actors from TMDb."
 msgstr ""
@@ -539,6 +543,10 @@ msgstr ""
 
 msgctxt "#31129"
 msgid "Hide Fanart in full screen visualisation"
+msgstr ""
+
+msgctxt "#31130"
+msgid "Focused Scrollbar"
 msgstr ""
 
 msgctxt "#31131"

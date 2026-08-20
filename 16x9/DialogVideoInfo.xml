@@ -10,6 +10,7 @@
 	<onload>RunScript(script.skin.info.service,action=split_string,string="$INFO[ListItem.Director]",separator=/,prefix=Director)</onload>
 	<onload>RunScript(script.skin.info.service,action=urlencode,string="$INFO[ListItem.Title]")</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
+	<onunload>ClearProperty(actor_name,Home)</onunload>
 	<onunload>ClearProperty(crew_name,Home)</onunload>
 	<controls>
 		<control type="textbox" id="4">
@@ -727,10 +728,10 @@
 							</control>
 						</control>
 					</control>
-					<include condition="String.IsEqual(ListItem.DBTYPE,set)">DefaultSetList</include>
 					<include condition="!String.IsEqual(ListItem.DBTYPE,musicvideo)">CustomActorList</include>
 					<include condition="System.AddonIsEnabled(script.skin.info.service) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ExtendedMovieSetPanel</include>
+					<include condition="String.IsEqual(ListItem.DBTYPE,set)">DefaultSetList</include>
 					<include condition="Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsGreater(ListItem.Property(TotalSeasons),1)">ExtendedSeasonPanel</include>
 					<include condition="System.AddonIsEnabled(script.skin.info.service) + Skin.HasSetting(Enable.ExtendedInfoMVIntergration) + String.IsEqual(ListItem.DBTYPE,musicvideo)">ExtendedInfoMusicvideoLists</include>

@@ -37,7 +37,8 @@
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 
 					<visible>True + !Skin.HasSetting(Enable_ViewLocking) | [$EXP[ShortcutView_500] + Skin.HasSetting(Enable_ViewLocking)]</visible>
-					<itemlayout height="360" width="420" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
+
+					<itemlayout height="360" width="420" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
 						<control type="image">
 							<width>420</width>
 							<height>360</height>
@@ -53,7 +54,11 @@
 						</include>
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 					</itemlayout>
+<<<<<<< HEAD
 					<focusedlayout height="360" width="420" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
+=======
+					<focusedlayout height="360" width="240" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
+>>>>>>> upstream/main
 						<control type="group">
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -251,7 +256,7 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
+					<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
 						<control type="image">
 							<width>420</width>
 							<height>360</height>
@@ -283,7 +288,7 @@
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
+					<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
 						<control type="group">
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -320,7 +325,7 @@
 							</control>
 						</control>
 					</focusedlayout>
-					<itemlayout height="240" width="160" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
+					<itemlayout height="240" width="160" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
 						<control type="image">
 							<width>160</width>
 							<height>240</height>
@@ -338,7 +343,7 @@
 							<param name="height">32</param>
 						</include>
 					</itemlayout>
-					<focusedlayout height="240" width="160" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
+					<focusedlayout height="240" width="160" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
 						<control type="group">
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -404,7 +409,7 @@
 					<onup>50060</onup>
 					<texturesliderbackground>colors/black.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 					<animation effect="slide" end="-80" condition="!Container.Content(episodes) + !Container.Content(videos) + Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
 				</control>
@@ -485,7 +490,7 @@
 						<width>240</width>
 						<height>240</height>
 						<aspectratio>scale</aspectratio>
-							<texture border="2" colordiffuse="BFFFFFFF" background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true" fallback="special://skin/extras/musicgenres/default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
 							<bordersize>2</bordersize>
 							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
@@ -495,7 +500,7 @@
 						<width>240</width>
 						<height>240</height>
 						<aspectratio>scale</aspectratio>
-						<texture border="8" background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
+						<texture border="8" background="true" fallback="special://skin/extras/musicgenres/default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
 						<bordersize>8</bordersize>
 						<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						<animation type="Focus" reversible="false">
@@ -519,7 +524,7 @@
 				<showonepage>false</showonepage>
 				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+				<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 			</control>
 		</control>
 	</include>
@@ -605,7 +610,7 @@
 				<showonepage>false</showonepage>
 				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+				<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 			</control>
 		</control>
 	</include>
@@ -728,7 +733,7 @@
 				<onup>50060</onup>
 				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+				<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 				<showonepage>false</showonepage>
 			</control>
 		</control>

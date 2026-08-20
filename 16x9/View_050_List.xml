@@ -944,14 +944,14 @@
 					<onright condition="Control.IsVisible(8001) + !Control.IsVisible(95061)">4400</onright>
 					<texturesliderbackground>colors/black.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
 			<control type="group">
 				<left>1320</left>
 				<top>200</top>
-				<visible>Container.Content(movies) | Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211]) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
+				<visible>Container.Content(movies) | Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211]) | $EXP[IsTVShowOrSeason] | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
 				<include>VisibleFadeAnimation</include>
 				<control type="image">
 					<width>570</width>
@@ -964,7 +964,7 @@
 					<visible>Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
 				</control>
 				<control type="group">
-					<visible>Container.Content(movies) | Container.Content(videoversions) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+					<visible>Container.Content(movies) | Container.Content(videoversions) | $EXP[IsTVShowOrSeason]</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -1015,7 +1015,7 @@
 			<control type="group" id="8001">
 				<left>1280</left>
 				<top>125</top>
-				<visible>![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)] + ![Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211])] + !Container.Content(videoextras)</visible>
+				<visible>![Container.Content(movies) | Container.Content(genres) | $EXP[IsTVShowOrSeason] | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)] + ![Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211])] + !Container.Content(videoextras)</visible>
 				<animation effect="fade" time="250">Visible</animation>
 				<include content="BackPanel">
 					<param name="left">-4</param>
@@ -1076,7 +1076,7 @@
 					<onright condition="Control.IsVisible(615)">615</onright>
 					<texturesliderbackground>colors/black10.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 					<visible>Container.Content(episodes) | Container.Content(videos)</visible>
 				</control>
@@ -1088,7 +1088,7 @@
 					<onright>4400</onright>
 					<texturesliderbackground>colors/black75.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 					<visible>![Container.Content(episodes) | Container.Content(videos)]</visible>
 				</control>
@@ -1610,8 +1610,8 @@
 					<onleft>50</onleft>
 					<onright condition="!Control.IsVisible(615)">4400</onright>
 					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">colors/darkgrey.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
@@ -1637,7 +1637,7 @@
 					<width>570</width>
 					<height>835</height>
 					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
+					<texture background="true" fallback="special://skin/extras/musicgenres/default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
 					<fadetime>IconCrossfadeTime</fadetime>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>
@@ -1648,7 +1648,7 @@
 					<height>835</height>
 					<aspectratio aligny="top">keep</aspectratio>
 					<fadetime>IconCrossfadeTime</fadetime>
-					<texture diffuse="thumbs/thumb_reflect.png" flipy="true" background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$INFO[ListItem.Label,special://skin/extras/musicgenres/,.jpg]</texture>
+					<texture diffuse="thumbs/thumb_reflect.png" flipy="true" background="true" fallback="special://skin/extras/musicgenres/default.jpg">$INFO[ListItem.Label,special://skin/extras/musicgenres/,.jpg]</texture>
 					<bordersize>20</bordersize>
 				</control>
 			</control>
@@ -1671,8 +1671,8 @@
 					<height>840</height>
 					<onleft>8000</onleft>
 					<onright>4400</onright>
-					<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">colors/darkgrey.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 				<control type="panel" id="8000">
@@ -1938,7 +1938,7 @@
 					<onright>SetFocus(9050)</onright>
 					<texturesliderbackground>colors/black.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
@@ -2175,7 +2175,7 @@
 					<onright>9002</onright>
 					<texturesliderbackground>colors/black.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
@@ -2376,7 +2376,7 @@
 					<onright condition="Control.IsVisible(8001) + !Control.IsVisible(95061)">4400</onright>
 					<texturesliderbackground>colors/black.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
@@ -2421,7 +2421,7 @@
 			<control type="group" id="8001">
 				<left>1280</left>
 				<top>-40</top>
-				<visible>Skin.HasSetting(SlimList.Info) + ![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
+				<visible>Skin.HasSetting(SlimList.Info) + ![Container.Content(movies) | Container.Content(genres) | $EXP[IsTVShowOrSeason] | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
 				<include>VisibleFadeAnimation</include>
 				<control type="image">
 					<top>148</top>
@@ -2516,7 +2516,7 @@
 					<onright condition="Control.IsVisible(615)">615</onright>
 					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 					<visible>Container.Content(episodes) | Container.Content(videos)</visible>
 				</control>
@@ -2529,7 +2529,7 @@
 					<onright>4400</onright>
 					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 					<visible>![Container.Content(episodes) | Container.Content(videos)]</visible>
 				</control>
@@ -2801,7 +2801,7 @@
 					<onright>SetFocus(9050)</onright>
 					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
@@ -2931,7 +2931,7 @@
 					<onright>SetFocus(9050)</onright>
 					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>

@@ -204,7 +204,7 @@
 		<value>$INFO[Container(6).ListItem.Icon]</value>
 	</variable>
 	<variable name="OSLogoVar">
-		<value condition="System.HasAddon(service.libreelec.settings)">libreelec/logo.png</value>
+		<value condition="System.HasAddon(service.libreelec.settings)">libreelec/Logo.png</value>
 		<value condition="System.HasAddon(service.coreelec.settings)">coreelec/logo.png</value>
 		<value condition="System.Platform.Linux">logos/linux-logo.png</value>
 		<value condition="System.Platform.Windows">logos/windows-logo.png</value>
@@ -264,11 +264,10 @@
 		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
 	</variable>
 	<variable name="VizBackgroundVar">
-		<value condition="String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.FanArt)]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),2) | String.IsEqual(Skin.String(Viz.Background),8) | String.IsEmpty(Player.Art(fanart)) + !String.IsEmpty(Window(Home).Property(SkinInfo.Slideshow.Music.FanArt))">$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.FanArt)]</value>
 		<value condition="[String.IsEqual(Skin.String(Viz.Background),5) | String.IsEqual(Skin.String(Viz.Background),6)] + !String.IsEmpty(Skin.String(CustomMusicBackground.path))">$INFO[Skin.String(CustomMusicBackground.path)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),7) + !Control.IsVisible(4410) + !String.IsEmpty(Control.GetLabel(4411))">$INFO[Control.GetLabel(4411)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),7) + !String.IsEmpty(Control.GetLabel(4410))">$INFO[Control.GetLabel(4410)]</value>
-		<value condition="String.IsEqual(Skin.String(Viz.Background),8) | String.IsEmpty(Player.Art(fanart)) + !String.IsEmpty(Container(9037).ListItem.Art(fanart))">$INFO[Container(9037).ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
 	</variable>
 	<variable name="LoginProfileBackgroundVar">
@@ -290,7 +289,7 @@
 	</variable>
 	<variable name="PersonInfoBackgroundVar">
 		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + !String.IsEmpty(Window.Property(BlurredThumb))">$INFO[Window.Property(BlurredThumb)]</value>
-		<value>dialogs/tmdbh/tmdb.png</value>
+		<value>special://skin/extras/backgrounds/tmdb_fanart.jpg</value>
 	</variable>
 	<!-- Mediaflags -->
 	<variable name="SourceFlagVar">

@@ -340,6 +340,7 @@
 			<onclick>ClearProperty(crew_name,Home)</onclick>
 			<onclick>SetProperty(actor_name,$INFO[Container(90050).ListItem.Label],Home)</onclick>
 			<onclick>SetProperty(actor_role,$INFO[Container(90050).ListItem.Label2],Home)</onclick>
+			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season) + !Skin.HasSetting(OnlineCast)">SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season) + !Skin.HasSetting(OnlineCast)">ActivateWindow(1129)</onclick>
 			<onclick condition="String.IsEqual(ListItem.DBTYPE,season) | Skin.HasSetting(OnlineCast)">RunScript(script.skin.info.service,action=dialog_actor_info,person_id=$INFO[Container(90050).ListItem.Property(person_id)],name=$ESCINFO[Container(90050).ListItem.Label],role=$ESCINFO[Container(90050).ListItem.Label2],focus=90050)</onclick>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
@@ -890,6 +891,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Director],Home)</onclick>
 			<onclick>SetProperty(crew_job,director,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Director)</visible>
 		</item>
@@ -899,6 +901,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Writer],Home)</onclick>
 			<onclick>SetProperty(crew_job,writer,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Writer)</visible>
 		</item>
@@ -939,14 +942,13 @@
 		<item>
 			<label fallback="$INFO[Window.Property(Director)]">$INFO[Container(4800).ListItem.Director]</label>
 			<label2>$LOCALIZE[20339]:</label2>
-			<onfocus>ClearProperty(person_id,Home)</onfocus>
-			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Container(4800).ListItem.Director],crew=director,dbid=$INFO[Window.Property(dbid)],dbtype=movie,focus=300)</onclick>
+			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Container(4800).ListItem.Director],crew=director,dbid=$INFO[Window.Property(dbid)],dbtype=movie)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Director) | !String.IsEmpty(Window.Property(Director))</visible>
 		</item>
 		<item>
 			<label fallback="$INFO[Window.Property(Writer)]">$INFO[Container(4800).ListItem.Writer]</label>
 			<label2>$LOCALIZE[20417]:</label2>
-			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Container(4800).ListItem.Writer],crew=writer,dbid=$INFO[Window.Property(dbid)],dbtype=movie,focus=300)</onclick>
+			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Container(4800).ListItem.Writer],crew=writer,dbid=$INFO[Window.Property(dbid)],dbtype=movie)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Writer) | !String.IsEmpty(Window.Property(Writer))</visible>
 		</item>
 		<item>
@@ -991,6 +993,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[Window(Home).Property(SkinInfo.Online.Creator)],Home)</onclick>
 			<onclick>SetProperty(crew_job,creator,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Creator))</visible>
 		</item>
@@ -1028,6 +1031,12 @@
 		</item>
 	</include>
 	<include name="CustomInfoContentTVShows">
+		<item>
+			<label>$INFO[Window.Property(Creator)]</label>
+			<label2>$LOCALIZE[31096]:</label2>
+			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Window.Property(Creator)],crew=creator,dbid=$INFO[Window.Property(dbid)],dbtype=tvshow)</onclick>
+			<visible>!String.IsEmpty(Window.Property(Creator))</visible>
+		</item>
 		<item>
 			<label fallback="$INFO[Window.Property(Genre)]">$INFO[Container(4800).ListItem.Genre]</label>
 			<label2>$LOCALIZE[515]:</label2>
@@ -1070,6 +1079,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Director],Home)</onclick>
 			<onclick>SetProperty(crew_job,director,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Director)</visible>
 		</item>
@@ -1079,6 +1089,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Writer],Home)</onclick>
 			<onclick>SetProperty(crew_job,writer,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Writer)</visible>
 		</item>
@@ -1266,6 +1277,24 @@
 			<visible>!String.IsEmpty(Container(4800).ListItem.Property(Tag))</visible>
 		</item>
 		<item>
+			<label>[UPPERCASE]$INFO[Container(4800).ListItem.Property(AudioLanguage.1)]$INFO[Container(4800).ListItem.Property(AudioLanguage.2), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.3), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.4), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.5), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.6), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.7), / ][/UPPERCASE]</label>
+			<label2>$LOCALIZE[292]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[292],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,[UPPERCASE]$INFO[Container(4800).ListItem.Property(AudioLanguage.1)]$INFO[Container(4800).ListItem.Property(AudioLanguage.2), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.3), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.4), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.5), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.6), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.7), / ][/UPPERCASE],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>![String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)] + !String.IsEmpty(Container(4800).ListItem.Property(AudioLanguage.1)) | !String.IsEmpty(Container(4800).ListItem.Property(AudioLanguage.3))</visible>
+			<visible>!Skin.HasSetting(Disable.VideoInfoLanguageDetails)</visible>
+		</item>
+		<item>
+			<label>[UPPERCASE]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.1)]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.2), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.3), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.4), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.5), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.6), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.7), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.8), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.9), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.10), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.11), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.12), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.13), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.14), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.15), / ][/UPPERCASE]</label>
+			<label2>$LOCALIZE[287]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[287],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,[UPPERCASE]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.1)]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.2), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.3), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.4), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.5), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.6), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.7), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.8), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.9), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.10), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.11), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.12), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.13), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.14), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.15), / ][/UPPERCASE],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>![String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)] + !String.IsEmpty(Container(4800).ListItem.Property(SubtitleLanguage.1)) | !String.IsEmpty(Container(4800).ListItem.Property(SubtitleLanguage.3))</visible>
+			<visible>!Skin.HasSetting(Disable.VideoInfoLanguageDetails)</visible>
+		</item>
+		<item>
 			<label>$INFO[Container(4800).ListItem.Property(Path)]</label>
 			<label2>$LOCALIZE[573]:</label2>
 			<onclick>Dialog.Close(all,true)</onclick>
@@ -1305,7 +1334,7 @@
 		<param name="visible" default="!String.IsEmpty(ListItem.Duration) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Runtime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Season.TotalRuntime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Runtime)) | String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Runtime))" />
 		<definition>
 			<control type="label">
-				<width max="180">auto</width>
+				<width max="200">auto</width>
 				<height>90</height>
 				<font>font48_bold</font>
 				<textcolor>grey</textcolor>
@@ -1452,15 +1481,15 @@
 		<!-- RT Critics -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Tomatoes.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Tomatoes.Percent))</visible>
-			<width>140</width>
+			<width>125</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>$VAR[RottenFreshLogoVar]</texture>
 			</control>
 			<control type="label">
-				<left>68</left>
+				<left>60</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
@@ -1470,15 +1499,15 @@
 		<!-- RT Audience -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Popcorn.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Popcorn.Percent))</visible>
-			<width>130</width>
+			<width>125</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
 			</control>
 			<control type="label">
-				<left>68</left>
+				<left>55</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
@@ -1488,16 +1517,15 @@
 		<!-- TMDb (themoviedb) -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.tmdb)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.tmdb))</visible>
-			<left>10</left>
-			<width>130</width>
+			<width>120</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>logos/tmdb.png</texture>
 			</control>
 			<control type="label">
-				<left>78</left>
+				<left>75</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
@@ -1509,13 +1537,13 @@
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.trakt)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.trakt))</visible>
 			<width>130</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>logos/trakt-clearlogo.png</texture>
 			</control>
 			<control type="label">
-				<left>68</left>
+				<left>65</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
