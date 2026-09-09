@@ -85,15 +85,12 @@
 	<variable name="FanartTitleVar">
 		<value condition="Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(backgroundType),playlist)">$VAR[SubMenuPlaylistBackgroundTitleVar]</value>
 		<value condition="String.StartsWith(Container(9000).ListItem.Property(backgroundType),playlist)">$VAR[PlaylistBackgroundTitleVar]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),movie-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),movie-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Movie.Title)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),tv-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),tv-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.TV.Title)]</value>
+		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),movie-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),movie-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Movie.Title)]</value>
+		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),tv-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),tv-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.TV.Title)]</value>
+		<value condition="[String.IsEqual(Container(9000).ListItem.Property(background),musicvideo-fanart) | String.IsEqual(Container(9000).ListItem.Property(background),kodi-musicvideo-fanart)] + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + [String.IsEqual(Container(9010).ListItem.Property(background),musicvideo-fanart) | String.IsEqual(Container(9010).ListItem.Property(background),kodi-musicvideo-fanart)]">$INFO[Window(Home).Property(SkinInfo.Slideshow.MusicVideo.Artist)]</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),video-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),video-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Video.Title)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Music-Fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Music-Fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.Artist)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Global-Fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Global-Fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Global.Title)]</value>
-		<value condition="String.StartsWith(Container(9000).ListItem.Property(background),kodi-movie-fanart) | Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(background),kodi-movie-fanart)">$INFO[Container(9035).ListItem.Title]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),kodi-tv-fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),kodi-tv-fanart)">$INFO[Container(9036).ListItem.Title]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),kodi-music-fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),kodi-music-fanart)">$INFO[Container(9037).ListItem.Artist]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),kodi-musicvideo-fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),kodi-musicvideo-fanart)">$INFO[Container(9038).ListItem.Artist]</value>
+		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),music-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),music-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.Artist)]</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),global-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),global-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Global.Title)]</value>
 	</variable>
 	<variable name="VizBackgroundLabelVar">
 		<value condition="String.IsEqual(Skin.String(Viz.Background),1)">$LOCALIZE[31068]</value>
@@ -168,6 +165,7 @@
 		<value condition="!Skin.HasSetting(Disable.OverlayWatched) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">overlays/OverlayWatched.png</value>
 	</variable>
 	<variable name="ListItemOverlay">
+		<value condition="ListItem.IsRecording">[COLOR red][/COLOR]</value>
 		<value condition="String.IsEqual(ListItem.Property(WatchedEpisodePercent),100)">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
 		<value condition="ListItem.IsResumable + String.IsEqual(ListItem.DBTYPE,set)">[COLOR white2][/COLOR]</value>
 		<value condition="ListItem.IsResumable + !String.IsEmpty(ListItem.PlayCount) + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
@@ -237,6 +235,7 @@
 		<value condition="Window.IsActive(script-globalsearch.xml)">$INFO[Window.Property(GlobalSearch.SearchString), $LOCALIZE[194] ]</value>
 		<value condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)">$VAR[BreadcrumbsFillerVar]</value>
 		<value condition="Window.IsActive(TVRecordings) | Window.IsActive(RadioRecordings)">$LOCALIZE[19163]</value>
+		<value condition="[Window.IsActive(TVSearch) | Window.IsActive(RadioSearch)] + String.Contains(Container.FolderPath,savedsearches)">$LOCALIZE[19337]</value>
 		<value condition="Window.IsActive(TVSearch) | Window.IsActive(RadioSearch)">$LOCALIZE[137]</value>
 		<value condition="Window.IsActive(eventlog)">$LOCALIZE[14111]$INFO[Control.GetLabel(21),[COLOR grey2] | , [/COLOR]]</value>
 		<value condition="Window.IsActive(SettingsCategory.xml)">$INFO[Control.GetLabel(2)]</value>
@@ -903,6 +902,10 @@
 		<value condition="!String.IsEmpty(Container(8000).ListItem.Rating(imdb))">$INFO[Container(8000).ListItem.Rating(imdb)]</value>
 		<value>$INFO[Container(8001).ListItem.Rating(imdb)]</value>
 	</variable> -->
+	<variable name="PickerRowPathVar">
+		<value condition="!String.IsEmpty(ListItem.Property(path))">$INFO[ListItem.Property(path)]</value>
+		<value condition="String.IsEqual(ListItem.Property(type),group)">$INFO[ListItem.Property(count),, $LOCALIZE[31025]]</value>
+	</variable>
 	<variable name="DialogSelectLabelVar">
 		<value condition="Window.IsVisible(dialogselectvideo)">$INFO[ListItem.Property(stream.codec)]$INFO[ListItem.Property(stream.hdrtype),$COMMA ]$INFO[ListItem.Property(stream.resolution),$COMMA ]$INFO[Player.Process(videoscantype)]$INFO[ListItem.Property(stream.bitrate),$COMMA , kbps]$INFO[ListItem.Property(stream.fps),$COMMA , fps]</value>
 		<value>$INFO[ListItem.Label]</value>
@@ -1083,20 +1086,6 @@
 		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),01)">$LOCALIZE[12311] $LOCALIZE[31182]</value>
 		<value condition="Integer.IsLess(Player.TimeRemaining(h),1) + Integer.IsLess(Player.TimeRemaining(mm),01) + !Integer.IsEqual(Player.TimeRemaining(ss),00)">$INFO[Player.TimeRemaining(ss),, $LOCALIZE[31184]]</value>
 	</variable>
-	<variable name="PlayerTimeRemainingAltVar">
-		<value condition="Integer.IsGreater(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(h),,h]$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
-		<value condition="Integer.IsLessOrEqual(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),09)">$LOCALIZE[12319]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),08)">$LOCALIZE[12318]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),07)">$LOCALIZE[12317]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),06)">$LOCALIZE[12316]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),05)">$LOCALIZE[12315]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),04)">$LOCALIZE[12314]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),03)">$LOCALIZE[12313]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),02)">$LOCALIZE[12312]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),01)">$LOCALIZE[12311]m</value>
-		<value>$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
-	</variable>
 	<variable name="DurationVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,season) + !String.IsEmpty(Window(Home).Property(SkinInfo.Season.TotalRuntime)) + !String.IsEqual(Window(Home).Property(SkinInfo.Season.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.Season.TotalRuntime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.Season.TotalRuntime.Minutes),,m]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime)) + !String.IsEqual(Window(Home).Property(SkinInfo.ListItem.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Minutes),,m]</value>
@@ -1179,25 +1168,6 @@
 		<value condition="Pvr.IsPlayingTv">$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white]$INFO[PVR.EpgEventRemainingTime,   - ][/COLOR]</value>
 		<value>$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white][LIGHT]$INFO[Player.TimeRemaining, - ][/LIGHT][/COLOR]</value>
 	</variable>
-	<variable name="PVRTimerIcon">
-		<value condition="ListItem.IsRecording">pvr/icons/PVR-IsRecording.png</value>
-		<value condition="ListItem.HasReminder">pvr/icons/timers/bell.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasError">pvr/icons/PVR-HasTimerScheduleError.png</value>
-		<value condition="ListItem.HasTimer + ListItem.TimerHasError">pvr/icons/PVR-HasTimerError.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasConflict">pvr/icons/PVR-HasTimerScheduleConflict.png</value>
-		<value condition="ListItem.HasTimer + ListItem.TimerHasConflict">pvr/icons/PVR-HasTimerConflict.png</value>
-		<value condition="ListItem.HasRecording">pvr/icons/PVR-HasRecording.png</value>
-		<value condition="ListItem.HasTimerSchedule + !ListItem.TimerIsActive">pvr/icons/PVR-HasTimerScheduleDisabled.png</value>
-		<value condition="ListItem.HasTimer + !ListItem.TimerIsActive">pvr/icons/PVR-HasTimerDisabled.png</value>
-		<value condition="ListItem.HasTimerSchedule">pvr/icons/PVR-HasTimerSchedule.png</value>
-		<value condition="ListItem.HasTimer">pvr/icons/PVR-HasTimer.png</value>
-		<value condition="ListItem.IsPlayable">pvr/icons/PVR-HasArchive.png</value>
-	</variable>
-	<variable name="PVRChannelStatusIcon">
-		<value condition="ListItem.IsRecording">pvr/icons/channels/record.png</value>
-		<value condition="ListItem.HasTimer | ListItem.HasTimerSchedule">pvr/icons/channels/timer.png</value>
-		<value condition="ListItem.HasArchive">pvr/icons/channels/archive.png</value>
-	</variable>
 	<variable name="DialogSettingsHeaderVar">
 		<value condition="Control.HasFocus(97) + Window.IsVisible(contentsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
 		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[15067][/COLOR]</value>
@@ -1274,6 +1244,10 @@
 	<variable name="FocusedScrollbarColor">
 		<value condition="!String.IsEmpty(Skin.String(FocusedScrollbarColor))">$INFO[Skin.String(FocusedScrollbarColor)]</value>
 		<value>$VAR[ThemeLabelColor]</value>
+	</variable>
+	<variable name="UnfocusedScrollbarColor">
+		<value condition="!String.IsEmpty(Skin.String(UnfocusedScrollbarColor))">$INFO[Skin.String(UnfocusedScrollbarColor)]</value>
+		<value>$VAR[FocusedScrollbarColor]</value>
 	</variable>
 	<variable name="ThemeHomeLabelColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeHomeLabelColor))">$INFO[Skin.String(ThemeHomeLabelColor)]</value>

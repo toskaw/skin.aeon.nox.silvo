@@ -31,6 +31,7 @@
 	<include file="Variables_Artwork.xml" />
 	<include file="Variables_InfoPanel.xml" />
 	<include file="Variables_OnClick.xml" />
+	<include file="Variables_PVR.xml" />
 	<include file="Variables_Paths.xml" />
 	<include file="Variables_Widgets.xml" />
 	<!-- Media Menu -->
@@ -190,7 +191,6 @@
 					<control type="progress">
 						<width>100%</width>
 						<height>45</height>
-						<texturebg>colors/blank.png</texturebg>
 						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/grey.png</midtexture>
 						<info>Player.Progress</info>
 						<visible>!Pvr.IsPlayingTv</visible>
@@ -198,7 +198,6 @@
 					<control type="progress">
 						<width>100%</width>
 						<height>41</height>
-						<texturebg>osd/texturebg_cache.png</texturebg>
 						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/grey.png</midtexture>
 						<info>PVR.EpgEventProgress</info>
 						<visible>Pvr.IsPlayingTv</visible>
@@ -307,6 +306,39 @@
 			<visible>!String.IsEmpty(Window(Home).Property(Window.HasSettings))</visible>
 		</control>
 	</include>
+	<!-- Panels -->
+	<include name="BackPanel">
+		<param name="texture" default="colors/black.png" />
+		<param name="border" default="4" />
+		<param name="borderdiffuse" default="$VAR[ThemeBorderColor]" />
+		<param name="visible" default="true" />
+		<param name="shadow" default="true" />
+		<param name="shadowtexture" default="panel_shadow.png" />
+		<definition>
+			<control type="group">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<left>-16</left>
+					<right>-16</right>
+					<top>-12</top>
+					<bottom>-24</bottom>
+					<texture border="16,12,16,24">$PARAM[shadowtexture]</texture>
+					<visible>$PARAM[shadow]</visible>
+				</control>
+				<control type="image">
+					<width>$PARAM[width]</width>
+					<height>$PARAM[height]</height>
+					<texture border="$PARAM[border]">$PARAM[texture]</texture>
+					<bordersize>$PARAM[border]</bordersize>
+					<bordertexture border="$PARAM[border]" infill="false" colordiffuse="$PARAM[borderdiffuse]">colors/white.png</bordertexture>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- System Panels -->
 	<include name="SystemPanel">
 		<include content="BackPanel">
@@ -394,7 +426,51 @@
 			</control>
 		</control>
 	</include>
+	<include name="PanelDivider">
+		<param name="left" default="0" />
+		<param name="top" default="0" />
+		<param name="width" default="1" />
+		<param name="height" default="1" />
+		<param name="color" default="grey4" />
+		<param name="visible" default="true" />
+		<definition>
+			<control type="image">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$PARAM[color]">colors/white.png</texture>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
 	<!-- Scrollbars -->
+	<include name="ScrollbarSolid">
+		<texturesliderbackground>colors/black.png</texturesliderbackground>
+		<texturesliderbar colordiffuse="$VAR[UnfocusedScrollbarColor]">colors/white50.png</texturesliderbar>
+		<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
+	</include>
+	<include name="ScrollbarDim">
+		<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
+		<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+		<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
+	</include>
+	<include name="ScrollbarValues">
+		<param name="left" />
+		<param name="top" />
+		<param name="width" default="14" />
+		<param name="height" />
+		<param name="style" default="ScrollbarSolid" />
+		<param name="showonepage" default="false" />
+		<definition>
+			<left>$PARAM[left]</left>
+			<top>$PARAM[top]</top>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<include>$PARAM[style]</include>
+			<showonepage>$PARAM[showonepage]</showonepage>
+		</definition>
+	</include>
 	<include name="BottomScrollbar">
 		<param name="id" />
 		<param name="view" />

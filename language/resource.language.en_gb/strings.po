@@ -557,6 +557,10 @@ msgctxt "#31132"
 msgid "Tuner:"
 msgstr ""
 
+msgctxt "#31133"
+msgid "Unfocused Scrollbar"
+msgstr ""
+
 msgctxt "#31134"
 msgid "Timeline view-type:"
 msgstr ""
@@ -587,6 +591,10 @@ msgstr ""
 
 msgctxt "#31141"
 msgid "Hide Guide"
+msgstr ""
+
+msgctxt "#31142"
+msgid "Read only"
 msgstr ""
 
 msgctxt "#31143"
@@ -671,6 +679,14 @@ msgstr ""
 
 msgctxt "#31165"
 msgid "Enable to display live background for movie sets when browsing your movie library."
+msgstr ""
+
+msgctxt "#31166"
+msgid "Click to add"
+msgstr ""
+
+msgctxt "#31167"
+msgid "Click to remove"
 msgstr ""
 
 msgctxt "#31168"
@@ -1882,6 +1898,7 @@ msgctxt "#31547"
 msgid "Image gallery"
 msgstr ""
 
+# 31548-31550 unused
 msgctxt "#31548"
 msgid "Kodi random movie fanart"
 msgstr ""
@@ -1983,7 +2000,7 @@ msgid "Preferred plot for movie sets"
 msgstr ""
 
 msgctxt "#31575"
-msgid "Kodi random music video fanart"
+msgid "Random music video fanart"
 msgstr ""
 
 msgctxt "#31576"
